@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Padi",
+        "image": "assets/images/pertanian/padi.png"
+    },
+    {
+        "id": 2,
+        "name": "Jagung",
+        "image": "assets/images/pertanian/jagung.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Kedelai",
+        "image": "assets/images/pertanian/kedelai.png"
+    },
+    {
+        "id": 4,
+        "name": "Kacang Tanah",
+        "image": "assets/images/pertanian/padi.png"
+    },
+    {
+        "id": 5,
+        "name": "Kacang Hijau",
+        "image": "assets/images/pertanian/kacang_hijau.png"
+    },
+    {
+        "id": 6,
+        "name": "Ubi Kayu",
+        "image": "assets/images/pertanian/ubi_kayu.png"
+    },
+    {
+        "id": 7,
+        "name": "Ubi Jalar",
+        "image": "assets/images/pertanian/ubi_jalar.png"
+    }
+
+]

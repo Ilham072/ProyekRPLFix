@@ -1,0 +1,32 @@
+[
+    {
+        "nomor": "1",
+        "komoditi": "Batubara",
+        "potensiKandungan": "67.540"
+    },
+    {
+        "nomor": "2",
+        "komoditi": "Mangan",
+        "potensiKandungan": "67.540"
+    },
+    {
+        "nomor": "3",
+        "komoditi": "Tembaga",
+        "potensiKandungan": "67.540"
+    },
+    {
+        "nomor": "4",
+        "komoditi": "Emas Perak",
+        "potensiKandungan": "67.540"
+    },
+    {
+        "nomor": "5",
+        "komoditi": "Biji Besi",
+        "potensiKandungan": "67.540"
+    },
+    {
+        "nomor": "6",
+        "komoditi": "Pasir Karsa",
+        "potensiKandungan": "67.540"
+    }
+]

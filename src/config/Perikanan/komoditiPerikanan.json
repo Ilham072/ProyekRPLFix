@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Ikan Bandeng",
+        "image": "assets/images/perikanan/ikan_bandeng.png"
+    },
+    {
+        "id": 2,
+        "name": "Udang Windu",
+        "image": "assets/images/perikanan/udang_windu.png"
+    },
+    {
+        "id": 3,
+        "name": "Rumput Laut",
+        "image": "assets/images/perikanan/rumput_laut.png"
+    },
+    {
+        "id": 4,
+        "name": "Udang Api-Api",
+        "image": "assets/images/perikanan/udang_api_api.png"
+    },
+    {
+        "id": 5,
+        "name": "Udang Vannamei",
+        "image": "assets/images/perikanan/udang_vannamei.png"
+    },
+    {
+        "id": 6,
+        "name": "Kepiting Bakau",
+        "image": "assets/images/perikanan/kepiting_bakau.png"
+    },
+    {
+        "id": 7,
+        "name": "Ikan Mujair",
+        "image": "assets/images/perikanan/ikan_mujair.png"
+    },
+    {
+        "id": 8,
+        "name": "Ikan Belanak",
+        "image": "assets/images/perikanan/ikan_belanak.png"
+    }
+]

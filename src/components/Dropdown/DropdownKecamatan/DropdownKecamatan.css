@@ -1,0 +1,88 @@
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: F7F7F7;
+    display: grid;
+    justify-content: center;
+    grid-template: 5fr/ 4fr 3fr;
+    
+    gap: 0;
+    grid-template-areas: 
+      " dropdown-kecamatan cari-btn";
+  }
+
+  .dropdown-kecamatan{
+    grid-area: dropdown-kecamatan;
+    margin-right: 0;
+    background-color: #F7F7F7;
+    padding: 3px;
+  }
+  
+  .dropdown-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 665px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+    height: 50px;
+    border: none;
+    border-radius: 13px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 16px;
+    padding: 0 16px;
+    cursor: pointer;
+    margin: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-button-label {
+    margin-right: 0;
+  }
+  
+  .dropdown-menu-kecamatan {
+    position:absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 665px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #FFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .dropdown-menu-kecamatan a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #4692FD;
+  }
+
+  .cari-btn{
+    grid-area: cari-btn;
+    width: 320px;
+    height: 50px;
+    background-color: #F7F7F7;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    
+  }
+
+  .cariButton {
+    width: 320px;
+    height: 50px;
+    margin: 0;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }

@@ -1,0 +1,42 @@
+.form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%; /* membuat form-input memenuhi semua ruang kosong */
+    /* background-color: tomato; */
+    gap: 10px;
+  }
+  
+  .form-input-row label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    width: 30%;
+ 
+  }
+  
+  .form-input-row input {
+    margin-left: 10px;
+    margin-right: 10px; /* memberikan jarak antara input dengan elemen sebelah kanan */
+    border: rgb(32,177,255);
+    outline: 2px solid rgba(32, 177, 255, 0.438);
+    background-color: rgb(255, 255, 255);
+    height: 15px;
+    border-radius: 10px;
+    text-align: left;
+    padding: 1em;
+    flex: 1;
+    width: 70%; /* membuat input rata kiri dan kanan serta memenuhi semua ruang kosong */
+  }
+
+  .form-input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    /* background-color: blue; */
+  }

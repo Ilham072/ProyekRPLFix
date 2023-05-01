@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Biji Besi",
+        "image": "assets/images/perindustrian/biji_besi.png"
+    },
+    {
+        "id": 2,
+        "name": "Besi",
+        "image": "assets/images/perindustrian/besi.png"
+    },
+    {
+        "id": 3,
+        "name": "Batu Marmer",
+        "image": "assets/images/perindustrian/batu_marmer.png"
+    },
+    {
+        "id": 4,
+        "name": "Kalsit",
+        "image": "assets/images/perindustrian/kalsit.png"
+    },
+    {
+        "id": 5,
+        "name": "Granit",
+        "image": "assets/images/perindustrian/granit.png"
+    },
+    {
+        "id": 6,
+        "name": "Kaolin",
+        "image": "assets/images/perindustrian/kaolin.png"
+    },
+    {
+        "id": 7,
+        "name": "Pasir Kualsa",
+        "image": "assets/images/perindustrian/pasir_kualsa.png"
+    }
+
+]

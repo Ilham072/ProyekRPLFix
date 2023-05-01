@@ -1,0 +1,55 @@
+.container-komoditi{
+    background-color: #F7F7F7;
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 1fr ;
+    justify-content: space-between;
+    gap: 3;
+    grid-template-areas: 
+      "KomoditiInfo grafikkomoditi";
+    }  
+    .KomoditiInfo {
+      display: grid;
+      grid-area: KomoditiInfo;
+      background-color:white;
+      width: 550px;
+      text-align: justify;
+      border-radius: 13px;
+      padding: 40px;
+      margin: 5px;
+      justify-content: left;
+    }
+    
+    .KomoditiInfo h1 {
+      font-size: 30px;
+      margin: 2rem 0;
+      text-align: center;
+      color:#4692FD;
+    }
+    
+    .KomoditiInfo img {
+      margin-top: 35px;
+      display: block;
+      margin: 1rem auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    
+    .KomoditiInfo p {
+      margin-top: 35px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  
+    .grafikkomoditi{
+      display: grid;
+      grid-area: grafikkomoditi;
+      position: sticky;
+      background-color: #F7F7F7;
+      justify-content:flex-end;
+      margin-left: 0;
+      padding-left: 0;
+      max-width: max-content;
+    }

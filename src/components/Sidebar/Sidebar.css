@@ -1,0 +1,88 @@
+nav {
+    position: sticky;
+    /* top: 50px; */
+    display: grid;
+    background-color: #ffffff;
+    color: #333;
+    text-align: left;
+    text-decoration: none;
+  }
+  .sidebar {
+      position: sticky;
+      background-color: #ffffff;
+      /* width: max-content;
+      height: max-content; */
+      height: 100%;
+  }
+  
+  .navbar{
+    position: sticky;
+    /* top: 50px; */
+    background-color: #ffffff;
+    display: grid;
+    width: 200px;
+    height: 100%;
+  }
+  .navbar ul li a {
+      display: block;
+      padding: 5px;
+      color: #333;
+      text-decoration: none;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    .navbar ul li a:hover {
+      background-color: #4692FD;
+    }
+    
+    .navbar ul li a img {
+      display: inline-block;
+      margin-right: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    .navbar ul li img {
+      width: 100%;
+      height: 1px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    
+    .navbar ul li:last-child {
+      margin:0;
+    }
+    
+    .navbar ul li:last-child b {
+      margin-top: 0;
+    }
+    
+    .navbar ul li:last-child a {
+      color: #999;
+    }
+    
+    .navbar ul li:last-child a:hover {
+      background-color: #fff;
+    }
+    
+    .navbar ul li:last-child a img {
+      margin-right: 0px;
+    }
+    /* Tampilan saat link aktif */
+    .navbar ul li a.active {
+      background-color:aqua;
+      color: #fff;
+    }
+    
+    /* Tampilan saat link non-aktif */
+    .navbar ul li a.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      /* style lain yang diinginkan */
+    }
+    .dropdown-menu{
+      width: 150px;
+    }

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Objek Wisata Alam",
+        "count": 3,
+        "image": "assets/icon/logo_pariwisata/wisata_alam.svg",
+        "bgColor": "#EFF9FC"
+    },
+    {
+        "id": 2,
+        "name": "Objek Wisata Budaya",
+        "count": 5,
+        "image": "assets/icon/logo_pariwisata/wisata_budaya.svg",
+        "bgColor": "#FFFAED"
+    },
+    {
+        "id": 3,
+        "name": "Objek Wisata Panorama",
+        "count": 3,
+        "image": "assets/icon/logo_pariwisata/wisata_panorama.svg",
+        "bgColor": "#FEF3FD"
+    }
+]

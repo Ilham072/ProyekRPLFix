@@ -1,0 +1,69 @@
+[
+    {
+        "nomor": "1",
+        "komoditi": "Sapi",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    },
+    {
+        "nomor": "2",
+        "komoditi": "Kerbau",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    },
+    {
+        "nomor": "3",
+        "komoditi": "kambing",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    },
+    {
+        "nomor": "4",
+        "komoditi": "Kuda",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    },
+    {
+        "nomor": "5",
+        "komoditi": "Ayam Ras",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    },
+    {
+        "nomor": "6",
+        "komoditi": "Itik",
+        "total": "2.398",
+        "kelahiran": "431",
+        "kematian": "23",
+        "pemotongan": "34",
+        "ternak_masuk": "43",
+        "ternak_keluar": "34",
+        "populasi": "2.879"
+    }
+  
+]

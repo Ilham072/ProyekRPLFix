@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nameLocation": "Kec. Tanete Riattang",
+        "name": "Taman Arung Palakka",
+        "image": "assets/images/pariwisata/taman_arung_palakka.png"
+    },
+    {
+        "id": 2,
+        "nameLocation": "Kec. Tanete Riattang",
+        "name": "Lapangan Merdeka",
+        "image": "assets/images/pariwisata/lapangan_merdeka.png"
+    },
+    {
+        "id": 3,
+        "nameLocation": "Kec. Tanete Riattang",
+        "name": "Stadion Lapatau",
+        "image": "assets/images/pariwisata/stadion_lapatau.png"
+    },
+    {
+        "id": 4,
+        "nameLocation": "Kec. Tanete Riattang Timur",
+        "name": "Tanjung Palette",
+        "image": "assets/images/pariwisata/tanjung_palette.png"
+    },
+    {
+        "id": 5,
+        "nameLocation": "Kec. Libureng",
+        "name": "Goa Mampu",
+        "image": "assets/images/pariwisata/goa_mampu.png"
+    },
+    {
+        "id": 6,
+        "nameLocation": "Kec. Awangpone",
+        "name": "Bukit Cemplagi",
+        "image": "assets/images/pariwisata/bukit_cempalagi.png"
+    }
+]

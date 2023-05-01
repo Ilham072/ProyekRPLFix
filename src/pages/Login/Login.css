@@ -1,0 +1,139 @@
+.container-login{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template: 1fr 5fr/ 6fr 6fr;
+    gap: 0;
+    grid-template-areas: 
+        "logoPemda login-image"
+        "cover login-image";
+}
+
+.logoPemda {
+    padding: 20px;
+}
+
+.cover{
+    grid-area: cover;
+    background-color: #ffffff;
+    width:350px;
+    height:450px;
+    position:relative;
+    border-radius: 15px;
+    box-shadow: 0 0.5em 0.550em rgba(6, 56, 82, 0.468);
+    display: grid;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.login-image{
+    grid-area: login-image;
+    display: grid;
+    justify-content: right;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.page{
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+input{
+    
+    border: rgb(32,177,255);
+    outline: 2px solid rgba(32, 177, 255, 0.438);
+    background-color: rgb(255, 255, 255);
+    height: 15px;;
+    width: 279px;
+    border-radius: 10px;
+    text-align: left;
+    padding: 1.5em;
+    align-self: center;
+}
+
+input:focus{
+    outline-color: rgb(32,177,255);
+}
+
+.cover h1{
+    padding-top: 36px;
+    font-size: 24px;
+    font-weight: 700;
+    align-self: center;
+}
+
+.cover h3{
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.login-btn2 button{
+    width: 279px;
+    height:45px;
+    background-color: rgb(70,146,253);
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    transition: 0.5s;
+    border-radius: 13px;
+    cursor:pointer;
+    outline: none;
+    align-self: center;
+}
+.login-btn2{
+    width: 100%;
+    height:45px;
+    background-color: #ffffff;
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    
+    
+}
+
+.login-btn2:hover{
+    transform: scale(1.1);
+}
+
+.text{
+    position: relative;
+    bottom:-2em;
+
+}
+
+.hide{
+    position: absolute;
+    transform: scale(0);
+}
+
+.login-popup{
+    position:absolute;
+    height: 30em;
+    width:30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25em;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    transform: scale(1);
+    transition: 1.5s;
+}

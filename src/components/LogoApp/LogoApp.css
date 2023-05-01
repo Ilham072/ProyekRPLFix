@@ -1,0 +1,12 @@
+
+.logoDita {
+    position: sticky;
+    top: 0;
+    padding: 25px;
+    background-color: #ffffff ;
+    grid-area: logo;
+    display: grid;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}

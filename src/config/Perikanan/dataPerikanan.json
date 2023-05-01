@@ -1,0 +1,38 @@
+[
+    {
+        "nomor": "1",
+        "komoditi": "Bandeng",
+        "volume": 1.980,
+        "nilaiProduksi": "151.840"
+    },
+    {
+        "nomor": "2",
+        "komoditi": "Ikan Windu",
+        "volume": 1.980,       
+        "nilaiProduksi": "81.509"    
+    },
+    {
+        "nomor": "3",
+        "komoditi": "Udang Api-Api",
+        "volume": 1.980,
+        "nilaiProduksi": "151.840"
+    },
+    {
+        "nomor": "4",
+        "komoditi": "Udang Putih",
+        "volume": 1.980,
+        "nilaiProduksi": "151.840"
+    },
+    {
+        "nomor": "5",
+        "komoditi": "Udang Vannamei",
+        "volume": 1.980,
+        "nilaiProduksi": "151.840"
+    },
+    {
+        "nomor": "6",
+        "komoditi": "Kepiting Bakau",
+        "volume": 1.980,
+        "nilaiProduksi": "151.840"
+    }
+]

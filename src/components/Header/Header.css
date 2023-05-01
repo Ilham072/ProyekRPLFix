@@ -1,0 +1,44 @@
+header {
+    position: sticky; 
+    display: grid;
+    grid-template-areas: 
+        "judul_web btn";
+    grid-template-columns: 5fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    color: black;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.judul_web {
+    grid-area: judul_web;
+    color: #4692FD;
+    padding-left: 20px;
+}
+
+.btn {
+    grid-area: btn;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.login-btn{
+    background-color: #4692FD;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+    background-color: #ffffff;
+    color: #4692FD;
+    border: 1px solid #4692FD;
+}

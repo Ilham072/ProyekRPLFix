@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Tanaman Pangan",
+        "count": 8,
+        "image": "assets/icon/logo_pertanian/tanaman_pangan.svg",
+        "bgColor": "#EFF9FC"
+    },
+    {
+        "id": 2,
+        "name": "Hortikultura",
+        "count": 10,
+        "image": "assets/icon/logo_pertanian/hortikultura.svg",
+        "bgColor": "#FFFAED"
+    },
+    {
+        "id": 3,
+        "name": "Perkebunan",
+        "count": 12,
+        "image": "assets/icon/logo_pertanian/perkebunan.svg",
+        "bgColor": "#FEF3FD"
+    }
+]

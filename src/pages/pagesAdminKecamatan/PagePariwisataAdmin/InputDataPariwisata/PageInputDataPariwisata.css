@@ -1,0 +1,36 @@
+.cover_tambah_data_pariwisata{
+    background-color: white;
+    width: 970px;;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    /* justify-content: center; */
+    padding: 30px;
+    margin-top: 10px;
+    float: left;
+  
+}
+
+.input_tambah_data:focus{
+    outline-color: rgb(32,177,255);
+}
+
+.judul_tambah_data{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    align-self: left;
+} 
+
+ .dropdown-tambah-data-pariwisata {
+    width:  100%;
+    /* background-color: tomato; */
+    justify-content: space-between;
+    display: flex;
+ }
+
+
+ 
