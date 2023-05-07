@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
-const SidebarAdmin = () => {
+const SidebarAdminPusat = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
@@ -17,42 +17,42 @@ const SidebarAdmin = () => {
             <b>MENU</b>
           </li>
           <li>
-            <Link to="/berandaAdmin">
+            <Link to="/berandaAdminPusat">
               <img src="assets/icon/icon_sidebar/icon_beranda.svg" /> Beranda
             </Link>
           </li>
-          {/* dropdown menu for "Pendataan" */}
+          <li>
+            <Link to="/DataAdminPusat">
+              <img src="assets/icon/icon_sidebar/icon_pendataan.svg" /> Data
+            </Link>
+          </li>
+          <li>
+            <Link to="/Admin_AdminPusat">
+              <img src="assets/icon/icon_sidebar/icon_admin.svg" /> Admin
+            </Link>
+          </li>
+          {/* dropdown menu for "Konten" */}
           <li
             className={showDropdown ? "dropdown active" : "dropdown"}
             onClick={toggleDropdown}
           >
             <a href="#">
-              <img src="assets/icon/icon_sidebar/icon_pendataan.svg" /> Pendataan
+              <img src="assets/icon/icon_sidebar/icon_konten.svg" /> Konten
             </a>
             <ul className="dropdown-menu">
               <li>
-                <Link to="/adminpertanian">
-                  <img src="assets/icon/logo_komoditi/pertanian_logo.svg" /> Pertanian
+                <Link to="/banner">
+                  <img src="assets/icon/icon_sidebar/icon_banner.svg" /> Banner
                 </Link>
               </li>
               <li>
-                <Link to="/adminpeternakan">
-                  <img src="assets/icon/logo_komoditi/peternakan_logo.svg" /> Peternakan
+                <Link to="/berita">
+                  <img src="assets/icon/icon_sidebar/icon_berita.svg" /> Berita
                 </Link>
               </li>
               <li>
-                <Link to="/adminperikanan">
-                  <img src="assets/icon/logo_komoditi/perikanan_logo.svg" /> Perikanan
-                </Link>
-              </li>
-              <li>
-                <Link to="/adminperindustrian">
-                  <img src="assets/icon/logo_komoditi/perindustrian_logo.svg" /> Perindustrian
-                </Link>
-              </li>
-              <li>
-                <Link to="/adminpariwisata">
-                  <img src="assets/icon/logo_komoditi/pariwisata_logo.svg" /> Pariwisata
+                <Link to="/komoditi">
+                  <img src="assets/icon/icon_sidebar/icon_komoditi.svg" /> Komoditi
                 </Link>
               </li>
             </ul>
@@ -82,4 +82,4 @@ const SidebarAdmin = () => {
   );
 }
 
-export default SidebarAdmin;
+export default SidebarAdminPusat;

@@ -1,18 +1,22 @@
 nav {
     position: sticky;
-    /* top: 50px; */
+    top: 0;
     display: grid;
-    background-color: #ffffff;
+    background-color: blue;
     color: #333;
     text-align: left;
     text-decoration: none;
+    /* overflow-y: hidden; */
   }
   .sidebar {
       position: sticky;
+      top: 0;
       background-color: #ffffff;
       /* width: max-content;
       height: max-content; */
       height: 100%;
+      /* overflow-y: hidden; */
+      
   }
   
   .navbar{
@@ -22,6 +26,7 @@ nav {
     display: grid;
     width: 200px;
     height: 100%;
+    /* overflow-y: hidden; */
   }
   .navbar ul li a {
       display: block;
@@ -60,9 +65,9 @@ nav {
       margin-top: 0;
     }
     
-    .navbar ul li:last-child a {
+    /* .navbar ul li:last-child a {
       color: #999;
-    }
+    } */
     
     .navbar ul li:last-child a:hover {
       background-color: #fff;

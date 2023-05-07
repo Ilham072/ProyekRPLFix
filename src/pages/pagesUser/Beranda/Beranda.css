@@ -16,6 +16,7 @@
       
       .logo {
         position: sticky;
+        z-index: 3;
         top: 0;
         background-color:#ffffff;
         grid-area: logo;
@@ -32,23 +33,29 @@
         grid-area: header;
         justify-content: space-between;
         position: sticky;
+        z-index: 4;
         top: 0;
         padding-left: 0px;
       }
       
-      .nav {
-        background-color: #ffffff;
+      /* .nav {
+        /* background-color: blue;
         grid-area: nav;
         position: sticky;
         top: 0px;
-      
-      }
+        bottom: 0;
+        height: 100%;
+        width: 200px; 
+        overflow-y: hidden;
+      } */
       
       .content {
         background-color: #F7F7F7;
         grid-area: content;
         justify-content: center;
         padding: 10px 20px;
+        position: relative;
+        z-index: 1;
       }
       
       /* .footer {
@@ -63,6 +70,7 @@
   
       header {
         position: sticky;
+        z-index: 4;
         color: #4692FD; 
         top: 0;
         display:flex;

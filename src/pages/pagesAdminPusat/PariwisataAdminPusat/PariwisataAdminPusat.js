@@ -1,15 +1,14 @@
 import React from "react";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
-import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
 import PariwisataCategory from "../../../utils/PariwisataCategory";
-import DataPariwisata from "../../../components/Contents/TablePariwisata/DataPariwisata";
-import { Button } from "../../../components";
-import { Link } from "react-router-dom";
+import DataBerandaPariwisata from "../../../components/Contents/TablePariwisata/DataBerandaPariwisata";
+import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
 
 
-const PariwisataAdmin = () => {
+
+const PariwisataAdminPusat = () => {
     return(
         <div className='container'>
             <div className='logo'>
@@ -23,22 +22,17 @@ const PariwisataAdmin = () => {
                 </div>
             </div>
             <div className='nav'>
-                <SidebarAdmin />
+                <SidebarAdminPusat />
             </div>
         
             <div className='content'>
                 <div><h3>Beranda Pariwisata</h3></div>
                 <DropdownKecamatan/>
                 <PariwisataCategory/>
-                <DataPariwisata/>
-                <Link to='/tambahDataPariwisata'>
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+                <DataBerandaPariwisata/>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>
     )
 }
-export default PariwisataAdmin;
+export default PariwisataAdminPusat;

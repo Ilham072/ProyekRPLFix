@@ -1,5 +1,4 @@
-import { Button } from "../../components";
-export function getTablePerikanan() {
+export function getTableBerandaPerikanan() {
     return [
         {
             name: "No",
@@ -19,16 +18,6 @@ export function getTablePerikanan() {
         {
             name: "Nilai Produksi",
             selector: row => row.nilaiProduksi,
-            sortable: true
-        },
-        {
-            name: "",
-            selector: row => (
-                <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
-                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
-                </div>
-            ),
             sortable: true
         }
     ];

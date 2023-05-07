@@ -1,5 +1,6 @@
 header {
     position: sticky; 
+    z-index: 3;
     display: grid;
     grid-template-areas: 
         "judul_web btn";

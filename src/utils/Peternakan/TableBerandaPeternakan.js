@@ -1,7 +1,4 @@
-import React from "react";
-import { Button } from "../../components";
-
-export function getTablePeternakan() {
+export function getTableBerandaPeternakan() {
     return [
         {
             name: "No",
@@ -46,16 +43,6 @@ export function getTablePeternakan() {
         {
             name: "Populasi",
             selector: row => row.populasi,
-            sortable: true
-        },
-        {
-            name: "",
-            selector: row => (
-                <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
-                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
-                </div>
-            ),
             sortable: true
         }
     ];
