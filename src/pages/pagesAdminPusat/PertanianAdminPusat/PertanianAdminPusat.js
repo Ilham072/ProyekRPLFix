@@ -5,7 +5,8 @@ import PertanianCategory from "../../../utils/PertanianCategory";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
 import DataBerandaPertanian from "../../../components/Contents/TablePertanian/DataBerandaPertanian";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
-
+import { Button } from "../../../components/Button/Button";
+import "../AdminPusat.css";
 const PertanianAdminPusat = () => {
 
     return (
@@ -29,6 +30,7 @@ const PertanianAdminPusat = () => {
                 <DropdownKecamatan/>
                 <PertanianCategory/>
                 <DataBerandaPertanian/>
+                
                 
             </div>
         {/* <div className='footer'>footer</div> */}

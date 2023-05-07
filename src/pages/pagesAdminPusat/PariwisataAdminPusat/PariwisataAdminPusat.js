@@ -5,7 +5,7 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import PariwisataCategory from "../../../utils/PariwisataCategory";
 import DataBerandaPariwisata from "../../../components/Contents/TablePariwisata/DataBerandaPariwisata";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
-
+import { Button } from "../../../components/Button/Button";
 
 
 const PariwisataAdminPusat = () => {
@@ -30,6 +30,14 @@ const PariwisataAdminPusat = () => {
                 <DropdownKecamatan/>
                 <PariwisataCategory/>
                 <DataBerandaPariwisata/>
+                <div className="button_download">
+                        <Button className="btn-pdf">
+                            <img src="assets/icon/button/icon_pdf.svg"/> Pdf
+                        </Button>
+                        <Button className="btn-excel">
+                            <img src="assets/icon/button/icon_excel.svg"/> Excel
+                        </Button>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

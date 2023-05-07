@@ -4,6 +4,7 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import DataBerandaPerikanan from "../../../components/Contents/TablePerikanan/DataBerandaPerikanan";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
+import { Button } from "../../../components/Button/Button";
 const PerikananAdminPusat = () => {
     return(
         <div className='container'>
@@ -25,6 +26,14 @@ const PerikananAdminPusat = () => {
                 <div><h3>Beranda Perikanan</h3></div>
                 <DropdownKecamatan/>
                 <DataBerandaPerikanan/>
+                <div className="button_download">
+                        <Button className="btn-pdf">
+                            <img src="assets/icon/button/icon_pdf.svg"/> Pdf
+                        </Button>
+                        <Button className="btn-excel">
+                            <img src="assets/icon/button/icon_excel.svg"/> Excel
+                        </Button>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>
