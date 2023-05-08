@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './InputFormPertanian.css';
+import { Button } from '../../components';
 
 function InputFormPertanian() {
     const [luasPanen, setLuasPanen] = useState(0);
@@ -25,6 +26,11 @@ function InputFormPertanian() {
             <div className='form-input-row'>
                 <label htmlFor='produktivitas'>Produktivitas (Kw/Ha)</label>
                 <input id='produktivitas' type='number' value={produktivitas} onChange={(e) => setProduktivitas(e.target.value)} />
+            </div>
+            <div className='button-add'>
+                <Button className="tambahDataButton">
+                    Tambah Data
+                </Button>
             </div>
         </form>
     );

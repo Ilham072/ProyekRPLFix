@@ -7,7 +7,7 @@ import PariwisataCategory from "../../../utils/PariwisataCategory";
 import DataPariwisata from "../../../components/Contents/TablePariwisata/DataPariwisata";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
-
+import "../AdminKecematan.css";
 
 const PariwisataAdmin = () => {
     return(

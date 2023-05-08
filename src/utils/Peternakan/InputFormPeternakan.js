@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './InputFormPeternakan.css';
+import { Button } from '../../components';
 
 function InputFormPeternakan() {
     const [total, setTotal] = useState(0);
@@ -40,6 +41,11 @@ function InputFormPeternakan() {
             <div className='form-input-row'>
                 <label htmlFor='ternakmasuk'>Ternak Masuk</label>
                 <input id='ternakmasuk' type='number' value={ternakmasuk} onChange={(e) => setTernakMasuk(e.target.value)} />
+            </div>
+            <div className='button-add'>
+                <Button className="tambahDataButton">
+                    Tambah Data
+                </Button>
             </div>
         </form>
     );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import './Inputform.css';
+import { Button } from '../../components';
 
 function InputFormPerindustrian() {
     const [potensiKandungan, setPotensiKandungan] = useState(0);
@@ -15,6 +16,11 @@ function InputFormPerindustrian() {
             <div className='form-input-row'>
                 <label htmlFor='volume'>Potensi Kandungan</label>
                 <input id='potensiKandungan' type='number' value={potensiKandungan} onChange={(e) => setPotensiKandungan(e.target.value)} />
+            </div>
+            <div className='button-add'>
+                <Button className="tambahDataButton">
+                    Tambah Data
+                </Button>
             </div>
         </form>
     );

@@ -6,7 +6,7 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import DataPeternakan from "../../../components/Contents/TablePeternakan/DataPeternakan";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components";
-
+import "../AdminKecematan.css";
 const PeternakanAdmin = () => {
     return(
         <div className='container'>

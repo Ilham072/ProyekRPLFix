@@ -6,6 +6,7 @@ import LogoApp from "../../../components/LogoApp/LogoApp";
 import DataPerikanan from "../../../components/Contents/TablePerikanan/DataPerikanan";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
+import "../AdminKecematan.css";
 const PerikananAdmin = () => {
     return(
         <div className='container'>

@@ -40,3 +40,8 @@
     width: 100%;
     /* background-color: blue; */
   }
+
+  .button-add {
+    display: contents;
+    text-align: right;
+  }

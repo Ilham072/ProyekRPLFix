@@ -37,10 +37,6 @@ const PageInputDataPerikanan= () => {
                     <h1 className='judul_tambah_data'>Uraian</h1>
                     <InputFormPerikanan/>
                 </div>
-                <br/>
-                <Button className="tambahDataButton" onClick={handleClick}>
-                    Tambah Data
-                </Button>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

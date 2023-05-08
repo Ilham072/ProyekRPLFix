@@ -7,6 +7,7 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import { Button }from "../../../components";
 import DataPertanian from "../../../components/Contents/TablePertanian/DataPertanian";
 import { Link } from "react-router-dom";
+import "../AdminKecematan.css";
 const PertanianAdmin = () => {
 
     const handleClick = (event) =>{
@@ -34,7 +35,7 @@ const PertanianAdmin = () => {
                 <DropdownKecamatan/>
                 <PertanianCategory/>
                 <DataPertanian/>
-                <Link to='/tambahDataPertanian'style={null}>
+                <Link to='/tambahDataPertanian'>
                     <Button className="tambahDataButton" onClick={handleClick}>
                         Tambah Data
                     </Button>

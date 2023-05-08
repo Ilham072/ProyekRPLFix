@@ -6,6 +6,7 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import DataPerindustrian from "../../../components/Contents/TablePerindustrian/DataPerindustrian";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
+import "../AdminKecematan.css";
 const PerindustrianAdmin = () => {
     return(
         <div className='container'>
@@ -27,11 +28,13 @@ const PerindustrianAdmin = () => {
                 <div><h3>Beranda Perindustrian</h3></div>
                 <DropdownKecamatan/>
                 <DataPerindustrian/>
-                <Link to='/tambahDataPerindustrian'>
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+               <div className="button-add2">
+                    <Link to='/tambahDataPerindustrian'>
+                            <Button className="tambahDataButton">
+                                Tambah Data
+                            </Button>
+                    </Link>
+               </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

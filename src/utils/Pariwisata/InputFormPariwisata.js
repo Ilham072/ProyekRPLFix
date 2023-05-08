@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import './Inputform.css';
+import { Button } from '../../components';
 
 function InputFormPariwisata() {
     const [namaWisata, setNamaWisata] = useState(0);
@@ -25,6 +26,11 @@ function InputFormPariwisata() {
             <div className='form-input-row'>
                 <label htmlFor='wisatawan'>Wisatawan</label>
                 <input id='wisatawan' type='number' value={wisatawan} onChange={(e) => setWisatawan(e.target.value)} />
+            </div>
+            <div className='button-add'>
+                <Button className="tambahDataButton">
+                    Tambah Data
+                </Button>
             </div>
         </form>
     );

@@ -35,9 +35,7 @@ const PageInputDataPariwisata= () => {
                     <InputFormPariwisata/>
                 </div>
                 <br/>
-                <Button className="tambahDataButton">
-                    Tambah Data
-                </Button>
+                
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

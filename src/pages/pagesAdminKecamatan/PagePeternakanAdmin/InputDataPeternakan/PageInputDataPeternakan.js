@@ -2,7 +2,6 @@
 import "./PageInputDataPeternakan.css";
 import SidebarAdmin from '../../../../components/Sidebar/SidebarAdmin';
 import HeaderAdmin from '../../../../components/Header/HeaderAdmin';
-import { Button } from "../../../../components";
 import LogoApp from '../../../../components/LogoApp/LogoApp';
 import DropdownBidang from "../../../../components/Dropdown/DropdownBidang/DropdownBidang";
 import InputFormPeternakan from '../../../../utils/Peternakan/InputFormPeternakan';
@@ -37,10 +36,6 @@ const PageInputDataPeternakan= () => {
                     <h1 className='judul_tambah_data'>Uraian</h1>
                     <InputFormPeternakan/>
                 </div>
-                <br/>
-                <Button className="tambahDataButton" onClick={handleClick}>
-                    Tambah Data
-                </Button>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>
