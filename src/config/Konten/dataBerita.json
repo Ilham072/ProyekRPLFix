@@ -1,0 +1,26 @@
+[
+    {
+        "nomor": "1",
+        "judul": "Panen Padi di Kabupaten Bone",
+        "sektor": "Pertanian",
+        "kecamatan": "Libureng",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Blalalalabalalalabalala"
+    },
+    {
+        "nomor": "2",
+        "judul": "Panen Padi di Kabupaten Bone",   
+        "sektor": "Pertanian",
+        "kecamatan": "Libureng",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Blalalalabalalalabalala"
+    },
+    {
+        "nomor": "3",
+        "judul": "Panen Padi di Kabupaten Bone",
+        "sektor": "Pertanian",
+        "kecamatan": "Libureng",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Blalalalabalalalabalala"
+    }
+]
