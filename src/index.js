@@ -35,6 +35,7 @@ import PeternakanAdminPusat from './pages/pagesAdminPusat/PeternakanAdminPusat/P
 import PerikananAdminPusat from './pages/pagesAdminPusat/PerikananAdminPusat/PerikananAdminPusat';
 import PerindustrianAdminPusat from './pages/pagesAdminPusat/PerindustrianAdminPusat/PerindustrianAdminPusat';
 import PariwisataAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/PariwisataAdminPusat';
+import DataKomoditi from './pages/pagesAdminPusat/DataKomoditi/DataKomoditi';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -160,6 +161,10 @@ const router = createBrowserRouter([
     path: "/pariwisataAdminPusat",
     element: <PariwisataAdminPusat/>,
   },
+  {
+    path: "/DataAdminPusat",
+    element: <DataKomoditi/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
