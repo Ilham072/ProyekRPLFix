@@ -38,6 +38,11 @@ import PariwisataAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/P
 import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBanner';
 import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
 import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
+import EditDataPertanian from './pages/pagesAdminKecamatan/PagePertanianAdmin/InputDataPertanian/EditDataPertanian';
+import EditDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/EditDataPerikanan';
+import EditDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanAdmin/InputDataPeternakan/EditDataPeternakan';
+import EditDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/EditDataPerindustrian';
+import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/EditDataPariwisata';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -174,6 +179,26 @@ const router = createBrowserRouter([
   {
     path: "/tambahdataBerita",
     element: <PageInputBerita/>,
+  },
+  {
+    path: "/editDataPertanian",
+    element: <EditDataPertanian/>,
+  },
+  {
+    path: "/editDataPerikanan",
+    element: <EditDataPerikanan/>,
+  },
+  {
+    path: "/editDataPeternakan",
+    element: <EditDataPeternakan/>,
+  },
+  {
+    path: "/editDataPerindustrian",
+    element: <EditDataPerindustrian/>,
+  },
+  {
+    path: "/editDataPariwisata",
+    element: <EditDataPariwisata/>,
   },
 ]);
 
