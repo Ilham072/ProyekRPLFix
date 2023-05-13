@@ -15,7 +15,6 @@ export function getTableKomoditiPerindustrian() {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
                     <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
                 </div>
             ),

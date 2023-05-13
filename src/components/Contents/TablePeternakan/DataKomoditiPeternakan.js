@@ -10,7 +10,7 @@ const DaftarKomoditiPeternakan = () => {
         setDaftarKomoditiPeternakan(daftarKomoditiPeternakan);
     }, []);
     return(
-        <div className="container-table">
+        <div className="container-table2">
             <DataTable
                 columns={getTableKomoditiPeternakan()}
                 data={tableKomoditiPeternakan}

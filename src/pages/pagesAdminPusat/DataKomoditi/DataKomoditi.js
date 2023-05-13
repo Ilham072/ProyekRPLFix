@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./DataKomoditi.css";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
@@ -9,9 +10,15 @@ import DaftarKomoditiPerikanan from "../../../components/Contents/TablePerikanan
 import DaftarKomoditiPeternakan from "../../../components/Contents/TablePeternakan/DataKomoditiPeternakan";
 import DaftarKomoditiPerindustrian from "../../../components/Contents/TablePerindustrian/DataKomoditiPerindustrian";
 import DaftarKomoditiPariwisata from "../../../components/Contents/TablePariwisata/DataKomoditiPariwisata";
+import TambahKomoditiPeternakan from "../../../components/Card/TambahKomoditi/TambahKomoditiPeternakan";
+import TambahKomoditiPertanian from "../../../components/Card/TambahKomoditi/TambahKomoditiPertanian";
+import TambahKomoditiPerikanan from "../../../components/Card/TambahKomoditi/TambahKomoditiPerikanan";
+import TambahKomoditiPerindustrian from "../../../components/Card/TambahKomoditi/TambahKomoditiPerindustrian";
+import TambahKomoditiPariwisata from "../../../components/Card/TambahKomoditi/TambahKomoditiPariwisata";
 
 const DataKomoditi = () => {
     const [sektor, setSektor] = useState("pertanian");
+    
 
     const handleSektorChange = (event) => {
         setSektor(event.target.value);
@@ -19,20 +26,46 @@ const DataKomoditi = () => {
 
     const renderTable = () => {
         switch (sektor) {
-            case "pertanian":
-                return <DaftarKomoditiPertanian />;
+          case "pertanian":
+            return (
+              <div className="Daftar-komoditi">
+                <DaftarKomoditiPertanian />
+                <TambahKomoditiPertanian />
+              </div>
+            );
             case "peternakan":
-                return <DaftarKomoditiPeternakan />;
+                return (
+                  <div className="Daftar-komoditi">
+                    <DaftarKomoditiPeternakan />
+                    <TambahKomoditiPeternakan />
+                  </div>
+                );
             case "perikanan":
-                return <DaftarKomoditiPerikanan />;
+                return (
+                  <div className="Daftar-komoditi">
+                    <DaftarKomoditiPerikanan />
+                    <TambahKomoditiPerikanan />
+                  </div>
+                );
             case "perindustrian":
-                return <DaftarKomoditiPerindustrian />;
-            case "pariwisata":
-                return <DaftarKomoditiPariwisata />;
-            default:
-                return null;
+                    return (
+                    <div className="Daftar-komoditi">
+                        <DaftarKomoditiPerindustrian />
+                        <TambahKomoditiPerindustrian />
+                    </div>
+                    );
+            case "pariwasata":
+                        return (
+                        <div className="Daftar-komoditi">
+                            <DaftarKomoditiPariwisata />
+                            <TambahKomoditiPariwisata />
+                        </div>
+                        );
+          default:
+            return null;
         }
-    }
+      };
+      
 
     return (
         <div className='container'>
@@ -56,7 +89,7 @@ const DataKomoditi = () => {
                 <div><h3>Sektor {sektor.charAt(0).toUpperCase() + sektor.slice(1)}</h3></div>
                 {renderTable()}
             </div>
-        {/* <div className='footer'>footer</div> */}
+        {}
       </div>
     );
 }
