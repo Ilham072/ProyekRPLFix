@@ -1,20 +1,27 @@
-.dropdown-container-bidang {
+.dropdown-container-sektor {
     position: relative;
     display: flex;
     flex: 1;
     flex-direction: row;
     width: 50%;
     background-color: F7F7F7;
-    justify-content: left;
+    justify-content: flex-start;
+    /* background-color: tomato; */
+    /* grid-template: 5fr/ 4fr 3fr;
+    
+    
+    gap: 0;
+    grid-template-areas: 
+      " dropdown-kecamatan cari-btn"; */
   }
 
-  .dropdown-bidang{
+  .dropdown-sektor{
     margin-right: 0;
     /* background-color: tomato; */
     padding: 3px;
   }
   
-  .dropdown-button-bidang {
+  .dropdown-button-sektor {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,11 +38,11 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .dropdown-button-label-bidang {
+  .dropdown-button-label-sektor {
     margin-right: 0;
   }
   
-  .dropdown-menu-bidang {
+  .dropdown-menu-sektor {
     position:absolute;
     top: 100%;
     left: 0;
@@ -47,7 +54,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   
-  .dropdown-menu-bidang a {
+  .dropdown-menu-sektor a {
     display: block;
     padding: 8px 16px;
     color: #333;
