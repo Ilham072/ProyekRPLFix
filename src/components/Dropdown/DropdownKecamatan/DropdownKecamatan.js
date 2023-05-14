@@ -2,28 +2,38 @@ import React, { useState } from 'react';
 import './DropdownKecamatan.css';
 
 
-function DropdownKecamatan() {
+function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
   }
 
+  const handleOptionSelect = (selectedValue) => {
+    onKecamatanChange(selectedValue);
+    setIsOpen(false);
+  }
+
+  const options = [
+    {value: "Tanete Riattang", label: "Tanete Riattang"},
+    {value: "Bambonge", label: "Bambonge"},
+    {value: "Bengo", label: "Bengo"},
+  ];
+
   return (
     <div className="dropdown-container">
       <div className='dropdown-kecamatan'>
         <button className="dropdown-button" onClick={handleDropdownClick}>
-          <span className="dropdown-button-label">Pilih Kecamatan</span>
+          <span className="dropdown-button-label">{selectedKecamatan || "Pilih Kecamatan"}</span>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&
           <div className="dropdown-menu-kecamatan">
-            <a href="#">Tanete Riattang</a>
-            <a href="#">Tanete Riattang Barat</a>
-            <a href="#">Tanete Riattang Timur</a>
-            <a href="#">Kajuara</a>
-            <a href="#">Bengo</a>
-            <a href="#">Cina</a>
+            {options.map(option => (
+              <div key={option.value} onClick={() => handleOptionSelect(option.label)}>
+                {option.label}
+              </div>
+            ))}
           </div>
         }
       </div>
