@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
 import { Button } from '../components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function InputFormBanner() {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [banner, setSelectedBanner] = useState(null);
+  const [validation, setValidation] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lakukan sesuatu dengan nilai input, misalnya mengirim ke API
-    console.log(selectedFile);
+    console.log(banner);
+
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('banner', banner);
+
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+    await axios.post('http://localhost:8000/api/Konten Banner', formData)
+      .then(() => {
+        console.log('Sukses Menambahkan Konten Banner');
+        const storedData = localStorage.getItem('dataKontenBanner');
+        if (storedData) {
+          localStorage.removeItem('dataKontenBanner');
+        }
+          window.location.reload(false);
+      })
+      .catch((error) => {
+          setValidation(error.response.data);
+      })
   };
 
-  const handleFileChange = (e) => {
+  const handleBannerChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
-      setSelectedFile(reader.result);
+      setSelectedBanner(file);
     };
     reader.readAsDataURL(file);
   };
@@ -26,7 +47,7 @@ function InputFormBanner() {
         </div>
       <div className='form-input-row'>
         {/* <label htmlFor='fileInput'></label> */}
-        <input id='fileInput' type='file' onChange={handleFileChange} />
+        <input id='fileInput' type='file' onChange={handleBannerChange} />
       </div>
       <div className='button-save'>
         <Button className='ButtonSave' type='submit'>

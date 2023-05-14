@@ -1,9 +1,25 @@
+import React from "react";
 import { Button } from "../components";
+import axios from "axios";
+
 export function getTableBerita() {
+    const deleteHandler = async (id) => {
+        const token = localStorage.getItem('token');
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.delete(`http://localhost:8000/api/Konten Berita/${id}`)
+            .then(() => {
+                console.log('Sukses Menghapus Data Konten Berita');
+                const storedData = localStorage.getItem('dataKontenBerita');
+                if (storedData) {
+                    localStorage.removeItem('dataKontenBerita');
+                }
+                window.location.reload(false);
+            })
+    }
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
@@ -23,8 +39,10 @@ export function getTableBerita() {
         },
         {
             name: "Gambar",
-            selector: row => row.gambar,
-            sortable: true
+            cell: (row) => (
+                <img src={row.gambar} alt="Gambar Berita" style={{ width: "100px", height: "auto" }} />
+              ),
+            sortable: false
         },
         {
             name: "Isi",
@@ -36,7 +54,7 @@ export function getTableBerita() {
             selector: row => (
                 <div>
                     <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
-                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
+                    <Button className="btn-delete" onClick={() => deleteHandler(row.id)}><img src="assets/icon/button/button-delete.svg"/></Button>
                 </div>
             ),
             sortable: true

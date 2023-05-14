@@ -4,7 +4,7 @@ export function getTableBerandaPertanian() {
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
@@ -19,7 +19,7 @@ export function getTableBerandaPertanian() {
         },
         {
             name: "Luas Panen (Ha)",
-            selector: row => row.luasPanen,
+            selector: row => row.luas_lahan,
             sortable: true
         },
         {

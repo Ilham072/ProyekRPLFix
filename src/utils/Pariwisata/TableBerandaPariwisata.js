@@ -3,17 +3,17 @@ export function getTableBerandaPariwisata() {
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
             name: "Nama Wisata",
-            selector: row => row.namaWisata,
+            selector: row => row.nama_wisata,
             sortable: true
         },
         {
             name: "Jenis Wisata",
-            selector: row => row.jenisWisata,
+            selector: row => row.jenis_wisata,
             sortable: true
         },
         {

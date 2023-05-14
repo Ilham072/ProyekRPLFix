@@ -3,7 +3,7 @@ export function getTableBerandaPerindustrian() {
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
@@ -13,7 +13,7 @@ export function getTableBerandaPerindustrian() {
         },
         {
             name: "Potensi Kandungan",
-            selector: row => row.potensiKandungan,
+            selector: row => row.potensi_kandungan,
             sortable: true
         }
     ];

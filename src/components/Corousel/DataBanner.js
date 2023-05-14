@@ -2,20 +2,26 @@ import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { getTableBanner } from "../../utils/TableBanner";
 import dataBanner from "../../config/Konten/dataBanner.json";
+import axios from "axios";
 
 
 const DataBanner = () => {
   const [tableBanner, setDataBanner] = useState([]);
 
   useEffect(() => {
-    setDataBanner(
-      dataBanner.map((item) => {
-        return {
-          nomor: item.nomor,
-          banner: <img src={item.banner} alt="Banner" width="300" height="auto" />,
-        };
-      })
-    );
+    async function fetchDataKontenBanner() {
+      let data;
+      const storedData = localStorage.getItem("dataKontenBanner");
+      if (storedData) {
+        data = JSON.parse(storedData);
+      } else {
+        const response = await axios.get('http://localhost:8000/api/Konten Banner');
+        data = response.data;
+        localStorage.setItem('dataKontenBanner', JSON.stringify(data));
+      }
+        setDataBanner(data);
+    }
+    fetchDataKontenBanner();
   }, []);
 
   return (
