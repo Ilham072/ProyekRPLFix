@@ -1,0 +1,14 @@
+[
+    {
+        "nomor": "1",
+        "banner": "assets/images/carousel/img_carousel.png"
+    },
+    {
+        "nomor": "2",
+        "banner": "assets/images/carousel/carousel2.svg"   
+    },
+    {
+        "nomor": "3",
+        "banner": "assets/images/carousel/carousel3.svg"
+    }
+]

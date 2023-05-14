@@ -45,3 +45,13 @@
     display: contents;
     text-align: right;
   }
+
+  .button-save {
+    display: contents;
+    text-align: center;
+  }
+
+  .judul-input-banner {
+    display:flex;
+    justify-content: center;
+  }
