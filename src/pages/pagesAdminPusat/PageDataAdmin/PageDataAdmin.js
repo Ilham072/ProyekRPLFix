@@ -1,12 +1,12 @@
 import React from "react";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
-import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
-import PertanianCategory from "../../../utils/PertanianCategory";
-import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
-import DataBerandaPertanian from "../../../components/Contents/TablePertanian/DataBerandaPertanian";
-import "./PagePertanian.css";
-const PertanianBerandaAdmin = () => {
+import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
+import { Button } from "../../../components/Button/Button";
+import { Link } from "react-router-dom";
+import "../AdminPusat.css";
+import DataAdmin from "../../../components/Contents/Admin/DataAdmin";
+const PageDataAdmin = () => {
 
     return (
         <div className='container'>
@@ -21,19 +21,21 @@ const PertanianBerandaAdmin = () => {
                 </div>
             </div>
             <div className='nav'>
-                <SidebarAdmin />
+                <SidebarAdminPusat />
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Pertanian</h3></div>
-                <DropdownKecamatan/>
-                <PertanianCategory/>
-                <DataBerandaPertanian/>
-                
+                <div><h3>Admin</h3></div>
+                <DataAdmin/>
+                <Link to="/tambahAdmin">
+                    <Button className="tambahDataButton">
+                        Tambah Admin
+                    </Button>
+                </Link>    
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>
     );
 }
 
-export default PertanianBerandaAdmin;
+export default PageDataAdmin;

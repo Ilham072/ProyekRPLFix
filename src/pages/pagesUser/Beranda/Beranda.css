@@ -21,7 +21,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 100%;
+  width: 100%;
 }
 
 .header {
@@ -39,7 +40,7 @@
   background-color: #ffffff;
   grid-area: nav;
   position: sticky;
-  top: 70px;
+  /* top: 70px; */
   width: 100%;
   padding: 10px;
 }
@@ -47,7 +48,7 @@
 .content {
   background-color: #F7F7F7;
   grid-area: content;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 30px;
   margin-left: 20px;
 }

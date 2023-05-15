@@ -43,6 +43,8 @@ import EditDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/In
 import EditDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanAdmin/InputDataPeternakan/EditDataPeternakan';
 import EditDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/EditDataPerindustrian';
 import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/EditDataPariwisata';
+import PageDataAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageDataAdmin';
+import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -199,6 +201,14 @@ const router = createBrowserRouter([
   {
     path: "/editDataPariwisata",
     element: <EditDataPariwisata/>,
+  },
+  {
+    path: "/dataAdmin",
+    element: <PageDataAdmin/>,
+  },
+  {
+    path: "/tambahAdmin",
+    element: <PageInputAdmin/>,
   },
 ]);
 

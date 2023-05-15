@@ -1,18 +1,16 @@
-.cover_tambah_data_berita{
+.cover_tambah_data_admin{
     background-color: white;
-    width: 100%;
+    width: 96%;
     height: max-content;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     text-align: left;
     align-items: left;
-    /* justify-content: center; */
     padding: 30px;
-    margin-top: 10px;
-    float: left;
-    inline-size: 25%;
-  
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .input_tambah_data:focus{
@@ -26,16 +24,5 @@
     align-self: left;
 } 
 
- .cover-data-berita {
-    width: 100%;
-    /* background-color: tomato; */
-    /* background-color: blue; */
- }
-
- .content-page-berita {
-    /* padding: 20px; */
-    display:inline-flex;
-    width: 100%;
-    
- }
  
+
