@@ -33,6 +33,19 @@
     width: 70%; /* membuat input rata kiri dan kanan serta memenuhi semua ruang kosong */
   }
 
+  .form-input-row textarea {
+    margin-left: 10px;
+    margin-right: 10px; /* memberikan jarak antara input dengan elemen sebelah kanan */
+    border: rgb(32,177,255);
+    outline: 2px solid rgba(32, 177, 255, 0.438);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    text-align: left;
+    padding: 1em;
+    flex: 1;
+    width: 70%; 
+  }
+
   .form-input-row {
     display: flex;
     align-items: center;

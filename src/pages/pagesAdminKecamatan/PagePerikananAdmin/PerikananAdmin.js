@@ -1,4 +1,6 @@
-import React from "react";
+import React , { useState , useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
@@ -6,8 +8,30 @@ import LogoApp from "../../../components/LogoApp/LogoApp";
 import DataPerikanan from "../../../components/Contents/TablePerikanan/DataPerikanan";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 import "../AdminKecematan.css";
 const PerikananAdmin = () => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
+    const handleClick = (event) =>{
+        console.log(event);
+    }
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
     return(
         <div className='container'>
             <div className='logo'>

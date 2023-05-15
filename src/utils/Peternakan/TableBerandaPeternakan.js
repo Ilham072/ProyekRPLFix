@@ -2,7 +2,7 @@ export function getTableBerandaPeternakan() {
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {

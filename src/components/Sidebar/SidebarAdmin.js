@@ -1,13 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Sidebar.css";
 
 const SidebarAdmin = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
+
+  const logoutHandler = async () => {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    await axios.post('http://localhost:8000/api/logout')
+      .then(() => {
+        localStorage.removeItem("token");
+        localStorage.clear();
+        navigate('/');
+      });
+  }
 
   return (
     <div className="sidebar">
@@ -72,7 +86,7 @@ const SidebarAdmin = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+          <a href="#" onClick={logoutHandler}>
               <img src="assets/icon/icon_sidebar/icon_keluar.svg" /> Keluar
             </a>
           </li>
