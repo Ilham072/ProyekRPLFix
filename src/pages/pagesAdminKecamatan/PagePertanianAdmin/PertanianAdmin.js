@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
@@ -7,12 +7,32 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import { Button }from "../../../components";
 import DataPertanian from "../../../components/Contents/TablePertanian/DataPertanian";
 import { Link } from "react-router-dom";
+import "../AdminKecematan.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 const PertanianAdmin = () => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
     const handleClick = (event) =>{
         console.log(event);
     }
 
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
     return (
         <div className='container'>
             <div className='logo'>
@@ -34,7 +54,7 @@ const PertanianAdmin = () => {
                 <DropdownKecamatan/>
                 <PertanianCategory/>
                 <DataPertanian/>
-                <Link to='/tambahDataPertanian'style={null}>
+                <Link to='/tambahDataPertanian'>
                     <Button className="tambahDataButton" onClick={handleClick}>
                         Tambah Data
                     </Button>

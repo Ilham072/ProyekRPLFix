@@ -1,0 +1,32 @@
+[
+    {
+        "nomor": "1",
+        "namaWisata": "Air Terjun Ere'",
+        "jenisWisata": "Alam"
+    },
+    {
+        "nomor": "2",
+        "namaWisata": "Makam Datu Salomekko",
+        "jenisWisata": "Budaya"  
+    },
+    {
+        "nomor": "3",
+        "namaWisata": "Bubu Assangireng",
+        "jenisWisata": "Budaya"
+    },
+    {
+        "nomor": "4",
+        "namaWisata": "Air Terjun Ladenring",
+        "jenisWisata": "Alam"
+    },
+    {
+        "nomor": "5",
+        "namaWisata": "Bendungan Sandrego",
+        "jenisWisata": "Panorama"
+    },
+    {
+        "nomor": "6",
+        "namaWisata": "Mata Air Panas Saweng",
+        "jenisWisata": "Panorama"
+    }
+]

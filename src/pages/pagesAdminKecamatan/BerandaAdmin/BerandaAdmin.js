@@ -1,11 +1,45 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 import Carousel from "../../../components/Corousel/CarouselBeranda/Carousel";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import KomoditiCategory from "../../../utils/KomoditiCategory";
 // import './BerandaAdmin.css';
+import checkTokenExpiration from './../../../utils/checkTokenExpiration';
 const BerandaAdmin = () => {
+    const [user, setUser] = useState();
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    
+    const fetchData = async () => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get('http://localhost:8000/api/adminkecamatan')
+        .then((response) => {
+            setUser(response.data);
+            // const decodeToken = jwt.decode(token);
+            //console.log(decoded);
+            // console.log(decodeToken);
+            console.log(response.data);
+        })
+    }
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login');
+        }
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
     return (
         <div className='container'>
             <div className='logo'>

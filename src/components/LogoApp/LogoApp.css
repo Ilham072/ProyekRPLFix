@@ -1,12 +1,13 @@
 
 .logoDita {
-    position: sticky;
+    position: relative;
+    z-index: 3;
     top: 0;
     padding: 25px;
     background-color: #ffffff ;
     grid-area: logo;
-    display: grid;
-    flex-direction: column; 
+    /* display: grid; */
+    /* flex-direction: column;  */
     justify-content: center;
     align-items: center;
 }

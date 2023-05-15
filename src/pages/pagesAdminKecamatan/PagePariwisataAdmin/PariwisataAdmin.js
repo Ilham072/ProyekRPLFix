@@ -1,15 +1,35 @@
-import React from "react";
+import React , { useState , useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
 import PariwisataCategory from "../../../utils/PariwisataCategory";
-import DataPariwisata from "../../../components/Contents/TablePariwisata/TablePariwisata";
+import DataPariwisata from "../../../components/Contents/TablePariwisata/DataPariwisata";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
-
+import "../AdminKecematan.css";
 
 const PariwisataAdmin = () => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
     return(
         <div className='container'>
             <div className='logo'>

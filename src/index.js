@@ -24,8 +24,6 @@ import PageInputDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanA
 import PageInputDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/PageInputDataPerikanan';
 import PageInputDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/PageInputDataPerindustrian';
 import PageInputDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/PageInputDataPariwisata';
-<<<<<<< Updated upstream
-=======
 import PertanianBerandaAdmin from './pages/pagesAdminKecamatan/PagePertanianAdmin/PertanianBerandaAdmin';
 import PerikananBerandaAdmin from './pages/pagesAdminKecamatan/PagePerikananAdmin/PerikananBerandaAdmin';
 import PeternakanBerandaAdmin from './pages/pagesAdminKecamatan/PagePeternakanAdmin/PeternakanBerandaAdmin';
@@ -42,9 +40,13 @@ import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBa
 import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
 import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
 import PageKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageKontenKomoditi';
-
-
->>>>>>> Stashed changes
+import EditDataPertanian from './pages/pagesAdminKecamatan/PagePertanianAdmin/InputDataPertanian/EditDataPertanian';
+import EditDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/EditDataPerikanan';
+import EditDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanAdmin/InputDataPeternakan/EditDataPeternakan';
+import EditDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/EditDataPerindustrian';
+import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/EditDataPariwisata';
+import PageDataAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageDataAdmin';
+import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -87,6 +89,26 @@ const router = createBrowserRouter([
     element: <BerandaAdmin/>,
   },
   {
+    path: "/beranda_adminpertanian",
+    element: <PertanianBerandaAdmin/>,
+  },
+  {
+    path: "/beranda_adminpeternakan",
+    element: <PeternakanBerandaAdmin/>,
+  },
+  {
+    path: "/beranda_adminperikanan",
+    element: <PerikananBerandaAdmin/>,
+  },
+  {
+    path: "/beranda_adminperindustrian",
+    element: <PerindustrianBerandaAdmin/>,
+  },
+  {
+    path: "/beranda_adminpariwisata",
+    element: <PariwisataBerandaAdmin/>,
+  },
+  {
     path: "/adminpertanian",
     element: <PertanianAdmin/>,
   },
@@ -126,8 +148,6 @@ const router = createBrowserRouter([
     path: "/tambahDataPariwisata",
     element: <PageInputDataPariwisata/>,
   },
-<<<<<<< Updated upstream
-=======
   {
     path: "/berandaAdminPusat",
     element: <BerandaPusat/>,
@@ -172,8 +192,34 @@ const router = createBrowserRouter([
     path: "/kontenKomoditi",
     element: <PageKontenKomoditi/>,
   },
-
->>>>>>> Stashed changes
+  {
+    path: "/editDataPertanian",
+    element: <EditDataPertanian/>,
+  },
+  {
+    path: "/editDataPerikanan",
+    element: <EditDataPerikanan/>,
+  },
+  {
+    path: "/editDataPeternakan",
+    element: <EditDataPeternakan/>,
+  },
+  {
+    path: "/editDataPerindustrian",
+    element: <EditDataPerindustrian/>,
+  },
+  {
+    path: "/editDataPariwisata",
+    element: <EditDataPariwisata/>,
+  },
+  {
+    path: "/dataAdmin",
+    element: <PageDataAdmin/>,
+  },
+  {
+    path: "/tambahAdmin",
+    element: <PageInputAdmin/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

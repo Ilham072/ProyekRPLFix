@@ -54,7 +54,7 @@ const DataKomoditi = () => {
                         <TambahKomoditiPerindustrian />
                     </div>
                     );
-            case "pariwisata":
+            case "pariwasata":
                         return (
                         <div className="Daftar-komoditi">
                             <DaftarKomoditiPariwisata />

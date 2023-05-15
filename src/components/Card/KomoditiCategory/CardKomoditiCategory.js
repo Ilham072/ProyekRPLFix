@@ -1,5 +1,6 @@
 import React from 'react';
 import "./CardKomoditiCategory.css"
+import { Link } from 'react-router-dom';
 
 const CardKomoditiCategory = (props) => {
     return (
@@ -12,9 +13,9 @@ const CardKomoditiCategory = (props) => {
                     <p id="Sum-Category">{props.komoditi.count}</p>
                     <p id="Title">{props.komoditi.name}</p>
                 </div>
-                <a href="#" className="CardKomoditiCategory-button">
+                <Link to={props.komoditi.url} className="CardKomoditiCategory-button">
                     <img src="assets/icon/button/Button2.svg"/>
-                </a>
+                </Link>
             </div>
         </div>
     )

@@ -3,30 +3,35 @@
         "id": 1,
         "name": "Pertanian",
         "count": 23,
-        "image": "assets/icon/logo_komoditi/pertanian_logo.svg"
+        "image": "assets/icon/logo_komoditi/pertanian_logo.svg",
+        "url": "/beranda_adminpertanian"
     },
     {
         "id": 2,
         "name": "Peternakan",
         "count": 12,
-        "image": "assets/icon/logo_komoditi/peternakan_logo.svg"
+        "image": "assets/icon/logo_komoditi/peternakan_logo.svg",
+        "url": "/beranda_adminpeternakan"
     },
     {
         "id": 3,
         "name": "Perikanan",
         "count": 20,
-        "image": "assets/icon/logo_komoditi/perikanan_logo.svg"
+        "image": "assets/icon/logo_komoditi/perikanan_logo.svg",
+        "url": "/beranda_adminperikanan"
     },
     {
         "id": 4,
         "name": "Perindustrian",
         "count": 32,
-        "image": "assets/icon/logo_komoditi/perindustrian_logo.svg"
+        "image": "assets/icon/logo_komoditi/perindustrian_logo.svg",
+        "url": "/beranda_adminperindustrian"
     },
     {
         "id": 5,
         "name": "Pariwisata",
         "count": 54,
-        "image": "assets/icon/logo_komoditi/pariwisata_logo.svg"
+        "image": "assets/icon/logo_komoditi/pariwisata_logo.svg",
+        "url": "/beranda_adminpariwisata" 
     }
 ]

@@ -1,4 +1,6 @@
-import React from "react";
+import React , { useState , useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
@@ -6,7 +8,26 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import DataPerindustrian from "../../../components/Contents/TablePerindustrian/DataPerindustrian";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import "../AdminKecematan.css";
 const PerindustrianAdmin = () => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
     return(
         <div className='container'>
             <div className='logo'>
@@ -27,11 +48,13 @@ const PerindustrianAdmin = () => {
                 <div><h3>Beranda Perindustrian</h3></div>
                 <DropdownKecamatan/>
                 <DataPerindustrian/>
-                <Link to='/tambahDataPerindustrian'>
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+               <div className="button-add2">
+                    <Link to='/tambahDataPerindustrian'>
+                            <Button className="tambahDataButton">
+                                Tambah Data
+                            </Button>
+                    </Link>
+               </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

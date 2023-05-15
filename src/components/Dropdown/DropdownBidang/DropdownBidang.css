@@ -1,4 +1,5 @@
 .dropdown-container-bidang {
+
     position: relative;
     display: flex;
     flex: 1;
@@ -6,64 +7,59 @@
     width: 50%;
     background-color: F7F7F7;
     justify-content: left;
-    /* background-color: tomato; */
-    /* grid-template: 5fr/ 4fr 3fr;
-    
-    
-    gap: 0;
-    grid-template-areas: 
-      " dropdown-kecamatan cari-btn"; */
   }
 
-  .dropdown-bidang{
-    margin-right: 0;
-    /* background-color: tomato; */
-    padding: 3px;
-  }
-  
-  .dropdown-button-bidang {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 490px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
-    height: 50px;
-    border: none;
-    border-radius: 13px;
-    background-color: #ffffff;
-    color: #333;
-    font-size: 16px;
-    padding: 0 16px;
-    cursor: pointer;
-    margin: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dropdown-button-label-bidang {
-    margin-right: 0;
-  }
-  
-  .dropdown-menu-bidang {
-    position:absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    width: 490px;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #FFF;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-  
-  .dropdown-menu-bidang a {
-    display: block;
-    padding: 8px 16px;
-    color: #333;
-    text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  .dropdown-menu a:hover {
-    background-color: #4692FD;
-  }
+
+.dropdown-bidang{
+  margin-right: 0;
+  /* background-color: tomato; */
+  padding: 3px;
+}
+
+.dropdown-button-bidang {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 490px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+  height: 50px;
+  border: none;
+  border-radius: 13px;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 16px;
+  padding: 0 16px;
+  cursor: pointer;
+  margin: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-button-label-bidang {
+  margin-right: 0;
+}
+
+.dropdown-menu-bidang {
+  position:absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  width: 490px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #FFF;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu-bidang div {
+  cursor: pointer;
+  display: block;
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.dropdown-menu div:hover {
+  background-color: #4692FD;
+}
 
   

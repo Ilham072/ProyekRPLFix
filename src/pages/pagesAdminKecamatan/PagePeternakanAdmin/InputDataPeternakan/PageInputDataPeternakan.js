@@ -1,17 +1,49 @@
-
+import React, { useState, useEffect } from 'react';
 import "./PageInputDataPeternakan.css";
 import SidebarAdmin from '../../../../components/Sidebar/SidebarAdmin';
 import HeaderAdmin from '../../../../components/Header/HeaderAdmin';
-import { Button } from "../../../../components";
 import LogoApp from '../../../../components/LogoApp/LogoApp';
-import DropdownBidang from "../../../../components/Dropdown/DropdownBidang/DropdownBidang";
 import InputFormPeternakan from '../../../../utils/Peternakan/InputFormPeternakan';
+import { useNavigate } from "react-router-dom";
+import checkTokenExpiration from '../../../../utils/checkTokenExpiration';
+import axios from 'axios';
+import DropdownKomoditi from './../../../../components/Dropdown/DropdownKomoditi/DropdownKomoditi';
 
 const PageInputDataPeternakan= () => {
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+
+    const [selectedKomoditi, setSelectedKomoditi] = useState("");
+
+    const handleKomoditiChange = (value) => {
+        setSelectedKomoditi(value);
+    }
+
+    const peternakanKomoditi = [
+        {value: 'Sapi', label: 'Sapi'},
+        {value: 'Kambing', label: 'Kambing'},
+        {value: 'Ayam', label: 'Ayam'},
+        {value: 'Bebek', label: 'Bebek'},
+    ];
 
     const handleClick = (event) =>{
         console.log(event);
     }
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    })
     return(
         <div className='container'>
             <div className='logo'>
@@ -31,16 +63,12 @@ const PageInputDataPeternakan= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-peternakan'>
-                    <DropdownBidang/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={peternakanKomoditi}/>
                 </div>
                 <div className='cover_tambah_data_peternakan'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPeternakan/>
+                    <InputFormPeternakan komoditi={selectedKomoditi}/>
                 </div>
-                <br/>
-                <Button className="tambahDataButton" onClick={handleClick}>
-                    Tambah Data
-                </Button>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

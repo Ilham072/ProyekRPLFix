@@ -1,0 +1,41 @@
+.cover_tambah_data_banner{
+    background-color: white;
+    width: 25%;
+    height: max-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    /* justify-content: center; */
+    padding: 30px;
+    margin-top: 10px;
+    float: left;
+    inline-size: 25%;
+  
+}
+
+.input_tambah_data:focus{
+    outline-color: rgb(32,177,255);
+}
+
+.judul_tambah_data{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    align-self: left;
+} 
+
+ .cover-data-banner {
+    width: 100%;
+    /* background-color: tomato; */
+    /* background-color: blue; */
+ }
+
+ .content-page-banner {
+    /* padding: 20px; */
+    display:inline-flex;
+    width: 100%;
+    gap: 58px ;
+ }
+ 
