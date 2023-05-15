@@ -1,6 +1,6 @@
 .cover_tambah_data_berita{
     background-color: white;
-    width: 25%;
+    width: 100%;
     height: max-content;
     border-radius: 15px;
     display: flex;
@@ -27,9 +27,8 @@
 } 
 
  .cover-data-berita {
-    width: 65%;
+    width: 100%;
     /* background-color: tomato; */
-    justify-content: space-between;
     /* background-color: blue; */
  }
 
@@ -37,6 +36,6 @@
     /* padding: 20px; */
     display:inline-flex;
     width: 100%;
-    justify-content: space-between;
+    
  }
  

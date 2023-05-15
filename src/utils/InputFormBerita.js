@@ -1,23 +1,54 @@
 import React, { useState } from 'react';
 import { Button } from '../components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import toTitleCase from './titleCase.js';
 
-function InputFormBerita() {
-    const [judul, setJudul] = useState(0);
-    const [isi, setIsi] = useState(0);
-    const [selectedFile, setSelectedFile] = useState(null);
+function InputFormBerita({sektor, kecamatan}) {
+    const [judul, setJudul] = useState("");
+    const [isi, setIsi] = useState("");
+    const [gambar, setGambar] = useState(null);
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Lakukan sesuatu dengan nilai input, misalnya mengirim ke API
-        console.log(selectedFile);
+    const handleIsiChange = (event) => {
+        setIsi(event.target.value);
     };
 
-    const handleFileChange = (e) => {
+    const history = useNavigate();
+    const [validation, setValidation] = useState([]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(judul, sektor, kecamatan, gambar, isi);
+
+        const token = localStorage.getItem('token');
+        const formData = new FormData();
+        formData.append('judul', toTitleCase(judul));
+        formData.append('sektor', sektor);
+        formData.append('kecamatan', kecamatan);
+        formData.append('gambar', gambar);
+        formData.append('isi', isi);
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+        await axios.post('http://localhost:8000/api/Konten Berita', formData)
+        .then(() => {
+            console.log('Sukses Menambahkan Konten Berita');
+            const storedData = localStorage.getItem('tableKontenBerita');
+            if (storedData) {
+                localStorage.removeItem('tableKontenBerita');
+            }
+            history('/berita')
+        })
+        .catch((error) => {
+            setValidation(error.response.data);
+        })
+    };
+
+    const handleGambarChange = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
-        setSelectedFile(reader.result);
+        setGambar(file);
         };
         reader.readAsDataURL(file);
     };
@@ -32,12 +63,22 @@ function InputFormBerita() {
                     <input id='judul' type='text' value={judul} onChange={(e) => setJudul(e.target.value)} />
             </div>
             <div className='form-input-row'>
-                    <label htmlFor='isi'>Isi</label>
-                    <input id='isi' type='text' value={judul} onChange={(e) => setIsi(e.target.value)} />
+                <label htmlFor='fileInput'>Pilih Gambar</label>
+                <input id='fileInput' type='file' onChange={handleGambarChange}/>
             </div>
             <div className='form-input-row'>
-                <label htmlFor='fileInput'>Pili Gambar</label>
-                <input id='fileInput' type='file' onChange={handleFileChange} />
+                <label htmlFor='isi'>Isi</label>
+                <textarea
+                    id="isi"
+                    value={isi}
+                    onChange={handleIsiChange}
+                    style={{
+                        minHeight: '20px',
+                        maxHeight: '200px',
+                        height: 'auto',
+                        resize: 'vertical',
+                    }}
+                    rows={Math.min(20, isi.split('\n').length)}/>
             </div>
             <div className='button-tambah-berita'>
                 <Button className='ButtonTambahBerita' type='submit'>

@@ -5,7 +5,7 @@
     flex-direction: row;
     width: 50%;
     background-color: F7F7F7;
-    justify-content: flex-start;
+    justify-content: left;
     /* background-color: tomato; */
     /* grid-template: 5fr/ 4fr 3fr;
     
@@ -14,7 +14,6 @@
     grid-template-areas: 
       " dropdown-kecamatan cari-btn"; */
   }
-
   .dropdown-sektor{
     margin-right: 0;
     /* background-color: tomato; */
@@ -54,7 +53,9 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   
-  .dropdown-menu-sektor a {
+
+  .dropdown-menu-sektor div {
+    cursor: pointer;
     display: block;
     padding: 8px 16px;
     color: #333;
@@ -62,8 +63,7 @@
     transition: background-color 0.3s;
   }
   
-  .dropdown-menu a:hover {
+  .dropdown-menu div:hover {
     background-color: #4692FD;
   }
 
-  

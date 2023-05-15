@@ -2,7 +2,7 @@ export function getTableBerandaPerikanan() {
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
@@ -17,7 +17,7 @@ export function getTableBerandaPerikanan() {
         },
         {
             name: "Nilai Produksi",
-            selector: row => row.nilaiProduksi,
+            selector: row => row.nilai_produksi,
             sortable: true
         }
     ];

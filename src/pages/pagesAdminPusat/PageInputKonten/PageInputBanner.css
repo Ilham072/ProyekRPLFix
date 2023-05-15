@@ -27,9 +27,8 @@
 } 
 
  .cover-data-banner {
-    width: 65%;
+    width: 100%;
     /* background-color: tomato; */
-    justify-content: space-between;
     /* background-color: blue; */
  }
 
@@ -37,6 +36,6 @@
     /* padding: 20px; */
     display:inline-flex;
     width: 100%;
-    justify-content: space-between;
+    gap: 58px ;
  }
  
