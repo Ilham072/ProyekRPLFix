@@ -24,6 +24,27 @@ import PageInputDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanA
 import PageInputDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/PageInputDataPerikanan';
 import PageInputDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/PageInputDataPerindustrian';
 import PageInputDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/PageInputDataPariwisata';
+<<<<<<< Updated upstream
+=======
+import PertanianBerandaAdmin from './pages/pagesAdminKecamatan/PagePertanianAdmin/PertanianBerandaAdmin';
+import PerikananBerandaAdmin from './pages/pagesAdminKecamatan/PagePerikananAdmin/PerikananBerandaAdmin';
+import PeternakanBerandaAdmin from './pages/pagesAdminKecamatan/PagePeternakanAdmin/PeternakanBerandaAdmin';
+import PerindustrianBerandaAdmin from './pages/pagesAdminKecamatan/PagePerindustrian/PerindustrianBerandaAdmin';
+import PariwisataBerandaAdmin from './pages/pagesAdminKecamatan/PagePariwisataAdmin/PariwisataBerandaAdmin';
+import BerandaPusat from './pages/pagesAdminPusat/BerandaAdminPusat/BerandaPusat';
+import PertanianAdminPusat from './pages/pagesAdminPusat/PertanianAdminPusat/PertanianAdminPusat';
+import PeternakanAdminPusat from './pages/pagesAdminPusat/PeternakanAdminPusat/PeternakanAdminPusat';
+import PerikananAdminPusat from './pages/pagesAdminPusat/PerikananAdminPusat/PerikananAdminPusat';
+import PerindustrianAdminPusat from './pages/pagesAdminPusat/PerindustrianAdminPusat/PerindustrianAdminPusat';
+import PariwisataAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/PariwisataAdminPusat';
+import DataKomoditi from './pages/pagesAdminPusat/DataKomoditi/DataKomoditi';
+import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBanner';
+import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
+import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
+import PageKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageKontenKomoditi';
+
+
+>>>>>>> Stashed changes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -105,6 +126,54 @@ const router = createBrowserRouter([
     path: "/tambahDataPariwisata",
     element: <PageInputDataPariwisata/>,
   },
+<<<<<<< Updated upstream
+=======
+  {
+    path: "/berandaAdminPusat",
+    element: <BerandaPusat/>,
+  },
+  {
+    path: "/pertanianAdminPusat",
+    element: <PertanianAdminPusat/>,
+  },
+  {
+    path: "/peternakanAdminPusat",
+    element: <PeternakanAdminPusat/>,
+  },
+  {
+    path: "/perikanaAdminPusat",
+    element: <PerikananAdminPusat/>,
+  },
+  {
+    path: "/perindustrianAdminPusat",
+    element: <PerindustrianAdminPusat/>,
+  },
+  {
+    path: "/pariwisataAdminPusat",
+    element: <PariwisataAdminPusat/>,
+  },
+  {
+    path: "/DataAdminPusat",
+    element: <DataKomoditi/>,
+  },
+  {
+    path: "/banner",
+    element: <PageInputBanner/>,
+  },
+  {
+    path: "/berita",
+    element: <PageDataBerita/>,
+  },
+  {
+    path: "/tambahdataBerita",
+    element: <PageInputBerita/>,
+  },
+  {
+    path: "/kontenKomoditi",
+    element: <PageKontenKomoditi/>,
+  },
+
+>>>>>>> Stashed changes
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

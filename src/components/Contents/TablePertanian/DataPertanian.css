@@ -4,4 +4,35 @@
     padding: 10px;
     border-radius: 10px;
 
+<<<<<<< Updated upstream
+=======
+}
+
+.container-table2 {
+    background-color: #FFFFFF;
+    width: 650px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container-table-banner {
+    background-color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    inline-size: 100%;
+}
+
+.dataTable {
+    text-align: center;
+  }
+  
+  .container-table-berita {
+    background-color: #FFFFFF;
+    width: 1000px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 700px;
+
+>>>>>>> Stashed changes
 }

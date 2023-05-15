@@ -1,0 +1,21 @@
+[
+    {
+        "no": "1",
+        "judul": "padi",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Alam merupakan bla bla bla"
+    },
+    {
+        "no": "2",
+        "judul": "kedelai",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Alam merupakan bla bla bla"
+    },
+    {
+        "no": "3",
+        "judul": "Kelapa",
+        "gambar": "assets/images/news/pertanian.jpg",
+        "isi": "Alam merupakan bla bla bla"
+    }
+
+]

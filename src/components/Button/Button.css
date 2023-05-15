@@ -21,4 +21,94 @@
     background-color: #4692FD;
     color: #ffffff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+<<<<<<< Updated upstream
+=======
+    
+  }
+
+  .btn-edit {
+    border: none;
+    padding: 0;
+    justify-content: center;
+    background-color: #ffffff;
+    
+  }
+  .btn-delete {
+    border: none;
+    background-color: #ffffff;
+  }
+
+  .btn-pdf {
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 10px;
+    display: inline;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .btn-excel {
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 10px;
+    display: inline;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .btn-save {
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 10px;
+    display: inline;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .ButtonSave {
+    padding: 15px;
+    width: 250px;
+    height: max-content;
+    /* margin: 20px; */
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .ButtonTambahBerita{
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 20px;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .TambahKontenKomoditi{
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 20px;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    
+>>>>>>> Stashed changes
   }
