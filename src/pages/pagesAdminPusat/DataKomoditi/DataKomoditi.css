@@ -1,0 +1,7 @@
+.Daftar-komoditi {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+  }
+  

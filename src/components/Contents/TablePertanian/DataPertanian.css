@@ -6,6 +6,12 @@
     margin: 10px;
 }
 
+.container-table2 {
+    background-color: #FFFFFF;
+    width: 650px;
+    padding: 10px;
+    border-radius: 10px;
+
 .container-table-banner {
     background-color: #FFFFFF;
     width: 100%;
@@ -14,16 +20,19 @@
     inline-size: 100%;
 }
 
-
 .dataTable {
     text-align: center;
   }
-  
   
   .container-table-berita {
     background-color: #FFFFFF;
     width: 100%;
     padding: 10px;
     border-radius: 10px;
+<<<<<<< HEAD
+    height: 700px;
+
+=======
     height: max-content;
+>>>>>>> main
 }

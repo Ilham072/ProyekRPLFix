@@ -35,6 +35,7 @@ import PeternakanAdminPusat from './pages/pagesAdminPusat/PeternakanAdminPusat/P
 import PerikananAdminPusat from './pages/pagesAdminPusat/PerikananAdminPusat/PerikananAdminPusat';
 import PerindustrianAdminPusat from './pages/pagesAdminPusat/PerindustrianAdminPusat/PerindustrianAdminPusat';
 import PariwisataAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/PariwisataAdminPusat';
+import DataKomoditi from './pages/pagesAdminPusat/DataKomoditi/DataKomoditi';
 import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBanner';
 import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
 import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
@@ -169,6 +170,10 @@ const router = createBrowserRouter([
   {
     path: "/pariwisataAdminPusat",
     element: <PariwisataAdminPusat/>,
+  },
+  {
+    path: "/DataAdminPusat",
+    element: <DataKomoditi/>,
   },
   {
     path: "/banner",

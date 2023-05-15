@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.cover-tambah-komoditi {
+    background-color: white;
+    width: 311px;
+    height: 340px;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    padding: 20px;
+    
+}
+
+.cover-tambah-komoditi-2 {
+    background-color: white;
+    width: 311px;
+    height: 250px;
+    position: relative;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    padding: 20px;
+    
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+input {
+    border: rgb(32, 177, 255);
+    outline: 2px solid rgba(32, 177, 255, 0.438);
+    background-color: rgb(255, 255, 255);
+    height: 45px;
+    width: 265px;
+    border-radius: 10px;
+    text-align: left;
+    align-self: center;
+}
+
+input:focus {
+    outline-color: rgb(32, 177, 255);
+
+}
+
+select {
+    font-size: 14px;
+    border: rgb(32, 177, 255);
+    outline: 2px solid rgba(32, 177, 255, 0.438);
+    background-color: rgb(255, 255, 255);
+    height: 45px;
+    width: 265px;
+    border-radius: 10px;
+    text-align: center;
+    align-self: center;
+    
+}
+
+option {
+    background-color: #fff;
+    color: #333;
+}
+
+.tambah-btn {
+    width: 265px;
+    height: 50px;
+    background-color: rgb(70, 146, 253);
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: 0.5s;
+    border-radius: 13px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.tambah-btn:hover {
+    transform: scale(1.1);
+}
+
+.tambah-popup {
+    position: absolute;
+    height: 30em;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.25em;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    transform: scale(1);
+    transition: 1.5s;
+}

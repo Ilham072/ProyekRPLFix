@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './DropdownSektor.css';
 
 
+
 function DropdownSektor({ selectedSektor, onSektorChange }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +32,7 @@ function DropdownSektor({ selectedSektor, onSektorChange }) {
         </button>
         {isOpen &&
           <div className="dropdown-menu-sektor">
+
             {options.map(option => (
               <div key={option.value} onClick={() => handleOptionSelect(option.value)}>
                 {option.label}
