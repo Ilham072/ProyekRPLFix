@@ -2,7 +2,7 @@ import React from "react";
 // import './InfoKomoditi.css';
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
-import KomoditiArtikel from "../../components/Contents/Komoditi.js/KomoditiArtikel";
+import KomoditiArtikel from "../../components/Contents/Komoditi/KomoditiArtikel";
 import LogoApp from "../../components/LogoApp/LogoApp";
 
 const KomoditiContent = () => {
