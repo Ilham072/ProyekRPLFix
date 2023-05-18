@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './InputFormPeternakan.css';
 import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function InputFormPeternakan({komoditi}) {
+function InputFormPeternakan({komoditi, editData}) {
     const [total, setTotal] = useState(0);
     const [kelahiran, setKelahiran] = useState(0);
     const [kematian, setKematian] = useState(0);
@@ -15,6 +15,19 @@ function InputFormPeternakan({komoditi}) {
 
     const navigate = useNavigate();
     const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setTotal(editData.total);
+            setKelahiran(editData.kelahiran);
+            setKematian(editData.kematian);
+            setPemotongan(editData.pemotongan);
+            setTernakKeluar(editData.ternak_keluar);
+            setTernakMasuk(editData.ternak_masuk);
+            setPopulasi(editData.populasi);
+        }
+    }, [editData]);
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,20 +45,34 @@ function InputFormPeternakan({komoditi}) {
         formData.append('ternak_masuk', ternak_masuk);
         formData.append('populasi', populasi);
 
+        const url = editData
+      ? `http://localhost:8000/api/Peternakan/${editData.id}`
+      : 'http://localhost:8000/api/Peternakan';
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.post('http://localhost:8000/api/Peternakan', formData)
-        .then(() => {
-            console.log('Sukses Menambahkan Data Peternakan');
-            const storedData = localStorage.getItem('tablePeternakan');
-            if (storedData) {
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Peternakan');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Peternakan');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePeternakan');
+            const storedData = localStorage.getItem('dataPeternakan');
+            if (storedDataBeranda) {
                 localStorage.removeItem('tablePeternakan');
             }
+            if (storedData) {
+                localStorage.removeItem('dataPeternakan')
+            }
             navigate('/adminpeternakan');
-        })
-        .catch((error) => {
+        } catch (error) {
             setValidation(error.response.data);
-        })
-    };
+        }
+    };      
     return (
         <form onSubmit={handleSubmit} className='form-input'>
             <div className='form-input-row'>
@@ -78,7 +105,7 @@ function InputFormPeternakan({komoditi}) {
             </div>
             <div className='button-add'>
                 <Button className="tambahDataButton">
-                    Tambah Data
+                {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
             </div>
         </form>

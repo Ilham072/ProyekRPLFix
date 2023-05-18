@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DropdownSektor.css';
 
 
-function DropdownSektor({ selectedSektor, onSektorChange }) {
+function DropdownSektor({ selectedSektor, onSektorChange, sektor }) {
   const [isOpen, setIsOpen] = useState(false);
+  const editData = JSON.parse(localStorage.getItem('editData'));
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -13,6 +14,12 @@ function DropdownSektor({ selectedSektor, onSektorChange }) {
     onSektorChange(selectedValue);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    if (sektor && !selectedSektor) {
+      onSektorChange(sektor);
+    }
+  }, [sektor, selectedSektor]);
 
   const options = [
     { value: "Pertanian", label: "Pertanian" },

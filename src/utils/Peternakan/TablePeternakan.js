@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../components";
 import axios from "axios";
 
-export function getTablePeternakan() {
+export function getTablePeternakan(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -20,6 +20,12 @@ export function getTablePeternakan() {
                 window.location.reload(false);
             })
     }
+
+    const handleEdit = (row) => {
+        const queryParam = encodeURIComponent(row.id);
+        navigateToEdit(`/editDataPeternakan?id=${queryParam}`);
+    };
+
     return [
         {
             name: "No",
@@ -70,7 +76,7 @@ export function getTablePeternakan() {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
+                    <Button className="btn-edit" onClick={() => handleEdit(row)}><img src="assets/icon/button/button-edit.svg"/></Button>
                     <Button className="btn-delete" onClick={() => deleteHandler(row.id)}><img src="assets/icon/button/button-delete.svg"/></Button>
                 </div>
             ),

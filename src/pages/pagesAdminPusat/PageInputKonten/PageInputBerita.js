@@ -14,8 +14,10 @@ import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 const PageInputBerita= () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
     const [selectedSektor, setSelectedSektor] = useState("");
+    const [dataBerita, setDataBerita] = useState([]);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    const editData = JSON.parse(localStorage.getItem('editData'));
 
     const handleKecamatanChange = (value) => {
         setSelectedKecamatan(value);
@@ -44,6 +46,28 @@ const PageInputBerita= () => {
         }
     });
 
+    async function fetchDataBeritaById(id) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get(`http://localhost:8000/api/Konten Berita/${id}`)
+            .then((response) => {
+                setDataBerita(response.data.konten_berita)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const dataId = searchParams.get('id');
+        if (dataId) {
+            fetchDataBeritaById(dataId);
+        } else {
+            setDataBerita(false); //
+        }
+        
+    }, []);
+
     return(
         <div className='container'>
             <div className='logo'>
@@ -63,12 +87,12 @@ const PageInputBerita= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-berita'>
-                    <DropdownSektor selectedSektor={selectedSektor} onSektorChange={handleSektorChange}/>
-                    <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
+                    <DropdownSektor selectedSektor={selectedSektor} onSektorChange={handleSektorChange} sektor={dataBerita.sektor}/>
+                    <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange} kecamatan={dataBerita.kecamatan}/>
                 </div>
                 <div className='cover_tambah_data_berita'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormBerita sektor={selectedSektor} kecamatan={selectedKecamatan}/>
+                    <InputFormBerita sektor={selectedSektor} kecamatan={selectedKecamatan} editData={dataBerita}/>
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}

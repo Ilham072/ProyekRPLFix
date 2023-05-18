@@ -4,7 +4,7 @@ import './CardCategory.css';
 const CardCategory = (props) => {
     return (
         <div className="cardCategory">
-            <a href="#">
+            <a onClick={props.onClick}>
                 <div className="cardCategory-content">
                     <div>
                         <p id="sum">{props.category.count}</p>

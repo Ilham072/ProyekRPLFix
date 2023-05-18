@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DropdownKomoditi.css';
 
 
-function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions}) {
+function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, komoditi=""}) {
   const [isOpen, setIsOpen] = useState(false);
+  //const editData = JSON.parse(localStorage.getItem('editData'));
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -14,6 +15,13 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions})
     onKomoditiChange(selectedValue);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    
+    if (komoditi && !selectedKomoditi) {
+      onKomoditiChange(komoditi);
+    }
+  }, [komoditi, selectedKomoditi]);
 
   return (
     <div className="dropdown-container-komoditi">

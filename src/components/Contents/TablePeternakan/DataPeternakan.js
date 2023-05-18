@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 import { getTablePeternakan } from "../../../utils/Peternakan/TablePeternakan";
 import dataPeternakan from "../../../config/Peternakan/dataPeternakan.json";
 import "../TablePertanian/DataPertanian.css";
@@ -9,6 +10,7 @@ const DataPeternakan = () => {
 
     const [tablePeternakan, setDataPeternakan] = useState([]);
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchDataPeternakan() {
@@ -18,7 +20,7 @@ const DataPeternakan = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PeternakanByKecamatan');
+                const response = await axios.get('http://localhost:8000/api/PeternakanByUser');
                 data = response.data;
                 localStorage.setItem('dataPeternakan', JSON.stringify(data));
             }
@@ -29,7 +31,7 @@ const DataPeternakan = () => {
     return(
         <div className="container-table">
             <DataTable
-                columns={getTablePeternakan()}
+                columns={getTablePeternakan(navigate)}
                 data={tablePeternakan}
             />
         </div>

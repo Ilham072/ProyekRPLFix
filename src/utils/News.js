@@ -1,8 +1,8 @@
 import React from 'react';
-import news from '../config/news/news.json';
+//import news from '../config/news/news.json';
 import CardNews from '../components/Card/News/CardNews';
 
-const News = () => {
+const News = ({news}) => {
     return (
         <div style={
             {

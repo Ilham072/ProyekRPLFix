@@ -16,6 +16,7 @@ const PageInputDataPariwisata= () => {
     const token = localStorage.getItem('token');
 
     const [selectedWisata, setSelectedWisata] = useState("");
+    const [dataPariwisata, setDataPariwisata] = useState([]);
 
     const handleWisataChange = (value) => {
         setSelectedWisata(value);
@@ -35,6 +36,29 @@ const PageInputDataPariwisata= () => {
             navigate('/login');
         }
     })
+
+    async function fetchDataPariwisataById(id) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get(`http://localhost:8000/api/Pariwisata/${id}`)
+            .then((response) => {
+                setDataPariwisata(response.data.pariwisata)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const dataId = searchParams.get('id');
+        if (dataId) {
+            fetchDataPariwisataById(dataId);
+        } else {
+            setDataPariwisata(false); //
+        }
+        
+    }, []);
+
     return(
         <div className='container'>
             <div className='logo'>
@@ -54,11 +78,11 @@ const PageInputDataPariwisata= () => {
             <div className='content'>
                 <h3>Pendataan || Pariwisata || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pariwisata'>
-                <DropdownPariwisata selectedWisata={selectedWisata} onWisataChange={handleWisataChange}/>
+                <DropdownPariwisata selectedWisata={selectedWisata} onWisataChange={handleWisataChange} pariwisata={dataPariwisata.jenis_wisata}/>
                 </div>
                 <div className='cover_tambah_data_pariwisata'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPariwisata jenis_wisata={selectedWisata}/>
+                    <InputFormPariwisata jenis_wisata={selectedWisata} editData={dataPariwisata}/>
                 </div>
                 <br/>
                 

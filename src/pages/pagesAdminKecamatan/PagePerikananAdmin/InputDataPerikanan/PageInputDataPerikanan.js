@@ -14,6 +14,7 @@ const PageInputDataPerikanan= () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
+    const [dataPerikanan, setDataPerikanan] = useState([]);
 
     const handleKomoditiChange = (value) => {
         setSelectedKomoditi(value);
@@ -43,6 +44,29 @@ const PageInputDataPerikanan= () => {
             navigate('/login');
         }
     });
+
+    async function fetchDataPerikananById(id) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get(`http://localhost:8000/api/Perikanan/${id}`)
+            .then((response) => {
+                setDataPerikanan(response.data.perikanan)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const dataId = searchParams.get('id');
+        console.log(dataId)
+        if (dataId) {
+            fetchDataPerikananById(dataId);
+        } else {
+            setDataPerikanan(false);
+        }   
+    }, []);
+
     return(
         <div className='container'>
             <div className='logo'>
@@ -62,11 +86,11 @@ const PageInputDataPerikanan= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-perikanan'>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={perikananKomoditi}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={perikananKomoditi} komoditi={dataPerikanan.komoditi}/>
                 </div>
                 <div className='cover_tambah_data_perikanan'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPerikanan komoditi={selectedKomoditi}/>
+                    <InputFormPerikanan komoditi={selectedKomoditi} editData={dataPerikanan}/>
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}

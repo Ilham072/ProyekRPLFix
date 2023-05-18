@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DropdownKecamatan.css';
 
 
-function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
+function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
   const [isOpen, setIsOpen] = useState(false);
-
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
   }
@@ -13,6 +12,12 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
     onKecamatanChange(selectedValue);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    if (kecamatan && !selectedKecamatan) {
+      onKecamatanChange(kecamatan);
+    }
+  }, [kecamatan, selectedKecamatan]);
 
   const options = [
     {value: "Tanete Riattang", label: "Tanete Riattang"},

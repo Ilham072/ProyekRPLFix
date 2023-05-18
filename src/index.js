@@ -124,20 +124,40 @@ const router = createBrowserRouter([
     element: <PageInputDataPertanian/>,
   },
   {
+    path: "/editDataPertanian",
+    element: <PageInputDataPertanian/>
+  },
+  {
     path: "/tambahDataPeternakan",
     element: <PageInputDataPeternakan/>,
+  },
+  {
+    path: "/editDataPeternakan",
+    element: <PageInputDataPeternakan/>
   },
   {
     path: "/tambahDataPerikanan",
     element: <PageInputDataPerikanan/>,
   },
   {
+    path: "/editDataPerikanan",
+    element: <PageInputDataPerikanan/>
+  },
+  {
     path: "/tambahDataPerindustrian",
+    element: <PageInputDataPerindustrian/>,
+  },
+  {
+    path: "/editDataPerindustrian",
     element: <PageInputDataPerindustrian/>,
   },
   {
     path: "/tambahDataPariwisata",
     element: <PageInputDataPariwisata/>,
+  },
+  {
+    path: "/editDataPariwisata",
+    element: <PageInputDataPariwisata/>
   },
   {
     path: "/berandaAdminPusat",
@@ -175,6 +195,10 @@ const router = createBrowserRouter([
     path: "/tambahdataBerita",
     element: <PageInputBerita/>,
   },
+  {
+    path: "/editDataBerita",
+    element: <PageInputBerita/>
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
