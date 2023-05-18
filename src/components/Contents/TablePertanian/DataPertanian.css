@@ -1,10 +1,16 @@
 .container-table {
     background-color: #FFFFFF;
-    width: 1000px;
+    width: 96%;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.container-table2 {
+    background-color: #FFFFFF;
+    width: 650px;
     padding: 10px;
     border-radius: 10px;
-
-}
 
 .container-table-banner {
     background-color: #FFFFFF;
@@ -14,16 +20,14 @@
     inline-size: 100%;
 }
 
-
 .dataTable {
     text-align: center;
-  }
-  
+}
   
   .container-table-berita {
     background-color: #FFFFFF;
     width: 1000px;
     padding: 10px;
     border-radius: 10px;
-    height: 700px;
+    height: max-content;
 }

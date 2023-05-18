@@ -1,19 +1,14 @@
 .dropdown-container-bidang {
-  position: relative;
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  width: 50%;
-  background-color: F7F7F7;
-  justify-content: left;
-  /* background-color: tomato; */
-  /* grid-template: 5fr/ 4fr 3fr;
-  
-  
-  gap: 0;
-  grid-template-areas: 
-    " dropdown-kecamatan cari-btn"; */
-}
+
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    width: 50%;
+    background-color: F7F7F7;
+    justify-content: left;
+  }
+
 
 .dropdown-bidang{
   margin-right: 0;

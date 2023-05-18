@@ -35,9 +35,18 @@ import PeternakanAdminPusat from './pages/pagesAdminPusat/PeternakanAdminPusat/P
 import PerikananAdminPusat from './pages/pagesAdminPusat/PerikananAdminPusat/PerikananAdminPusat';
 import PerindustrianAdminPusat from './pages/pagesAdminPusat/PerindustrianAdminPusat/PerindustrianAdminPusat';
 import PariwisataAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/PariwisataAdminPusat';
+import DataKomoditi from './pages/pagesAdminPusat/DataKomoditi/DataKomoditi';
 import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBanner';
 import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
 import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
+import PageKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageKontenKomoditi';
+import EditDataPertanian from './pages/pagesAdminKecamatan/PagePertanianAdmin/InputDataPertanian/EditDataPertanian';
+import EditDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/EditDataPerikanan';
+import EditDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanAdmin/InputDataPeternakan/EditDataPeternakan';
+import EditDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian/InputDataPerindustrian/EditDataPerindustrian';
+import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/EditDataPariwisata';
+import PageDataAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageDataAdmin';
+import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -184,6 +193,10 @@ const router = createBrowserRouter([
     element: <PariwisataAdminPusat/>,
   },
   {
+    path: "/DataAdminPusat",
+    element: <DataKomoditi/>,
+  },
+  {
     path: "/banner",
     element: <PageInputBanner/>,
   },
@@ -198,7 +211,39 @@ const router = createBrowserRouter([
   {
     path: "/editDataBerita",
     element: <PageInputBerita/>
-  }
+  },
+  {
+    path: "/kontenKomoditi",
+    element: <PageKontenKomoditi/>,
+  },
+  {
+    path: "/editDataPertanian",
+    element: <EditDataPertanian/>,
+  },
+  {
+    path: "/editDataPerikanan",
+    element: <EditDataPerikanan/>,
+  },
+  {
+    path: "/editDataPeternakan",
+    element: <EditDataPeternakan/>,
+  },
+  {
+    path: "/editDataPerindustrian",
+    element: <EditDataPerindustrian/>,
+  },
+  {
+    path: "/editDataPariwisata",
+    element: <EditDataPariwisata/>,
+  },
+  {
+    path: "/dataAdmin",
+    element: <PageDataAdmin/>,
+  },
+  {
+    path: "/tambahAdmin",
+    element: <PageInputAdmin/>,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

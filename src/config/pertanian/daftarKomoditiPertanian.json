@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nomor": "1",
+        "komoditi": "Padi",
+        "bidang": "Tanaman Pangan"
+    },
+    {
+        "id": 2,
+        "nomor": "2",
+        "komoditi": "Jahe",
+        "bidang": "Haltikultura"
+    },
+    {
+        "id": 3,
+        "nomor": "3",
+        "komoditi": "Kedelai",
+        "bidang": "Tanaman Pangan"
+    },
+    {
+        "id": 4,
+        "nomor": "4",
+        "komoditi": "Kakao",
+        "bidang": "Tanaman Pangan"
+    },
+    {
+        "id": 5,
+        "nomor": "5",
+        "komoditi": "Padi",
+        "bidang": "Tanaman Pangan"
+    },
+    {
+        "id": 6,
+        "nomor": "6",
+        "komoditi": "Padi",
+        "bidang": "Tanaman Pangan"
+    }
+]

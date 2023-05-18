@@ -11,7 +11,7 @@ nav {
   .sidebar {
       position: sticky;
       top: 0;
-      background-color: #ffffff;
+      background-color: tomato;
       /* width: max-content;
       height: max-content; */
       height: 100%;
@@ -24,7 +24,7 @@ nav {
     /* top: 50px; */
     background-color: #ffffff;
     display: grid;
-    width: 200px;
+    width: 100%;
     height: 100%;
     /* overflow-y: hidden; */
   }
@@ -57,25 +57,25 @@ nav {
       margin-bottom: 0px;
     }
     
-    .navbar ul li:last-child {
+    /* .navbar ul li:last-child {
       margin:0;
-    }
+    } */
     
-    .navbar ul li:last-child b {
+    /* .navbar ul li:last-child b {
       margin-top: 0;
-    }
+    } */
     
     /* .navbar ul li:last-child a {
       color: #999;
     } */
-    
+/*     
     .navbar ul li:last-child a:hover {
       background-color: #fff;
-    }
+    } */
     
-    .navbar ul li:last-child a img {
+    /* .navbar ul li:last-child a img {
       margin-right: 0px;
-    }
+    } */
     /* Tampilan saat link aktif */
     .navbar ul li a.active {
       background-color:aqua;
@@ -85,9 +85,21 @@ nav {
     /* Tampilan saat link non-aktif */
     .navbar ul li a.disabled {
       opacity: 0.5;
-      pointer-events: none;
+      /* pointer-events: none; */
       /* style lain yang diinginkan */
     }
     .dropdown-menu{
       width: 150px;
+      margin-left: 20px;
     }
+  
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0px;
+    }
+    li {
+      padding: 3px;
+      margin-left: 10px;
+    }
+  

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './DropdownSektor.css';
 
-
 function DropdownSektor({ selectedSektor, onSektorChange, sektor }) {
   const [isOpen, setIsOpen] = useState(false);
   const editData = JSON.parse(localStorage.getItem('editData'));
@@ -38,6 +37,7 @@ function DropdownSektor({ selectedSektor, onSektorChange, sektor }) {
         </button>
         {isOpen &&
           <div className="dropdown-menu-sektor">
+
             {options.map(option => (
               <div key={option.value} onClick={() => handleOptionSelect(option.value)}>
                 {option.label}

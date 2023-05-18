@@ -14,7 +14,6 @@
     grid-template-areas: 
       " dropdown-kecamatan cari-btn"; */
   }
-  
   .dropdown-sektor{
     margin-right: 0;
     /* background-color: tomato; */
@@ -54,6 +53,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   
+
   .dropdown-menu-sektor div {
     cursor: pointer;
     display: block;
@@ -66,3 +66,4 @@
   .dropdown-menu div:hover {
     background-color: #4692FD;
   }
+
