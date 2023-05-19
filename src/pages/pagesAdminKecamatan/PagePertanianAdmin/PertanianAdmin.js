@@ -12,11 +12,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 const PertanianAdmin = () => {
+    const [selectedBidang, setSelectedBidang] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
     const handleClick = (event) =>{
         console.log(event);
+    }
+
+    const handleBidangChange = (bidang) => {
+        setSelectedBidang(bidang);
     }
 
     useEffect(() => {
@@ -51,9 +56,8 @@ const PertanianAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Pertanian</h3></div>
-                <DropdownKecamatan/>
-                <PertanianCategory/>
-                <DataPertanian/>
+                <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={setSelectedBidang}/>
+                <DataPertanian bidang={selectedBidang}/>
                 <Link to='/tambahDataPertanian'>
                     <Button className="tambahDataButton" onClick={handleClick}>
                         Tambah Data

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./PageInputDataPertanian.css";
 import SidebarAdmin from '../../../../components/Sidebar/SidebarAdmin';
 import HeaderAdmin from '../../../../components/Header/HeaderAdmin';
@@ -8,7 +8,7 @@ import InputFormPertanian from "../../../../utils/Pertanian/InputFormPertanian";
 import LogoApp from '../../../../components/LogoApp/LogoApp';
 import DropdownBidang from "../../../../components/Dropdown/DropdownBidang/DropdownBidang";
 import checkTokenExpiration from '../../../../utils/checkTokenExpiration';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const PageInputDataPertanian= () => {
@@ -16,6 +16,9 @@ const PageInputDataPertanian= () => {
     const token = localStorage.getItem('token');
     const [selectedBidang, setSelectedBidang] = useState("");
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
+    const [dataPertanian, setDataPertanian] = useState([]);
+    //const editData = JSON.parse(localStorage.getItem('editData'));
+    
 
     const handleBidangChange = (value) => {
         setSelectedBidang(value);
@@ -63,6 +66,28 @@ const PageInputDataPertanian= () => {
         console.log(event);
     }
 
+    async function fetchDataPertanianById(id) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get(`http://localhost:8000/api/Pertanian/${id}`)
+            .then((response) => {
+                setDataPertanian(response.data.pertanian)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const dataId = searchParams.get('id');
+        if (dataId) {
+            fetchDataPertanianById(dataId);
+        } else {
+            setDataPertanian(false); //
+        }
+        
+    }, []);
+
     useEffect(() => {
         if(!token) {
             navigate('/login')
@@ -77,6 +102,7 @@ const PageInputDataPertanian= () => {
             navigate('/login');
         }
     })
+  
     return(
         <div className='container'>
             <div className='logo'>
@@ -96,14 +122,14 @@ const PageInputDataPertanian= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pertanian'>
-                    <DropdownBidang selectedBidang={selectedBidang} onBidangChange={handleBidangChange}/>
+                    <DropdownBidang selectedBidang={selectedBidang} onBidangChange={handleBidangChange} bidang={dataPertanian.bidang}/>
                     <DropdownKomoditi selectedKomoditi={selectedKomoditi}
                         onKomoditiChange={handleKomoditiChange}
-                        komoditiOptions={komoditiOptions}/>
+                        komoditiOptions={komoditiOptions} komoditi={dataPertanian.komoditi}/>
                 </div>
                 <div className='cover_tambah_data_pertanian'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPertanian bidang={selectedBidang} komoditi={selectedKomoditi}/>
+                    <InputFormPertanian bidang={selectedBidang} komoditi={selectedKomoditi} editData={dataPertanian}/>
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 import { getTablePerindustrian } from "../../../utils/Perindustrian/TablePerindustrian";
 import dataPerindustrian from "../../../config/Perindustrian/dataPerindustrian.json";
 import axios from "axios";
 // import "./DataPertanian.css";
 const DataPerindustrian = () => {
 
-    const [tablePerindustrian, setDataPerindustrian] = useState([]);const token = localStorage.getItem("token");
+    const [tablePerindustrian, setDataPerindustrian] = useState([]);
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         async function fetchDataPerindustrian() {
@@ -16,7 +19,7 @@ const DataPerindustrian = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PerindustrianByKecamatan');
+                const response = await axios.get('http://localhost:8000/api/PerindustrianByUser');
                 data = response.data;
                 localStorage.setItem('dataPerindustrian', JSON.stringify(data));
             }
@@ -27,7 +30,7 @@ const DataPerindustrian = () => {
     return(
         <div className="container-table">
             <DataTable
-                columns={getTablePerindustrian()}
+                columns={getTablePerindustrian(navigate)}
                 data={tablePerindustrian}
             />
         </div>

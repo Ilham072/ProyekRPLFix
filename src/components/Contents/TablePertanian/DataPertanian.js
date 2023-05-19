@@ -3,12 +3,14 @@ import DataTable from "react-data-table-component";
 import { getTablePertanian } from "../../../utils/Pertanian/TablePertnian";
 import dataPertanian from "../../../config/pertanian/dataPertanian.json"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./DataPertanian.css";
 
-const DataPertanian = () => {
+const DataPertanian = ({bidang}) => {
 
     const [tablePertanian, setDataPertanian] = useState([]);
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchDataPertanian() {
@@ -18,7 +20,7 @@ const DataPertanian = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PertanianByKecamatan');
+                const response = await axios.get('http://localhost:8000/api/PertanianByUser');
                 data = response.data;
                 localStorage.setItem('dataPertanian', JSON.stringify(data));
             }
@@ -26,10 +28,29 @@ const DataPertanian = () => {
         }
         fetchDataPertanian();
     }, []);
+
+    useEffect(() => {
+        if (bidang) {
+            async function fetchDataPertanianByBidang() {
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                const response = await axios.get(`http://localhost:8000/api/PertanianByUser?bidang=${bidang}`);
+                const data = response.data;
+                setDataPertanian(data);
+            }
+            fetchDataPertanianByBidang();
+        } else {
+            const storedData = localStorage.getItem('dataPertanian');
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                setDataPertanian(data)
+            }
+        }
+
+    }, [bidang])
     return(
         <div className="container-table">
             <DataTable
-                columns={getTablePertanian()}
+                columns={getTablePertanian(navigate)}
                 data={tablePertanian}
             />
         </div>

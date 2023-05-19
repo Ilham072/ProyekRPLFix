@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DropdownBidang.css';
 
 
-function DropdownBidang({ selectedBidang, onBidangChange }) {
+function DropdownBidang({ selectedBidang, onBidangChange, bidang=""}) {
   const [isOpen, setIsOpen] = useState(false);
+  //const editData = JSON.parse(localStorage.getItem('editData'));
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -13,6 +14,13 @@ function DropdownBidang({ selectedBidang, onBidangChange }) {
     onBidangChange(selectedValue);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    
+    if (bidang && !selectedBidang) {
+      onBidangChange(bidang);
+    }
+  }, [bidang, selectedBidang]);
 
   const options = [
     { value: "Tanaman Pangan", label: "Tanaman Pangan" },

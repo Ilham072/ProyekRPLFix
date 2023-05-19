@@ -4,7 +4,7 @@ import { getTableBerandaPariwisata } from "../../../utils/Pariwisata/TableBerand
 import dataPariwisata from "../../../config/Pariwisata/dataPariwisata.json";
 import axios from 'axios';
 // import "./DataPertanian.css";
-const DataBerandaPariwisata = ({kecamatan}) => {
+const DataBerandaPariwisata = ({kecamatan, jenis_wisata}) => {
     const token = localStorage.getItem('token');
     const [tableParwisata, setDataPariwisata] = useState([]);
 
@@ -26,22 +26,34 @@ const DataBerandaPariwisata = ({kecamatan}) => {
     }, []);
 
     useEffect(() => {
-        if (kecamatan) {
-            async function fetchDataByKecamatan() {
-                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/Pariwisata?kecamatan=${kecamatan}`);
-                const data = response.data;
-                setDataPariwisata(data);
-            }
-            fetchDataByKecamatan();
-        } else {
+        async function fetchDataByKecamatan() {
+          if (kecamatan && jenis_wisata) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            const response = await axios.get(`http://localhost:8000/api/Pariwisata?kecamatan=${kecamatan}&jenis_wisata=${jenis_wisata}`);
+            const data = response.data;
+            setDataPariwisata(data);
+          } else if (kecamatan) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            const response = await axios.get(`http://localhost:8000/api/Pariwisata?kecamatan=${kecamatan}`);
+            const data = response.data;
+            setDataPariwisata(data);
+          } else if (jenis_wisata) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            const response = await axios.get(`http://localhost:8000/api/Pariwisata?jenis_wisata=${jenis_wisata}`);
+            const data = response.data;
+            setDataPariwisata(data);
+          } else {
             const storedData = localStorage.getItem('tablePariwisata');
             if (storedData) {
-                const data = JSON.parse(storedData);
-                setDataPariwisata(data);
+              const data = JSON.parse(storedData);
+              setDataPariwisata(data);
             }
+          }
         }
-    }, [kecamatan]);
+      
+        fetchDataByKecamatan();
+      }, [kecamatan, jenis_wisata]);
+      
     return(
         <div className="container-table">
             <DataTable

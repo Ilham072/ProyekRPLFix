@@ -12,11 +12,16 @@ import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 
 const PertanianBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
+    const [selectedBidang, setSelectedBidang] = useState(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
     const handleKecamatanChange = (value) => {
         setSelectedKecamatan(value);
+    }
+
+    const handleBidangChange = (value) => {
+        setSelectedBidang(value);
     }
 
     const handleClick = (event) =>{
@@ -57,8 +62,8 @@ const PertanianBerandaAdmin = () => {
             <div className='content'>
                 <div><h3>Beranda Pertanian</h3></div>
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
-                <PertanianCategory/>
-                <DataBerandaPertanian kecamatan={selectedKecamatan}/>
+                <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={handleBidangChange}/>
+                <DataBerandaPertanian kecamatan={selectedKecamatan} bidang={selectedBidang} />
                 
             </div>
         {/* <div className='footer'>footer</div> */}
