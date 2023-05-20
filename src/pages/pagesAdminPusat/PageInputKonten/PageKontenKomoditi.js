@@ -30,7 +30,7 @@ const PageKontenKomoditi = () => {
                     <DataKomoditiArtikel/>
                 </div>
                 <div className="tambah-konten-komoditi">
-                    <Link to='/login'>
+                    <Link to='/inputKontenKomoditi'>
                             <Button className="TambahKontenKomoditi">
                               Tambah Konten Komoditi
                             </Button>

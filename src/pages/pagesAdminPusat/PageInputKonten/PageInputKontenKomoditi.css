@@ -1,0 +1,37 @@
+.cover_tambah_konten_komoditi{
+    background-color: white;
+    width: 100%;
+    height: max-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    /* justify-content: center; */
+    padding: 30px;
+    margin-top: 10px;
+    float: left;
+  
+}
+
+.input_tambah_data:focus{
+    outline-color: rgb(32,177,255);
+}
+
+ .cover-konten-komoditi {
+    width: 100%;
+    /* background-color: tomato; */
+    justify-content: space-between;
+    /* background-color: blue; */
+ }
+
+ .content-page-konten-komoditi {
+    /* padding: 20px; */
+    display:inline-flex;
+    width: 100%;
+    /* background-color: tomato; */
+ }
+ 
+ .dropdown-tambah-konten-komoditi {
+    display: flex;
+ }
