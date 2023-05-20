@@ -47,6 +47,7 @@ import EditDataPerindustrian from './pages/pagesAdminKecamatan/PagePerindustrian
 import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/InputDataPariwisata/EditDataPariwisata';
 import PageDataAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageDataAdmin';
 import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin'
+import PageInputKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageInputKontenKomoditi';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -219,6 +220,10 @@ const router = createBrowserRouter([
   {
     path: "/tambahAdmin",
     element: <PageInputAdmin/>,
+  },
+  {
+    path: "/inputKontenKomoditi",
+    element: <PageInputKontenKomoditi/>,
   },
 ]);
 

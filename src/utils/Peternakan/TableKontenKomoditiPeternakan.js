@@ -13,7 +13,7 @@ export function getTableKontenKomoditiPeternakan() {
         },
         {
             name: "Gambar",
-            selector: row => row.gambar,
+            selector: row => <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "100px" }} />,
             sortable: true
         },
         {

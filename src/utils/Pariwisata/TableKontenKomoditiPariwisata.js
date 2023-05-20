@@ -1,4 +1,5 @@
 import { Button } from "../../components/Button/Button";
+
 export function getTableKontenKomoditiPariwisata() {
     return [
         {
@@ -13,7 +14,7 @@ export function getTableKontenKomoditiPariwisata() {
         },
         {
             name: "Gambar",
-            selector: row => row.gambar,
+            selector: row => <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "100px" }} />,
             sortable: true
         },
         {
@@ -25,8 +26,8 @@ export function getTableKontenKomoditiPariwisata() {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
-                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
+                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg" alt="Edit" /></Button>
+                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg" alt="Delete" /></Button>
                 </div>
             ),
             sortable: true

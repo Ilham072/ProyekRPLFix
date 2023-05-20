@@ -50,7 +50,7 @@
   grid-area: content;
   padding-left: 20px;
   padding-right: 30px;
-  margin-left: 20px;
+  /* margin-left: px; */
 }
 
 .footer {
