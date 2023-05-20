@@ -1,0 +1,29 @@
+.form-control {
+    background-color: white;
+    border: none;
+    width: 997px;
+    border-radius: 13px;
+    box-shadow: none;
+    font-size: 14px;
+    padding: 30px;
+    font-family: mulish;
+    border: 1px solid #4692FD;
+
+    
+  }
+  
+  .form-control:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .form-group {
+    margin-bottom: 30px;
+  }
+  
+  /* Style untuk label form */
+  .form-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
