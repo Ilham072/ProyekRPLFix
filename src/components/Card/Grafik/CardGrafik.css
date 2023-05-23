@@ -1,0 +1,58 @@
+.card-cover {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    
+  }
+  
+  .card-header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  /* Styling for chart */
+  .card-body .chart-container {
+    position: relative;
+    width: 100%; /* Adjust the aspect ratio as needed */
+  }
+  
+  
+  /* Styling for chart tooltip */
+  .card-body .chart-container .chartjs-tooltip {
+    opacity: 1;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 6px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .card-body .chart-container .chartjs-tooltip span {
+    font-size: 12px;
+  }
+  
+  /* Styling for chart bars */
+  .card-body .chart-container .chartjs-bar {
+  background-color: rgba(75, 192, 192, 0.6);
+  border-color: rgba(75, 192, 192, 1);
+  border-width: 1px;
+  border-radius: 5px; /* Tambahkan border-radius untuk membuat bar rounded */
+}
+
+  
+  

@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "nama": "Taman Arung Palakka",
+        "pengunjung": 1200
+    },{
+        "id": 2,
+        "nama": "Lapangan Merdeka",
+        "pengunjung": 1120
+    },
+    {
+        "id": 3,
+        "nama": "Stadion Lapatau",
+        "pengunjung": 1090
+    },
+    {
+        "id": 4,
+        "nama": "Tanjung Pallette",
+        "pengunjung": 1000
+    },
+    {
+        "id": 5,
+        "nama": "Goa Mampu",
+        "pengunjung": 968
+    },
+    {
+        "id": 6,
+        "nama": "Bukit Cempalagi",
+        "pengunjung": 907
+    },
+    {
+        "id": 7,
+        "nama": "Goa Mampu",
+        "pengunjung": 872
+    },
+    {
+        "id": 8,
+        "nama": "Pantai Bone Lampe",
+        "pengunjung": 623
+    },
+    {
+        "id": 9,
+        "nama": "Gua Lagorong",
+        "pengunjung": 534
+    },
+    {
+        "id": 10,
+        "nama": "Lagole",
+        "pengunjung": 475
+    }
+]

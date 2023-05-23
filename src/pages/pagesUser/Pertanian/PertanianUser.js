@@ -4,6 +4,7 @@ import Header from "../../../components/Header/Header";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import Komoditi from "../../../utils/Komoditi";
 import komoditiPertanian from "../../../config/pertanian/komoditiPertanian.json";
+import GrafikKomoditiPertanian from "../../../utils/Pertanian/GrafikKomoditiPertanian";
 // import './Pertanian.css'
 
 
@@ -28,6 +29,7 @@ const Pertanian = () => {
         <div className='content'>
           <div><h3>Pertanian</h3></div>
           <Komoditi komoditi={komoditiPertanian}/>
+          
         </div>
         
 

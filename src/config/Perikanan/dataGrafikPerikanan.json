@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "kecamatan": "Barebbo",
+        "volume": 1200
+    },{
+        "id": 2,
+        "kecamatan": "Tanete Riattang",
+        "volume": 1120
+    },
+    {
+        "id": 3,
+        "kecamatan": "Tanete Riattang Barat",
+        "volume": 1090
+    },
+    {
+        "id": 4,
+        "kecamatan": "Tanete Riattang Timur",
+        "volume": 1000
+    },
+    {
+        "id": 5,
+        "kecamatan": "Ponre",
+        "volume": 968
+    },
+    {
+        "id": 6,
+        "kecamatan": "Libureng",
+        "volume": 907
+    },
+    {
+        "id": 7,
+        "kecamatan": "Lappa Riaja",
+        "volume": 872
+    },
+    {
+        "id": 8,
+        "kecamatan": "Ajangale",
+        "volume": 623
+    },
+    {
+        "id": 9,
+        "kecamatan": "Amali",
+        "volume": 534
+    },
+    {
+        "id": 10,
+        "kecamatan": "Cina",
+        "volume": 475
+    }
+]
