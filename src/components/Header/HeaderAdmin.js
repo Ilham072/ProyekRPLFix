@@ -4,10 +4,8 @@ import './Header.css';
 
 const HeaderAdmin = () => {
     return(
-        <header className="header">
-            <div className="judul_web">
-                <h3><b>Digitalisasi Data Sumber Daya Alam</b></h3>
-            </div>
+        <header className="header-container">
+                <h1><b>Digitalisasi Data Sumber Daya Alam</b></h1>
             <div className="btn">
                 <div>
                     {/* <img src={AdminName} /> */}

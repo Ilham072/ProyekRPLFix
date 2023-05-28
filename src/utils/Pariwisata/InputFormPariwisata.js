@@ -4,8 +4,28 @@ import { Button } from '../../components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toTitleCase from '../titleCase.js';
-
+import PopupAdd from '../../components/PopUp/PopupAdd';
 function InputFormPariwisata({jenis_wisata}) {
+
+    const [showPopupAdd, setShowPopupAdd] = useState(false);
+
+  const handleConfirm = () => {
+    // Logika ketika tombol "Ya" ditekan
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+
     const [nama_wisata, setNamaWisata] = useState("");
     const [desa, setDesa] = useState("");
     const [wisatawan, setWisatawan] = useState(0);
@@ -54,9 +74,16 @@ function InputFormPariwisata({jenis_wisata}) {
                 <input id='wisatawan' type='number' value={wisatawan} onChange={(e) => setWisatawan(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton">
+                <Button className="tambahDataButton" onClick={handleButtonClick} >
                     Tambah Data
                 </Button>
+                    {showPopupAdd && (
+                        <PopupAdd
+                            message="Apakah Anda yakin menambah data?"
+                            onConfirm={handleConfirm}
+                            onCancel={handleCancel}
+                        />
+                    )}
             </div>
         </form>
     );

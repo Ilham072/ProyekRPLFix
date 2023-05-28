@@ -1,4 +1,4 @@
-.container {
+/* .container {
     background-color: #424242;
     height: 100vh;
     width: 100%;
@@ -34,14 +34,14 @@
     z-index: 4;
     top: 0;
     /* padding: 10px; */
-  }
+  /* }
   
   .nav {
     background-color: #ffffff;
     grid-area: nav;
     position: sticky;
     /* top: 70px; */
-    width: 100%;
+    /* width: 100%;
     padding: 10px;
   }
   
@@ -51,7 +51,7 @@
     padding-left: 30px;
     padding-right: 30px;
     /* margin-left: 20px; */
-  }
+  /* }
   
   .footer {
     background-color: #ffffff;
@@ -84,4 +84,4 @@
       
       
     }
-  }
+  } */  

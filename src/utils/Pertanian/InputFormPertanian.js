@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, {useState}from 'react';
 import './InputFormPertanian.css';
 import { Button } from '../../components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import PopupAdd from '../../components/PopUp/PopupAdd';
 function InputFormPertanian({bidang, komoditi}) {
+
+    const [showPopupAdd, setShowPopupAdd] = useState(false);
+
+  const handleConfirm = () => {
+    // Logika ketika tombol "Ya" ditekan
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+    
     const [luas_lahan, setLuasLahan] = useState(0);
     const [produksi, setProduksi] = useState(0);
     const [produktivitas, setProduktivitas] = useState(0);
@@ -37,6 +57,8 @@ function InputFormPertanian({bidang, komoditi}) {
         .catch((error) => {
             setValidation(error.response.data);
         })
+
+        
     };
 
     return (
@@ -54,10 +76,18 @@ function InputFormPertanian({bidang, komoditi}) {
                 <input id='produktivitas' type='number' value={produktivitas} onChange={(e) => setProduktivitas(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton">
+                <Button className="tambahDataButton" onClick={handleButtonClick} >
                     Tambah Data
                 </Button>
+                    {showPopupAdd && (
+                        <PopupAdd
+                            message="Apakah Anda yakin menambah data?"
+                            onConfirm={handleConfirm}
+                            onCancel={handleCancel}
+                        />
+                    )}
             </div>
+
         </form>
     );
 }

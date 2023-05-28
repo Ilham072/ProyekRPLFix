@@ -1,0 +1,6 @@
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Mengatur jarak antara elemen-elemen dalam carousel */
+    background-color: tomato;
+  }

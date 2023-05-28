@@ -5,7 +5,7 @@ import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import PertanianCategory from "../../../utils/PertanianCategory";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
 import DataBerandaPertanian from "../../../components/Contents/TablePertanian/DataBerandaPertanian";
-import "./PagePertanian.css";
+// import "./PagePertanian.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
@@ -23,20 +23,20 @@ const PertanianBerandaAdmin = () => {
         console.log(event);
     }
 
-    useEffect(() => {
-        if(!token) {
-            navigate('/login')
-        }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }, []);
+    // useEffect(() => {
+    //     if(!token) {
+    //         navigate('/login')
+    //     }
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // }, []);
 
-    useEffect(() => {
-        const isTokenExpired = checkTokenExpiration();
-        if(isTokenExpired) {
-            localStorage.clear();
-            navigate('/login');
-        }
-    });
+    // useEffect(() => {
+    //     const isTokenExpired = checkTokenExpiration();
+    //     if(isTokenExpired) {
+    //         localStorage.clear();
+    //         navigate('/login');
+    //     }
+    // });
 
     return (
         <div className='container'>

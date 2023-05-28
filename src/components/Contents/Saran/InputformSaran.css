@@ -1,7 +1,7 @@
 .form-control {
     background-color: white;
     border: none;
-    width: 997px;
+    width: 100%;
     border-radius: 13px;
     box-shadow: none;
     font-size: 14px;
@@ -12,6 +12,10 @@
     
   }
   
+  .container-saran {
+    background-color: transparent;
+
+  }
   .form-control:focus {
     outline: none;
     box-shadow: none;
@@ -26,4 +30,9 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  .ButtonTambahSaran{
+      display: flex;
+      flex: 2;
   }

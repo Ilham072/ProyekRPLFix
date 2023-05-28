@@ -41,7 +41,7 @@ const SidebarAdminPusat = () => {
             </Link>
           </li>
           <li>
-            <Link to="/Admin_AdminPusat">
+            <Link to="/dataAdmin">
               <img src="assets/icon/icon_sidebar/icon_admin.svg" /> Admin
             </Link>
           </li>
@@ -81,9 +81,9 @@ const SidebarAdminPusat = () => {
             <img src="assets/icon/icon_sidebar/line1.png" />
           </li>
           <li>
-            <a href="#">
+            <Link to="/saranAdminPusat">
               <img src="assets/icon/icon_sidebar/icon_saran.svg" /> Saran
-            </a>
+            </Link>
           </li>
           <li>
           <a href="#" onClick={logoutHandler}>

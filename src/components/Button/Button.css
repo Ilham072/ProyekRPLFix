@@ -95,3 +95,17 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     
   }
+
+  .ButtonTambahSaran{
+    padding: 15px;
+    width: max-content;
+    height: max-content;
+    margin: 20px;
+    border: none;
+    border-radius: 13px;
+    background-color: #4692FD;
+    color: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    flex: 3;
+  }

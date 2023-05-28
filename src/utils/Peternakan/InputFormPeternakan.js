@@ -3,8 +3,28 @@ import './InputFormPeternakan.css';
 import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import PopupAdd from '../../components/PopUp/PopupAdd';
 function InputFormPeternakan({komoditi}) {
+
+    const [showPopupAdd, setShowPopupAdd] = useState(false);
+
+  const handleConfirm = () => {
+    // Logika ketika tombol "Ya" ditekan
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+
     const [total, setTotal] = useState(0);
     const [kelahiran, setKelahiran] = useState(0);
     const [kematian, setKematian] = useState(0);
@@ -77,9 +97,16 @@ function InputFormPeternakan({komoditi}) {
                 <input id='populasi' type='number' value={populasi} onChange={(e) => setPopulasi(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton">
+                <Button className="tambahDataButton" onClick={handleButtonClick} >
                     Tambah Data
                 </Button>
+                    {showPopupAdd && (
+                        <PopupAdd
+                            message="Apakah Anda yakin menambah data?"
+                            onConfirm={handleConfirm}
+                            onCancel={handleCancel}
+                        />
+                    )}
             </div>
         </form>
     );

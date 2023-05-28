@@ -81,9 +81,9 @@ const SidebarAdmin = () => {
             <img src="assets/icon/icon_sidebar/line1.png" />
           </li>
           <li>
-            <a href="#">
+            <Link to="/saranAdmin">
               <img src="assets/icon/icon_sidebar/icon_saran.svg" /> Saran
-            </a>
+            </Link>
           </li>
           <li>
           <a href="#" onClick={logoutHandler}>

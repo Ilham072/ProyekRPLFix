@@ -1,13 +1,10 @@
 import React from "react";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import Header from "../../../components/Header/Header";
-// import './../AdminPage/BerandaAdmin.css'
-import News from "../../../utils/News";
-import "./Beranda.css";
-import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNew";
-import SidebarNew from "../../../components/Sidebar/SidebarNew";
-import Sidebar from "../../../components/Sidebar/Sidebar";
-const Beranda = () => {
+// import "./Beranda.css";
+import InputFormSaran from "../../../components/Contents/Saran/InputFormSaran";
+import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
+const PageSaranAdminPusat = () => {
     return (
       <div className='container'>
         <div className='logo'>
@@ -21,15 +18,13 @@ const Beranda = () => {
           </div>
         </div>
         <div className='nav'>
-          <Sidebar />
+          <SidebarAdminPusat />
         </div>
         
         <div className='content'>
-          <div><h3>Beranda</h3></div>
+          <div><h3>Saran</h3></div>
             <div className="isi_content">
-                {/* <Carousel/> */}
-                <CarouselNew/>
-                <News/>
+                <InputFormSaran/>
             </div>
         </div>
         
@@ -39,4 +34,4 @@ const Beranda = () => {
     );
 }
 
-export default Beranda;
+export default PageSaranAdminPusat;

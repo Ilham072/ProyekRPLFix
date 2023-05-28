@@ -8,31 +8,30 @@ import { Button }from "../../../components";
 import DataPertanian from "../../../components/Contents/TablePertanian/DataPertanian";
 import { Link } from "react-router-dom";
 import "../AdminKecematan.css";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+// import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import { handleAdd } from "../../../components/PopUp/PopupAdd";
 const PertanianAdmin = () => {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    const handleClick = (event) =>{
-        console.log(event);
-    }
+    
 
-    useEffect(() => {
-        if(!token) {
-            navigate('/login')
-        }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }, []);
+    // useEffect(() => {
+    //     if(!token) {
+    //         navigate('/login')
+    //     }
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // }, []);
 
-    useEffect(() => {
-        const isTokenExpired = checkTokenExpiration();
-        if(isTokenExpired) {
-            localStorage.clear();
-            navigate('/login');
-        }
-    });
+    // useEffect(() => {
+    //     const isTokenExpired = checkTokenExpiration();
+    //     if(isTokenExpired) {
+    //         localStorage.clear();
+    //         navigate('/login');
+    //     }
+    // });
     return (
         <div className='container'>
             <div className='logo'>
@@ -55,7 +54,7 @@ const PertanianAdmin = () => {
                 <PertanianCategory/>
                 <DataPertanian/>
                 <Link to='/tambahDataPertanian'>
-                    <Button className="tambahDataButton" onClick={handleClick}>
+                    <Button className="tambahDataButton" >
                         Tambah Data
                     </Button>
                 </Link>

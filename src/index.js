@@ -47,6 +47,8 @@ import EditDataPariwisata from './pages/pagesAdminKecamatan/PagePariwisataAdmin/
 import PageDataAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageDataAdmin';
 import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin';
 import PageSaranUser from './pages/pagesUser/Saran/PageSaranUser';
+import PageSaranAdmin from './pages/pagesAdminKecamatan/Saran/PageSaranAdmin';
+import PageSaranAdminPusat from './pages/pagesAdminPusat/Saran/PageSaranAdminPusat';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -219,6 +221,14 @@ const router = createBrowserRouter([
   {
     path: "/saran",
     element: <PageSaranUser/>,
+  },
+  {
+    path: "/saranAdmin",
+    element: <PageSaranAdmin/>,
+  },
+  {
+    path: "/saranAdminPusat",
+    element: <PageSaranAdminPusat/>,
   },
 ]);
 

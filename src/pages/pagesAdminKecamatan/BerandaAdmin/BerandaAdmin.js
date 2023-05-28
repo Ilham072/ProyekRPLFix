@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import Carousel from "../../../components/Corousel/CarouselBeranda/Carousel";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import KomoditiCategory from "../../../utils/KomoditiCategory";
 // import './BerandaAdmin.css';
 import checkTokenExpiration from './../../../utils/checkTokenExpiration';
+import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNew";
 const BerandaAdmin = () => {
     const [user, setUser] = useState();
     const navigate = useNavigate();
@@ -25,21 +25,21 @@ const BerandaAdmin = () => {
         })
     }
 
-    useEffect(() => {
-        if(!token) {
-            navigate('/login');
-        }
+    // useEffect(() => {
+    //     if(!token) {
+    //         navigate('/login');
+    //     }
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
-    useEffect(() => {
-        const isTokenExpired = checkTokenExpiration();
-        if(isTokenExpired) {
-            localStorage.clear();
-            navigate('/login');
-        }
-    });
+    // useEffect(() => {
+    //     const isTokenExpired = checkTokenExpiration();
+    //     if(isTokenExpired) {
+    //         localStorage.clear();
+    //         navigate('/login');
+    //     }
+    // });
     return (
         <div className='container'>
             <div className='logo'>
@@ -59,7 +59,7 @@ const BerandaAdmin = () => {
             <div className='content'>
                 <div><h3>Beranda</h3></div>
                 <div className="isi_content">
-                    <Carousel/>
+                    <CarouselNew/>
                     <KomoditiCategory/>
                 </div>
             </div>

@@ -11,7 +11,9 @@ import checkTokenExpiration from '../../../../utils/checkTokenExpiration';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 const PageInputDataPertanian= () => {
+
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [selectedBidang, setSelectedBidang] = useState("");
@@ -63,20 +65,20 @@ const PageInputDataPertanian= () => {
         console.log(event);
     }
 
-    useEffect(() => {
-        if(!token) {
-            navigate('/login')
-        }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }, []);
+    // useEffect(() => {
+    //     if(!token) {
+    //         navigate('/login')
+    //     }
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // }, []);
 
-    useEffect(() => {
-        const isTokenExpired = checkTokenExpiration();
-        if(isTokenExpired) {
-            localStorage.clear();
-            navigate('/login');
-        }
-    })
+    // useEffect(() => {
+    //     const isTokenExpired = checkTokenExpiration();
+    //     if(isTokenExpired) {
+    //         localStorage.clear();
+    //         navigate('/login');
+    //     }
+    // })
     return(
         <div className='container'>
             <div className='logo'>
@@ -107,6 +109,7 @@ const PageInputDataPertanian= () => {
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}
+       
       </div>
         
 
