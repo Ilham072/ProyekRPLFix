@@ -59,7 +59,7 @@ export function getTableBerita(navigateToEdit) {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg" onClick={() => handleEdit(row)}/></Button>
+                    <Button className="btn-edit" onClick={() => handleEdit(row)}><img src="assets/icon/button/button-edit.svg" /></Button>
                     <Button className="btn-delete" onClick={() => deleteHandler(row.id)}><img src="assets/icon/button/button-delete.svg"/></Button>
                 </div>
             ),

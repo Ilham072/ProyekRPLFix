@@ -9,6 +9,7 @@ import checkTokenExpiration from '../../../../utils/checkTokenExpiration';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DropdownPariwisata from '../../../../components/Dropdown/DropdownPariwisata/DropdownPariwisata';
+import DropdownKomoditi from '../../../../components/Dropdown/DropdownKomoditi/DropdownKomoditi';
 
 
 const PageInputDataPariwisata= () => {
@@ -17,10 +18,34 @@ const PageInputDataPariwisata= () => {
 
     const [selectedWisata, setSelectedWisata] = useState("");
     const [dataPariwisata, setDataPariwisata] = useState([]);
+    const [komoditiOptions, setKomoditiOptions] = useState([]);
+    const [selectedKomoditi, setSelectedKomoditi] = useState("");
 
     const handleWisataChange = (value) => {
         setSelectedWisata(value);
     }
+
+    const handleKomoditiChange = (value) => {
+        setSelectedKomoditi(value);
+    }
+
+    const fetchWisata = async (wisata) => {
+        const kecamatan = localStorage.getItem('kecamatan');
+        try {
+          const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pariwisata&bidang=${wisata}&kecamatan=${kecamatan}`);
+          const data = response.data;
+          setKomoditiOptions(data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+    useEffect(() => {
+        if (selectedWisata) {
+            fetchWisata(selectedWisata);
+        }
+        console.log(komoditiOptions);
+    }, [selectedWisata]);
 
     useEffect(() => {
         if(!token) {
@@ -79,6 +104,7 @@ const PageInputDataPariwisata= () => {
                 <h3>Pendataan || Pariwisata || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pariwisata'>
                 <DropdownPariwisata selectedWisata={selectedWisata} onWisataChange={handleWisataChange} pariwisata={dataPariwisata.jenis_wisata}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPariwisata.nama_wisata} pariwisata={true}/>
                 </div>
                 <div className='cover_tambah_data_pariwisata'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

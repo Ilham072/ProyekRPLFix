@@ -1,5 +1,5 @@
 .dropdown-container {
-    position:static;
+    position:relative;
     width: 100%;
     display: flex;
     gap: 10px;
@@ -8,7 +8,7 @@
   .dropdown-kecamatan{
     grid-area: dropdown-kecamatan;
     margin-right: 0;
-    width: 75%;
+    width: 50%;
     padding: 3px;
   }
   
@@ -45,7 +45,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
   
-  .dropdown-menu a:hover {
+  .dropdown-menu div:hover {
     background-color: #4692FD;
   }
 

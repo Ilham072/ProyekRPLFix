@@ -42,4 +42,6 @@
  .dropdown-tambah-data-berita {
     /* background-color: tomato; */
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
  }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './DropdownKomoditi.css';
 
 
-function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, komoditi=""}) {
+function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, komoditi="", pariwisata}) {
   const [isOpen, setIsOpen] = useState(false);
   //const editData = JSON.parse(localStorage.getItem('editData'));
 
@@ -15,6 +15,11 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, 
     onKomoditiChange(selectedValue);
     setIsOpen(false);
   }
+  useEffect(() => {
+    if (!komoditiOptions) {
+      setIsOpen(true);
+    }
+  }, komoditiOptions);
 
   useEffect(() => {
     
@@ -27,14 +32,14 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, 
     <div className="dropdown-container-komoditi">
       <div className='dropdown-komoditi'>
         <button className="dropdown-button-komoditi" onClick={handleDropdownClick}>
-          <span className="dropdown-button-label-komoditi">{selectedKomoditi || "Pilih Komoditi"}</span>
+          <span className="dropdown-button-label-komoditi">{selectedKomoditi ? selectedKomoditi : (pariwisata ? "Pilih Nama Wisata" : "Pilih Komoditi")}</span>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&
           <div className="dropdown-menu-komoditi">
             {komoditiOptions.map(option => (
-              <div key={option.value} onClick={() => handleOptionSelect(option.value)} value={option.value}>
-                {option.label}
+              <div key={option.nama} onClick={() => handleOptionSelect(option.nama)} value={option.nama}>
+                {option.nama}
               </div>
             ))}
           </div>

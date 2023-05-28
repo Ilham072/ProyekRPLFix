@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import "./PageInputDataPertanian.css";
 import SidebarAdmin from '../../../../components/Sidebar/SidebarAdmin';
 import HeaderAdmin from '../../../../components/Header/HeaderAdmin';
@@ -16,9 +16,9 @@ const PageInputDataPertanian= () => {
     const token = localStorage.getItem('token');
     const [selectedBidang, setSelectedBidang] = useState("");
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
+    const [komoditiOptions, setKomoditiOptions] = useState([]);
     const [dataPertanian, setDataPertanian] = useState([]);
-    //const editData = JSON.parse(localStorage.getItem('editData'));
-    
+    //const editData = JSON.parse(localStorage.getItem('editData'));    
 
     const handleBidangChange = (value) => {
         setSelectedBidang(value);
@@ -28,39 +28,22 @@ const PageInputDataPertanian= () => {
         setSelectedKomoditi(value);
     }
 
-    const hortikulturaKomoditi = [
-        { value: "Sayuran", label: "Sayuran" },
-        { value: "Buah-buahan", label: "Buah-buahan" },
-        { value: "Bunga", label: "Bunga" }
-    ];
+    const fetchKomoditi = async () => {
+        if (selectedBidang) {
+            try {
+          const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pertanian&bidang=${selectedBidang}`);
+          const data = response.data;
+          setKomoditiOptions(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        
+      }
 
-    const tanamanPanganKomoditi = [
-        { value: "Padi", label: "Padi" },
-        { value: "Jagung", label: "Jagung" },
-        { value: "Kedelai", label: "Kedelai" }
-    ];
-
-    const perkebunanKomoditi = [
-        { value: "Kelapa", label: "Kelapa" },
-        { value: "Kopi", label: "Kopi" },
-        { value: "Teh", label: "Teh" }
-    ];
-
-    let komoditiOptions;
-
-    switch (selectedBidang) {
-        case "Hortikultura":
-        komoditiOptions = hortikulturaKomoditi;
-        break;
-        case "Tanaman Pangan":
-        komoditiOptions = tanamanPanganKomoditi;
-        break;
-        case "Perkebunan":
-        komoditiOptions = perkebunanKomoditi;
-        break;
-        default:
-        komoditiOptions = [];
-    }
+    useEffect(() => {
+        fetchKomoditi();
+    }, [selectedBidang]);
 
     const handleClick = (event) =>{
         console.log(event);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
@@ -6,9 +6,29 @@ import { Button } from "../../../components";
 import { Link } from "react-router-dom";
 import "./PageKontenKomoditi.css";
 import DataKomoditiArtikel from "../../../components/Contents/Komoditi/DataKomoditiArtikel";
+import checkTokenExpiration from '../../../utils/checkTokenExpiration';
+import { useNavigate, useLocation, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const PageKontenKomoditi = () => {
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
+    
     return (
         <div className='container'>
             <div className='logo'>

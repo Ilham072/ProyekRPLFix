@@ -1,14 +1,33 @@
 import { Button } from "../components";
-export function getTableAdmin() {
+import React from "react";
+import axios from "axios";
+
+export function getTableAdmin(navigateToEdit) {
+    const deleteHandler = async (id) => {
+        const token = localStorage.getItem('token');
+        await axios.delete(`http://localhost:8000/api/Admin/${id}`)
+            .then(() => {
+                console.log('Sukses Menghapus Data Admin');
+                const storedData = localStorage.getItem('dataAdmin');
+                if (storedData) {
+                    localStorage.removeItem('dataAdmin');
+                }
+                window.location.reload(false);
+            })
+    }
+    const handleEdit = (row) => {
+        const queryParam = encodeURIComponent(row.id);
+        navigateToEdit(`/editAdmin?id=${queryParam}`);
+    }
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
             name: "Nama Lengkap",
-            selector: row => row.namaLengkap,
+            selector: row => row.name,
             sortable: true
         },
         {
@@ -30,8 +49,8 @@ export function getTableAdmin() {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit"><img src="assets/icon/button/button-edit.svg"/></Button>
-                    <Button className="btn-delete"><img src="assets/icon/button/button-delete.svg"/></Button>
+                    <Button className="btn-edit" onClick={() => handleEdit(row)}><img src="assets/icon/button/button-edit.svg"/></Button>
+                    <Button className="btn-delete" onClick={() => deleteHandler(row.id)}><img src="assets/icon/button/button-delete.svg"/></Button>
                 </div>
             ),
             sortable: true

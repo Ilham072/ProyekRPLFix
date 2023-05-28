@@ -3,7 +3,7 @@
     display: flex;
     flex: 1;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     background-color: F7F7F7;
     justify-content: left;
     /* background-color: tomato; */
@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 490px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+    width: 100%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
     height: 50px;
     border: none;
     border-radius: 13px;

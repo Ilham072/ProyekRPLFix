@@ -11,58 +11,105 @@ import dataKontenKomoditiPariwisata from "../../../config/Pariwisata/dataKontenK
 import dataKontenKomoditiPeternakan from "../../../config/Peternakan/dataKontenKomoditiPeternakan.json";
 import dataKontenKomoditiPerindustrian from "../../../config/Perindustrian/dataKontenKomoditiPerindustrian.json";
 import dataKontenKomoditiParikanan from "../../../config/Perikanan/dataKontenKomoditiPerikanan.json";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const DataKomoditiArtikel = () => {
-    const [sektor, setSektor] = useState("pertanian");
+    const [sektor, setSektor] = useState("");
+    const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
+    const navigate = useNavigate();
 
-    const handleSektorChange = (event) => {
-        setSektor(event.target.value);
+    const handleSektorChange = (value) => {
+        setSektor(value);
     }
 
-    const renderTable = () => {
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      let data;
+      async function fetchDataKontenKomoditi() {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const url = 'http://localhost:8000/api/Konten Komoditi';
+    const storedData = localStorage.getItem("dataKontenKomoditi");
+    if (storedData) {
+      data = JSON.parse(storedData);
+    } else {
+      const response = await axios.get(url);
+      data = response.data;
+      setDataKontenKomoditi(data);
+      localStorage.setItem('dataKontenKomoditi', JSON.stringify(data));
+    }
+      }
+      fetchDataKontenKomoditi();
+    })
+
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      let data;
+      async function fetchDataKontenKomoditi(sektor) {
+        if (sektor) {
+          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          const response = await axios.get(`http://localhost:8000/api/Konten Komoditi?sektor=${sektor}`);
+          data = response.data;
+          setDataKontenKomoditi(data);
+        } else {
+          const storedData = localStorage.getItem("dataKontenKomoditi");
+          if (storedData) {
+            data = JSON.parse(storedData);
+            setDataKontenKomoditi(data);
+          }
+        }
+      }
+      fetchDataKontenKomoditi(sektor);
+    }, [sektor]);
+
+    const renderTable = (sektor) => {
         switch (sektor) {
-        case "pertanian":
+        case "Pertanian":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPertanian()} data={dataKontenKomoditiPertanian} />
+              <DataTable columns={getTableKontenKomoditiPertanian(navigate)} data={dataKontenKomoditi} />
             </div>
           );
-        case "peternakan":
+        case "Peternakan":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPeternakan()} data={dataKontenKomoditiPeternakan} />
+              <DataTable columns={getTableKontenKomoditiPeternakan(navigate)} data={dataKontenKomoditi} />
             </div>
           );
-        case "perikanan":
+        case "Perikanan":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPerikanan()} data={dataKontenKomoditiParikanan} />
+              <DataTable columns={getTableKontenKomoditiPerikanan(navigate)} data={dataKontenKomoditi} />
             </div>
           );
-        case "perindustrian":
+        case "Perindustrian":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPerindustrian()} data={dataKontenKomoditiPerindustrian} />
+              <DataTable columns={getTableKontenKomoditiPerindustrian(navigate)} data={dataKontenKomoditi} />
             </div>
           );
-        case "pariwisata":
+        case "Pariwisata":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPariwisata()} data={dataKontenKomoditiPariwisata} />
+              <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} />
             </div>
           );
 
           default:
-            return null;
+            return (
+              <div className="konten-komoditi">
+                <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} />
+              </div>
+            );
         }
       };
 
   return (
     <div className='content'>
                 <div><h3>Data</h3></div>
-                <DropdownSektor value={sektor} onChange={handleSektorChange} />
-                <div><h3>Sektor {sektor.charAt(0).toUpperCase() + sektor.slice(1)}</h3></div>
-                {renderTable()}
+                <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange}/>
+                <div><h3>Sektor {sektor ? sektor : ""}</h3></div>
+                {renderTable(sektor)}
             </div>
   );
 };
