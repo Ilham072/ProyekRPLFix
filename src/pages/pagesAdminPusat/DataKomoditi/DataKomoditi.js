@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DataKomoditi.css";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
@@ -15,50 +15,69 @@ import TambahKomoditiPertanian from "../../../components/Card/TambahKomoditi/Tam
 import TambahKomoditiPerikanan from "../../../components/Card/TambahKomoditi/TambahKomoditiPerikanan";
 import TambahKomoditiPerindustrian from "../../../components/Card/TambahKomoditi/TambahKomoditiPerindustrian";
 import TambahKomoditiPariwisata from "../../../components/Card/TambahKomoditi/TambahKomoditiPariwisata";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 
 const DataKomoditi = () => {
-    const [sektor, setSektor] = useState("pertanian");
-    
+    const [sektor, setSektor] = useState("Pertanian");
 
     const handleSektorChange = (event) => {
-        setSektor(event.target.value);
+        setSektor(event);
     }
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
-    const renderTable = () => {
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
+
+    const renderTable = (sektor) => {
         switch (sektor) {
-          case "pertanian":
+          case "Pertanian":
             return (
               <div className="Daftar-komoditi">
-                <DaftarKomoditiPertanian />
-                <TambahKomoditiPertanian />
+                <DaftarKomoditiPertanian sektor={sektor} />
+                <TambahKomoditiPertanian sektor={sektor}/>
               </div>
             );
-            case "peternakan":
+            case "Peternakan":
                 return (
                   <div className="Daftar-komoditi">
-                    <DaftarKomoditiPeternakan />
-                    <TambahKomoditiPeternakan />
+                    <DaftarKomoditiPeternakan sektor={sektor}/>
+                    <TambahKomoditiPeternakan sektor={sektor}/>
                   </div>
                 );
-            case "perikanan":
+            case "Perikanan":
                 return (
                   <div className="Daftar-komoditi">
-                    <DaftarKomoditiPerikanan />
-                    <TambahKomoditiPerikanan />
+                    <DaftarKomoditiPerikanan sektor={sektor}/>
+                    <TambahKomoditiPerikanan sektor={sektor}/>
                   </div>
                 );
-            case "perindustrian":
+            case "Perindustrian":
                     return (
                     <div className="Daftar-komoditi">
-                        <DaftarKomoditiPerindustrian />
-                        <TambahKomoditiPerindustrian />
+                        <DaftarKomoditiPerindustrian sektor={sektor}/>
+                        <TambahKomoditiPerindustrian sektor={sektor}/>
                     </div>
                     );
-            case "pariwasata":
+            case "Pariwisata":
                         return (
                         <div className="Daftar-komoditi">
-                            <DaftarKomoditiPariwisata />
-                            <TambahKomoditiPariwisata />
+                            <DaftarKomoditiPariwisata sektor={sektor}/>
+                            <TambahKomoditiPariwisata sektor={sektor}/>
                         </div>
                         );
           default:
@@ -85,9 +104,9 @@ const DataKomoditi = () => {
         
             <div className='content'>
                 <div><h3>Data</h3></div>
-                <DropdownSektor value={sektor} onChange={handleSektorChange} />
-                <div><h3>Sektor {sektor.charAt(0).toUpperCase() + sektor.slice(1)}</h3></div>
-                {renderTable()}
+                <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange} />
+                <div><h3>Sektor {sektor? sektor : ""}</h3></div>
+                {renderTable(sektor)}
             </div>
         {}
       </div>

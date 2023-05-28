@@ -27,7 +27,7 @@ const Login = () => {
     await axios.post('http://localhost:8000/api/login', formData)
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        console.log(response.data);
+        localStorage.setItem('kecamatan', response.data.user.kecamatan);
         if (response.data.role === "kecamatan"){
           navigate('/berandaAdmin');
         } else if (response.data.role === "pusat") {

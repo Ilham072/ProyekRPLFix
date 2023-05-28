@@ -44,7 +44,7 @@ const DataPariwisata = ({jenis_wisata}) => {
                 setDataPariwisata(data)
             }
         }
-    });
+    }, [jenis_wisata]);
 
     return(
         <div className="container-table">

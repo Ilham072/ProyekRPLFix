@@ -14,10 +14,6 @@ const PageDataBerita = () => {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    const handleClick = (event) =>{
-        console.log(event);
-    }
-
     useEffect(() => {
         if(!token) {
             navigate('/login')

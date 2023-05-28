@@ -63,7 +63,7 @@ const PageInputBerita= () => {
         if (dataId) {
             fetchDataBeritaById(dataId);
         } else {
-            setDataBerita(false); //
+            setDataBerita(false); 
         }
         
     }, []);

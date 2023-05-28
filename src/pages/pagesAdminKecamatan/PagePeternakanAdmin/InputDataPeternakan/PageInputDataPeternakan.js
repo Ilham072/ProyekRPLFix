@@ -16,22 +16,22 @@ const PageInputDataPeternakan= () => {
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
     const [dataPeternakan, setDataPeternakan] = useState([]);
     const editData = JSON.parse(localStorage.getItem('editData'));
+    const [komoditiOptions, setKomoditiOptions] = useState([]);
 
     const handleKomoditiChange = (value) => {
         setSelectedKomoditi(value);
     }
 
-    const peternakanKomoditi = [
-        {value: 'Sapi', label: 'Sapi'},
-        {value: 'Kambing', label: 'Kambing'},
-        {value: 'Ayam', label: 'Ayam'},
-        {value: 'Bebek', label: 'Bebek'},
-    ];
+    async function fetchKomoditi() {
+        const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Peternakan');
+        const data = response.data;
+        setKomoditiOptions(data);
+    } 
 
-    const handleClick = (event) =>{
-        console.log(event);
-    }
-
+    useEffect(() => {
+        fetchKomoditi();
+    }, []);
+    
     useEffect(() => {
         if(!token) {
             navigate('/login')
@@ -88,7 +88,7 @@ const PageInputDataPeternakan= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-peternakan'>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={peternakanKomoditi} komoditi={dataPeternakan.komoditi}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPeternakan.komoditi}/>
                 </div>
                 <div className='cover_tambah_data_peternakan'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

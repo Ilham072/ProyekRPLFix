@@ -41,7 +41,7 @@ const SidebarAdminPusat = () => {
             </Link>
           </li>
           <li>
-            <Link to="/Admin_AdminPusat">
+            <Link to="/dataAdmin">
               <img src="assets/icon/icon_sidebar/icon_admin.svg" /> Admin
             </Link>
           </li>

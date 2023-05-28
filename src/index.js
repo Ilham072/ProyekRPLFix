@@ -246,7 +246,15 @@ const router = createBrowserRouter([
     element: <PageInputAdmin/>,
   },
   {
+    path: "/editAdmin",
+    element: <PageInputAdmin/>,
+  },
+  {
     path: "/inputKontenKomoditi",
+    element: <PageInputKontenKomoditi/>,
+  },
+  {
+    path: "/editKontenKomoditi",
     element: <PageInputKontenKomoditi/>,
   },
 ]);
