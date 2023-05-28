@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './DropdownKecamatan.css';
 
 
-function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
+function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [dataKecamatan, setDataKecamatan] = useState([]);
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
   }
@@ -14,12 +15,22 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
     setIsOpen(false);
   }
 
-  const options = [
-    {value: "Tanete Riattang", label: "Tanete Riattang"},
-    {value: "Bambonge", label: "Bambonge"},
-    {value: "Bengo", label: "Bengo"},
-  ];
+  useEffect(() => {
+    async function fetchDataKecamatan() {
+      let data;
+      const response = await axios.get('http://localhost:8000/api/Kecamatan');
+      data = response.data;
+      setDataKecamatan(data);
+    }
+    fetchDataKecamatan();
+  }, []);
 
+  useEffect(() => {
+    if (kecamatan && !selectedKecamatan) {
+      onKecamatanChange(kecamatan);
+    }
+  }, [kecamatan, selectedKecamatan]);
+  
   return (
     <div className="dropdown-container">
       <div className='dropdown-kecamatan'>
@@ -29,9 +40,9 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange}) {
         </button>
         {isOpen &&
           <div className="dropdown-menu-kecamatan">
-            {options.map(option => (
-              <div key={option.value} onClick={() => handleOptionSelect(option.label)}>
-                {option.label}
+            {dataKecamatan.map(option => (
+              <div key={option.kecamatan} onClick={() => handleOptionSelect(option.kecamatan)}>
+                {option.kecamatan}
               </div>
             ))}
           </div>

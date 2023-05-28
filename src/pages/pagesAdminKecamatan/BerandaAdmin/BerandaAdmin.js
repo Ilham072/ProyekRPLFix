@@ -17,11 +17,7 @@ const BerandaAdmin = () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         await axios.get('http://localhost:8000/api/adminkecamatan')
         .then((response) => {
-            setUser(response.data);
-            // const decodeToken = jwt.decode(token);
-            //console.log(decoded);
-            // console.log(decodeToken);
-            console.log(response.data);
+            setUser(response.data.kecamatan);
         })
     }
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import Header from "../../../components/Header/Header";
 import Sidebar from "../../../components/Sidebar/Sidebar";
@@ -10,6 +11,17 @@ import GrafikKomoditiPertanian from "../../../utils/Pertanian/GrafikKomoditiPert
 
 
 const Pertanian = () => {
+  const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
+  useEffect(() => {
+    async function fetchDataKontenKomoditi() {
+      let data;
+      const response = await axios.get('http://localhost:8000/api/Konten Komoditi?sektor=Pertanian');
+      data = response.data;
+      setDataKontenKomoditi(data);
+    }
+    fetchDataKontenKomoditi();
+  }, []);
+
     return (
         <div className='container'>
         <div className='logo'>
@@ -28,6 +40,7 @@ const Pertanian = () => {
         
         <div className='content'>
           <div><h3>Pertanian</h3></div>
+
           <Komoditi komoditi={komoditiPertanian}/>
           
         </div>

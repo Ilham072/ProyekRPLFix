@@ -2,7 +2,11 @@ import React from "react";
 import kategoriPariwisata from "../config/Pariwisata/kategoriPariwisata.json";
 import CardCategory from "../components/Card/CardCategory/Cardcategory";
 
-const PariwisataCategory = () => {
+const PariwisataCategory = ({selectedCategory, onCategoryChange}) => {
+    const handleCategorySelect = (category) => {
+        onCategoryChange(category);
+    };
+    
     return (
         <div style={
             {
@@ -13,7 +17,7 @@ const PariwisataCategory = () => {
             {
                  kategoriPariwisata && kategoriPariwisata.map(item => {
                     return (
-                        <CardCategory key={item.id} category={item}/>
+                        <CardCategory key={item.id} category={item} onClick={() => handleCategorySelect(item.name)}/>
                     )
                 })
             }

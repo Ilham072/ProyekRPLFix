@@ -14,20 +14,22 @@ const PageInputDataPerikanan= () => {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
+    const [dataPerikanan, setDataPerikanan] = useState([]);
+    const [komoditiOptions, setKomoditiOptions] = useState([]);
 
     const handleKomoditiChange = (value) => {
         setSelectedKomoditi(value);
     }
 
-    const perikananKomoditi = [
-        {value: 'Udang Windu', label: 'Udang Windu'},
-        {value: 'Kepiting Bakau', label: 'Kepiting Bakau'},
-        {value: 'Cakalang', label: 'Cakalang'},
-    ];
+    async function fetchKomoditi() {
+        const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Perikanan');
+        const data = response.data;
+        setKomoditiOptions(data);
+    } 
 
-    const handleClick = (event) =>{
-        console.log(event);
-    }
+    useEffect(() => {
+        fetchKomoditi();
+    }, []);
 
     useEffect(() => {
         if(!token) {
@@ -43,6 +45,29 @@ const PageInputDataPerikanan= () => {
             navigate('/login');
         }
     });
+
+    async function fetchDataPerikananById(id) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.get(`http://localhost:8000/api/Perikanan/${id}`)
+            .then((response) => {
+                setDataPerikanan(response.data.perikanan)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const dataId = searchParams.get('id');
+        console.log(dataId)
+        if (dataId) {
+            fetchDataPerikananById(dataId);
+        } else {
+            setDataPerikanan(false);
+        }   
+    }, []);
+
     return(
         <div className='container'>
             <div className='logo'>
@@ -62,11 +87,11 @@ const PageInputDataPerikanan= () => {
             <div className='content'>
                 <h3>Pendataan || Petertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-perikanan'>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={perikananKomoditi}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPerikanan.komoditi}/>
                 </div>
                 <div className='cover_tambah_data_perikanan'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPerikanan komoditi={selectedKomoditi}/>
+                    <InputFormPerikanan komoditi={selectedKomoditi} editData={dataPerikanan}/>
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}

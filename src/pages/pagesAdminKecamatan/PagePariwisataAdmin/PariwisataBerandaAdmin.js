@@ -13,11 +13,18 @@ import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 
 const PariwisataBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
+    const [selectedJenisWisata, setSelectedJenisWisata] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
     const handleKecamatanChange = (value) => {
         setSelectedKecamatan(value);
+    }
+
+    const handleJenisWisataChange = (value) => {
+        const jenis_wisata = value.substring(value.indexOf(" ") + 1);
+        console.log(jenis_wisata)
+        setSelectedJenisWisata(jenis_wisata);
     }
 
     useEffect(() => {
@@ -53,8 +60,8 @@ const PariwisataBerandaAdmin = () => {
             <div className='content'>
                 <div><h3>Beranda Pariwisata</h3></div>
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
-                <PariwisataCategory/>
-                <DataBerandaPariwisata kecamatan={selectedKecamatan}/>
+                <PariwisataCategory selectedCategory={selectedJenisWisata} onCategoryChange={handleJenisWisataChange}/>
+                <DataBerandaPariwisata kecamatan={selectedKecamatan} jenis_wisata={selectedJenisWisata}/>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

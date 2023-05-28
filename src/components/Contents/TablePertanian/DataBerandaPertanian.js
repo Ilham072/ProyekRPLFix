@@ -4,7 +4,7 @@ import { getTableBerandaPertanian } from "../../../utils/Pertanian/TableBerandaP
 import axios from "axios";
 import dataPertanian from "../../../config/pertanian/dataPertanian.json";
 import "./DataPertanian.css";
-const DataBerandaPertanian = ({kecamatan}) => {
+const DataBerandaPertanian = ({kecamatan, bidang}) => {
     const [tablePertanian, setDataPertanian] = useState([]);
     const token = localStorage.getItem('token');
 
@@ -23,25 +23,37 @@ const DataBerandaPertanian = ({kecamatan}) => {
             setDataPertanian(data);
         }
         fetchDataPertanian();
-    }, [])
-
+    }, []);
+    
     useEffect(() => {
-        if (kecamatan) {
-            async function fetchDataByKecamatan() {
+        async function fetchDataByKecamatan() {
+            if (kecamatan && bidang) {
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                const response = await axios.get(`http://localhost:8000/api/Pertanian?kecamatan=${kecamatan}&bidang=${bidang}`);
+                const data = response.data;
+                setDataPertanian(data);
+            } else if (kecamatan) {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 const response = await axios.get(`http://localhost:8000/api/Pertanian?kecamatan=${kecamatan}`);
                 const data = response.data;
                 setDataPertanian(data);
-            }
-            fetchDataByKecamatan();
-        } else {
-            const storedData = localStorage.getItem('tablePertanian');
-            if (storedData) {
-                const data = JSON.parse(storedData);
+            } else if (bidang) {
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                const response = await axios.get(`http://localhost:8000/api/Pertanian?bidang=${bidang}`);
+                const data = response.data;
                 setDataPertanian(data);
+            } else {
+                const storedData = localStorage.getItem('tablePertanian');
+                if (storedData) {
+                    const data = JSON.parse(storedData);
+                    setDataPertanian(data);
+                }
             }
         }
-    }, [kecamatan]);
+    
+        fetchDataByKecamatan();
+    }, [kecamatan, bidang]);
+    
 
     return(
         <div className="container-table">

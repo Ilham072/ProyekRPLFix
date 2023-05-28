@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toTitleCase from './titleCase.js';
 
-function InputFormBerita({sektor, kecamatan}) {
+function InputFormBerita({sektor, kecamatan, editData}) {
     const [judul, setJudul] = useState("");
     const [isi, setIsi] = useState("");
     const [gambar, setGambar] = useState(null);
@@ -15,6 +15,13 @@ function InputFormBerita({sektor, kecamatan}) {
 
     const history = useNavigate();
     const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setJudul(editData.judul);
+            setIsi(editData.isi);
+        }
+    }, [editData])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,20 +35,30 @@ function InputFormBerita({sektor, kecamatan}) {
         formData.append('gambar', gambar);
         formData.append('isi', isi);
 
+        const url = editData
+      ? `http://localhost:8000/api/Konten Berita/${editData.id}`
+      : 'http://localhost:8000/api/Konten Berita';
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-        await axios.post('http://localhost:8000/api/Konten Berita', formData)
-        .then(() => {
-            console.log('Sukses Menambahkan Konten Berita');
-            const storedData = localStorage.getItem('tableKontenBerita');
-            if (storedData) {
-                localStorage.removeItem('tableKontenBerita');
+
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Konten Berita');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data  Konten Berita');
             }
-            history('/berita')
-        })
-        .catch((error) => {
+
+            const storedData = localStorage.getItem('dataKontenBerita');
+            if (storedData) {
+                localStorage.removeItem('dataKontenBerita')
+            }
+            history('/berita');
+        } catch (error) {
             setValidation(error.response.data);
-        })
+        }
     };
 
     const handleGambarChange = (e) => {
@@ -78,11 +95,11 @@ function InputFormBerita({sektor, kecamatan}) {
                         height: 'auto',
                         resize: 'vertical',
                     }}
-                    rows={Math.min(20, isi.split('\n').length)}/>
+                    rows={Math.min(20, isi?.split('\n').length)}/>
             </div>
             <div className='button-tambah-berita'>
                 <Button className='ButtonTambahBerita' type='submit'>
-                    Tambah Berita
+                {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
             </div>
         </form>

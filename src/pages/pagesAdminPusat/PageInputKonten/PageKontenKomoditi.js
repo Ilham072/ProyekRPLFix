@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState, useEffect, useRef } from 'react';
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
@@ -11,7 +12,29 @@ import GrafikKomoditiPeternakan from "../../../utils/Peternakan/GrafikKomoditiPe
 import GrafikKomoditiPerindustrian from "../../../utils/Perindustrian/GrafikKomoditiPerindustrian";
 import GrafikKomoditiPerikanan from "../../../utils/Perikanan/GrafikKomoditiPerikanan";
 import GrafikKomoditiPariwisata from "../../../utils/Pariwisata/GrafikKomoditiPariwisata";
+    
+import checkTokenExpiration from '../../../utils/checkTokenExpiration';
+import { useNavigate, useLocation, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
+ const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
+    
 
 const PageKontenKomoditi = () => {
   return (

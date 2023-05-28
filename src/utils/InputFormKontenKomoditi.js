@@ -1,22 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../components';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import toTitleCase from './titleCase.js';
 
-function InputFormKontenKomoditi() {
-    const [judul, setJudul] = useState(0);
-    const [isi, setIsi] = useState(0);
-    const [selectedFile, setSelectedFile] = useState(null);
+function InputFormKontenKomoditi({sektor, komoditi, editData}) {
+    const [isi, setIsi] = useState("");
+    const [gambar, setGambar] = useState(null);
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(selectedFile);
+    const handleIsiChange = (event) => {
+        setIsi(event.target.value);
     };
 
-    const handleFileChange = (e) => {
+    const history = useNavigate();
+    const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setIsi(editData.isi);
+        }
+    }, [editData])
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(komoditi, sektor);
+
+        const token = localStorage.getItem('token');
+        const formData = new FormData();
+
+        formData.append('judul', komoditi);
+        formData.append('sektor', sektor);
+        formData.append('gambar', gambar);
+        formData.append('isi', isi);
+
+        const url = editData
+      ? `http://localhost:8000/api/Konten Komoditi/${editData.id}`
+      : 'http://localhost:8000/api/Konten Komoditi';
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      try {
+        if (editData) {
+            await axios.post(url, formData);
+            console.log('Sukses Mengupdate Data Konten Komoditi');
+            localStorage.removeItem('editData');
+        } else {
+            await axios.post(url, formData);
+            console.log('Sukses Menambahkan Data  Konten Komoditi');
+        }
+
+        const storedData = localStorage.getItem('dataKontenKomoditi');
+        if (storedData) {
+            localStorage.removeItem('dataKontenKomoditi')
+        }
+        history('/kontenKomoditi');
+    } catch (error) {
+        setValidation(error.response.data);
+    }
+
+    };
+
+    const handleGambarChange = (e) => {
         const file = e.target.files[0];
         const reader = new FileReader();
         reader.onload = () => {
-        setSelectedFile(reader.result);
+        setGambar(file);
         };
         reader.readAsDataURL(file);
     };
@@ -27,20 +76,26 @@ function InputFormKontenKomoditi() {
                 <h1>Uraian</h1>
             </div>
             <div className='form-input-row'>
-                    <label htmlFor='judul'>Judul</label>
-                    <input id='judul' type='text' value={judul} onChange={(e) => setJudul(e.target.value)} />
-            </div>
-            <div className='form-input-row'>
-                    <label htmlFor='isi'>Isi</label>
-                    <input id='isi' type='text' value={judul} onChange={(e) => setIsi(e.target.value)} />
-            </div>
-            <div className='form-input-row'>
                 <label htmlFor='fileInput'>Pilih Gambar</label>
-                <input id='fileInput' type='file' onChange={handleFileChange} />
+                <input id='fileInput' type='file' onChange={handleGambarChange}/>
+            </div>
+            <div className='form-input-row'>
+                <label htmlFor='isi'>Isi</label>
+                <textarea
+                    id="isi"
+                    value={isi}
+                    onChange={handleIsiChange}
+                    style={{
+                        minHeight: '20px',
+                        maxHeight: '200px',
+                        height: 'auto',
+                        resize: 'vertical',
+                    }}
+                    rows={Math.min(20, isi?.split('\n').length)}/>
             </div>
             <div className='button-tambah-konten-komoditi'>
                 <Button className='ButtonTambahBerita' type='submit'>
-                    Tambah Konten Komoditi
+                {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
             </div>
         </form>
