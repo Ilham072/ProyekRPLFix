@@ -50,7 +50,6 @@ const PerikananAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Perikanan</h3></div>
-                <DropdownKecamatan/>
                 <DataPerikanan/>
                 <Link to='/tambahDataPerikanan'>
                     <Button className="tambahDataButton">

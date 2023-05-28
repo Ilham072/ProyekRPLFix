@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 import { getTablePerikanan } from "../../../utils/Perikanan/TablePerikanan";
 import dataPerikanan from "../../../config/Perikanan/dataPerikanan.json";
 import axios from "axios";
@@ -7,6 +8,7 @@ import axios from "axios";
 const DataPerikanan = () => {
 
     const [tablePerikanan, setDataPerikanan] = useState([]);
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -17,7 +19,7 @@ const DataPerikanan = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PerikananByKecamatan');
+                const response = await axios.get('http://localhost:8000/api/PerikananByUser');
                 data = response.data;
                 localStorage.setItem('dataPerikanan', JSON.stringify(data));
             }
@@ -28,7 +30,7 @@ const DataPerikanan = () => {
     return(
         <div className="container-table">
             <DataTable
-                columns={getTablePerikanan()}
+                columns={getTablePerikanan(navigate)}
                 data={tablePerikanan}
             />
         </div>

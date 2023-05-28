@@ -13,8 +13,15 @@ import { Link } from "react-router-dom";
 import "../AdminKecematan.css";
 
 const PariwisataAdmin = () => {
+    const [selectedJenisWisata, setSelectedJenisWisata] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+
+    const handleJenisWisataChange = (value) => {
+        const jenis_wisata = value.substring(value.indexOf(" ") + 1);
+        console.log(jenis_wisata)
+        setSelectedJenisWisata(jenis_wisata);
+    }
     
     // useEffect(() => {
     //     const isTokenExpired = checkTokenExpiration();
@@ -48,9 +55,8 @@ const PariwisataAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Pariwisata</h3></div>
-                <DropdownKecamatan/>
-                <PariwisataCategory/>
-                <DataPariwisata/>
+                <PariwisataCategory selectedCategory={selectedJenisWisata} onCategoryChange={handleJenisWisataChange}/>
+                <DataPariwisata jenis_wisata={selectedJenisWisata}/>
                 <Link to='/tambahDataPariwisata'>
                     <Button className="tambahDataButton">
                         Tambah Data

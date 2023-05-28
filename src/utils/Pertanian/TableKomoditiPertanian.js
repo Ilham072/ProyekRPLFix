@@ -1,22 +1,37 @@
 import React, { useState } from "react";
 import { Button } from "../../components";
 import PopupDeleted from "../../components/PopUp/PopupDeleted";
-
+import axios from "axios";
 
 
 const TableKomoditiPertanian = () => {
+
+    const deleteHandler = async (id) => {
+        const token = localStorage.getItem('token');
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        await axios.delete(`http://localhost:8000/api/Komoditi/${id}`)
+            .then(() => {
+                console.log('Sukses Menghapus Data Komoditi');
+                const storedData = localStorage.getItem('dataKomoditi');
+                if (storedData) {
+                    localStorage.removeItem('dataKomoditi');
+                }
+                window.location.reload(false);
+            })
+    }
     
     const [showPopupDeleted, setShowPopupDeleted] = useState(false);
 
     const handleConfirm = () => {
         // Logika ketika tombol "Ya" ditekan
-        console.log("Data telah ditambahkan.");
+        deleteHandler(row.id)
+        console.log("Data telah dihapus.");
         setShowPopupDeleted(false);
     };
 
     const handleCancel = () => {
         // Logika ketika tombol "Tidak" ditekan
-        console.log("Batal menambahkan data.");
+        console.log("Batal menghapus data.");
         setShowPopupDeleted(false);
     };
 
@@ -24,15 +39,16 @@ const TableKomoditiPertanian = () => {
         // Logika ketika tombol utama ditekan
         setShowPopupDeleted(true);
     };
+
     return [
         {
             name: "No",
-            selector: row => row.nomor,
+            cell: (row, index) => <div>{index + 1}</div>,
             sortable: true
         },
         {
             name: "Komoditi Pertanian",
-            selector: row => row.komoditi,
+            selector: row => row.nama,
             sortable: true
         },
         {

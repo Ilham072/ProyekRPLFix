@@ -8,30 +8,35 @@ import { Button }from "../../../components";
 import DataPertanian from "../../../components/Contents/TablePertanian/DataPertanian";
 import { Link } from "react-router-dom";
 import "../AdminKecematan.css";
-// import axios from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 import { handleAdd } from "../../../components/PopUp/PopupAdd";
 const PertanianAdmin = () => {
+    const [selectedBidang, setSelectedBidang] = useState("");
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
     
+    const handleBidangChange = (bidang) => {
+        setSelectedBidang(bidang);
+    }
 
-    // useEffect(() => {
-    //     if(!token) {
-    //         navigate('/login')
-    //     }
-    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // }, []);
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
 
-    // useEffect(() => {
-    //     const isTokenExpired = checkTokenExpiration();
-    //     if(isTokenExpired) {
-    //         localStorage.clear();
-    //         navigate('/login');
-    //     }
-    // });
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
     return (
         <div className='container'>
             <div className='logo'>
@@ -50,9 +55,8 @@ const PertanianAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Pertanian</h3></div>
-                <DropdownKecamatan/>
-                <PertanianCategory/>
-                <DataPertanian/>
+                <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={setSelectedBidang}/>
+                <DataPertanian bidang={selectedBidang}/>
                 <Link to='/tambahDataPertanian'>
                     <Button className="tambahDataButton" >
                         Tambah Data

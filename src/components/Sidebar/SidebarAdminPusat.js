@@ -65,7 +65,7 @@ const SidebarAdminPusat = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/komoditi">
+                <Link to="/kontenKomoditi">
                   <img src="assets/icon/icon_sidebar/icon_komoditi.svg" /> Komoditi
                 </Link>
               </li>

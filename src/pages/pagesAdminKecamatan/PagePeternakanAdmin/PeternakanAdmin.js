@@ -48,7 +48,6 @@ const PeternakanAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Peternakan</h3></div>
-                <DropdownKecamatan/>
                 <DataPeternakan/>
                 <Link to="/tambahDataPeternakan">
                     <Button className="tambahDataButton">

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DropdownPariwisata.css';
 
-function DropdownPariwisata({ selectedWisata, onWisataChange }) {
+function DropdownPariwisata({ selectedWisata, onWisataChange, pariwisata }) {
   const [isOpen, setIsOpen] = useState(false);
+  const editData = JSON.parse(localStorage.getItem('editData'));
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -12,6 +13,12 @@ function DropdownPariwisata({ selectedWisata, onWisataChange }) {
     onWisataChange(selectedValue);
     setIsOpen(false);
   }
+
+  useEffect(() => {
+    if (pariwisata && !selectedWisata) {
+      onWisataChange(pariwisata);
+    }
+  }, [pariwisata, selectedWisata]);
 
   const options = [
     { value: "Wisata Alam", label: "Wisata Alam" },

@@ -1,37 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import './Inputform.css';
 import { Button } from '../../components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toTitleCase from '../titleCase.js';
 import PopupAdd from '../../components/PopUp/PopupAdd';
-function InputFormPariwisata({jenis_wisata}) {
 
+   
+
+
+function InputFormPariwisata({jenis_wisata, editData}) {
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
-    // Logika ketika tombol "Ya" ditekan
-    console.log("Data telah ditambahkan.");
-    setShowPopupAdd(false);
-  };
-
-  const handleCancel = () => {
-    // Logika ketika tombol "Tidak" ditekan
-    console.log("Batal menambahkan data.");
-    setShowPopupAdd(false);
-  };
-
-  const handleButtonClick = () => {
-    // Logika ketika tombol utama ditekan
-    setShowPopupAdd(true);
-  };
-
+    const handleConfirm = () => {
+      // Logika ketika tombol "Ya" ditekan
+      console.log("Data telah ditambahkan.");
+      setShowPopupAdd(false);
+    };
+  
+    const handleCancel = () => {
+      // Logika ketika tombol "Tidak" ditekan
+      console.log("Batal menambahkan data.");
+      setShowPopupAdd(false);
+    };
+  
+    const handleButtonClick = () => {
+      // Logika ketika tombol utama ditekan
+      setShowPopupAdd(true);
+    };
+    
     const [nama_wisata, setNamaWisata] = useState("");
     const [desa, setDesa] = useState("");
     const [wisatawan, setWisatawan] = useState(0);
 
     const history = useNavigate();
     const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setNamaWisata(editData.nama_wisata);
+            setDesa(editData.desa);
+            setWisatawan(editData.wisatawan)
+        }
+    }, [editData])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,19 +55,35 @@ function InputFormPariwisata({jenis_wisata}) {
         formData.append('desa', toTitleCase(desa));
         formData.append('wisatawan', wisatawan);
 
+        const url = editData
+      ? `http://localhost:8000/api/Pariwisata/${editData.id}`
+      : 'http://localhost:8000/api/Pariwisata';
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.post('http://localhost:8000/api/Pariwisata', formData)
-        .then(() => {
-            console.log('Sukses Menambahkan Data Pariwisata');
-            const storedData = localStorage.getItem('tablePariwisata');
-            if (storedData) {
+
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Pariwisata');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Pariwisata');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePariwisata');
+            const storedData = localStorage.getItem('dataPariwisata');
+            if (storedDataBeranda) {
                 localStorage.removeItem('tablePariwisata');
             }
-            history('/adminpariwisata')
-        })
-        .catch((error) => {
+            if (storedData) {
+                localStorage.removeItem('dataPariwisata')
+            }
+            history('/adminpariwisata');
+        } catch (error) {
             setValidation(error.response.data);
-        })
+        }
+
     };
 
     return (
@@ -75,7 +102,7 @@ function InputFormPariwisata({jenis_wisata}) {
             </div>
             <div className='button-add'>
                 <Button className="tambahDataButton" onClick={handleButtonClick} >
-                    Tambah Data
+                    {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd

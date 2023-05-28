@@ -46,7 +46,6 @@ const PerindustrianAdmin = () => {
         
             <div className='content'>
                 <div><h3>Beranda Perindustrian</h3></div>
-                <DropdownKecamatan/>
                 <DataPerindustrian/>
                <div className="button-add2">
                     <Link to='/tambahDataPerindustrian'>

@@ -39,6 +39,7 @@ import DataKomoditi from './pages/pagesAdminPusat/DataKomoditi/DataKomoditi';
 import PageInputBanner from './pages/pagesAdminPusat/PageInputKonten/PageInputBanner';
 import PageDataBerita from './pages/pagesAdminPusat/PageInputKonten/PageDataBerita';
 import PageInputBerita from './pages/pagesAdminPusat/PageInputKonten/PageInputBerita';
+import PageKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageKontenKomoditi';
 import EditDataPertanian from './pages/pagesAdminKecamatan/PagePertanianAdmin/InputDataPertanian/EditDataPertanian';
 import EditDataPerikanan from './pages/pagesAdminKecamatan/PagePerikananAdmin/InputDataPerikanan/EditDataPerikanan';
 import EditDataPeternakan from './pages/pagesAdminKecamatan/PagePeternakanAdmin/InputDataPeternakan/EditDataPeternakan';
@@ -49,6 +50,8 @@ import PageInputAdmin from './pages/pagesAdminPusat/PageDataAdmin/PageInputAdmin
 import PageSaranUser from './pages/pagesUser/Saran/PageSaranUser';
 import PageSaranAdmin from './pages/pagesAdminKecamatan/Saran/PageSaranAdmin';
 import PageSaranAdminPusat from './pages/pagesAdminPusat/Saran/PageSaranAdminPusat';
+import PageInputKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageInputKontenKomoditi';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -135,20 +138,40 @@ const router = createBrowserRouter([
     element: <PageInputDataPertanian/>,
   },
   {
+    path: "/editDataPertanian",
+    element: <PageInputDataPertanian/>
+  },
+  {
     path: "/tambahDataPeternakan",
     element: <PageInputDataPeternakan/>,
+  },
+  {
+    path: "/editDataPeternakan",
+    element: <PageInputDataPeternakan/>
   },
   {
     path: "/tambahDataPerikanan",
     element: <PageInputDataPerikanan/>,
   },
   {
+    path: "/editDataPerikanan",
+    element: <PageInputDataPerikanan/>
+  },
+  {
     path: "/tambahDataPerindustrian",
+    element: <PageInputDataPerindustrian/>,
+  },
+  {
+    path: "/editDataPerindustrian",
     element: <PageInputDataPerindustrian/>,
   },
   {
     path: "/tambahDataPariwisata",
     element: <PageInputDataPariwisata/>,
+  },
+  {
+    path: "/editDataPariwisata",
+    element: <PageInputDataPariwisata/>
   },
   {
     path: "/berandaAdminPusat",
@@ -191,6 +214,14 @@ const router = createBrowserRouter([
     element: <PageInputBerita/>,
   },
   {
+    path: "/editDataBerita",
+    element: <PageInputBerita/>
+  },
+  {
+    path: "/kontenKomoditi",
+    element: <PageKontenKomoditi/>,
+  },
+  {
     path: "/editDataPertanian",
     element: <EditDataPertanian/>,
   },
@@ -229,6 +260,18 @@ const router = createBrowserRouter([
   {
     path: "/saranAdminPusat",
     element: <PageSaranAdminPusat/>,
+  },
+  {
+    path: "/editAdmin",
+    element: <PageInputAdmin/>,
+  },
+  {
+    path: "/inputKontenKomoditi",
+    element: <PageInputKontenKomoditi/>,
+  },
+  {
+    path: "/editKontenKomoditi",
+    element: <PageInputKontenKomoditi/>,
   },
 ]);
 

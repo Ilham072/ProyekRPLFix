@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "kecamatan": "Barebbo",
+        "populasi": 1200
+    },{
+        "id": 2,
+        "kecamatan": "Tanete Riattang",
+        "populasi": 1120
+    },
+    {
+        "id": 3,
+        "kecamatan": "Tanete Riattang Barat",
+        "populasi": 1090
+    },
+    {
+        "id": 4,
+        "kecamatan": "Tanete Riattang Timur",
+        "populasi": 1000
+    },
+    {
+        "id": 5,
+        "kecamatan": "Ponre",
+        "populasi": 968
+    },
+    {
+        "id": 6,
+        "kecamatan": "Libureng",
+        "populasi": 907
+    },
+    {
+        "id": 7,
+        "kecamatan": "Lappa Riaja",
+        "populasi": 872
+    },
+    {
+        "id": 8,
+        "kecamatan": "Ajangale",
+        "populasi": 623
+    },
+    {
+        "id": 9,
+        "kecamatan": "Amali",
+        "populasi": 534
+    },
+    {
+        "id": 10,
+        "kecamatan": "Cina",
+        "populasi": 475
+    }
+]

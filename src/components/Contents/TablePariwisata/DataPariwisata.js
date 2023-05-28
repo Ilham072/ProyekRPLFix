@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 import { getTablePariwisata } from "../../../utils/Pariwisata/TablePariwisata";
 import dataPariwisata from "../../../config/Pariwisata/dataPariwisata.json";
 import axios from "axios";
 // import "./DataPertanian.css";
-const DataPariwisata = () => {
+const DataPariwisata = ({jenis_wisata}) => {
 
     const [tableParwisata, setDataPariwisata] = useState([]);
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
@@ -17,7 +19,7 @@ const DataPariwisata = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PariwisataByKecamatan');
+                const response = await axios.get('http://localhost:8000/api/PariwisataByUser');
                 data = response.data;
                 localStorage.setItem('dataPariwisata', JSON.stringify(data));
             }
@@ -25,10 +27,29 @@ const DataPariwisata = () => {
         }
         fetchDataPariwisata();
     }, []);
+
+    useEffect(() => {
+        if (jenis_wisata) {
+            async function fetchDataPariwisataByJenisWisata() {
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                const response = await axios.get(`http://localhost:8000/api/PariwisataByUser?jenis_wisata=${jenis_wisata}`);
+                const data = response.data;
+                setDataPariwisata(data);
+            }
+            fetchDataPariwisataByJenisWisata();
+        } else {
+            const storedData = localStorage.getItem('dataPariwisata');
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                setDataPariwisata(data)
+            }
+        }
+    }, [jenis_wisata]);
+
     return(
         <div className="container-table">
             <DataTable
-                columns={getTablePariwisata()}
+                columns={getTablePariwisata(navigate)}
                 data={tableParwisata}
             />
         </div>

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './DropdownSektor.css';
 
-
-
-function DropdownSektor({ selectedSektor, onSektorChange }) {
+function DropdownSektor({ selectedSektor, onSektorChange, sektor, pariwisata=true }) {
   const [isOpen, setIsOpen] = useState(false);
+  const editData = JSON.parse(localStorage.getItem('editData'));
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
@@ -15,13 +14,31 @@ function DropdownSektor({ selectedSektor, onSektorChange }) {
     setIsOpen(false);
   }
 
-  const options = [
-    { value: "Pertanian", label: "Pertanian" },
-    { value: "Peternakan", label: "Peternakan" },
-    { value: "Perikanan", label: "Perikanan" },
-    { value: "Perindustrian", label: "Perindustrian"},
-    { value: "Pariwisata", label: "Pariwisata"},
-  ];
+  useEffect(() => {
+    if (sektor && !selectedSektor) {
+      onSektorChange(sektor);
+    }
+  }, [sektor, selectedSektor]);
+
+  let options = [];
+
+  if (pariwisata) {
+    options = [
+      { value: "Pertanian", label: "Pertanian" },
+      { value: "Peternakan", label: "Peternakan" },
+      { value: "Perikanan", label: "Perikanan" },
+      { value: "Perindustrian", label: "Perindustrian"},
+      { value: "Pariwisata", label: "Pariwisata"},
+    ];
+  } else {
+    options = [
+      { value: "Pertanian", label: "Pertanian" },
+      { value: "Peternakan", label: "Peternakan" },
+      { value: "Perikanan", label: "Perikanan" },
+      { value: "Perindustrian", label: "Perindustrian"}
+    ];
+  }
+
 
   return (
     <div className="dropdown-container-sektor">

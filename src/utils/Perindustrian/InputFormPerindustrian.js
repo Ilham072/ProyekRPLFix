@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import './Inputform.css';
 import { Button } from '../../components';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PopupAdd from '../../components/PopUp/PopupAdd';
 
-function InputFormPerindustrian({komoditi}) {
+
+function InputFormPerindustrian({komoditi, editData}) {
 
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
@@ -30,6 +31,12 @@ function InputFormPerindustrian({komoditi}) {
     const [validation, setValidation] = useState([]);
     const history = useNavigate();
 
+    useEffect(() => {
+        if (editData) {
+            setPotensiKandungan(editData.potensi_kandungan);
+        }
+    }, [editData])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -40,30 +47,45 @@ function InputFormPerindustrian({komoditi}) {
         formData.append('komoditi', komoditi);
         formData.append('potensi_kandungan', potensi_kandungan);
 
+        const url = editData
+      ? `http://localhost:8000/api/Perindustrian/${editData.id}`
+      : 'http://localhost:8000/api/Perindustrian';
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.post('http://localhost:8000/api/Perindustrian', formData)
-        .then(() => {
-            console.log('Sukses Menambahkan Data Perindustrian');
-            const storedData = localStorage.getItem('tablePerindustrian');
-            if (storedData) {
+
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Perindustrian');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Perindustrian');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePerindustrian');
+            const storedData = localStorage.getItem('dataPerindustrian');
+            if (storedDataBeranda) {
                 localStorage.removeItem('tablePerindustrian');
             }
-            history('/adminperindustrian')
-        })
-        .catch((error) => {
+            if (storedData) {
+                localStorage.removeItem('dataPerindustrian')
+            }
+            history('/adminperindustrian');
+        } catch (error) {
             setValidation(error.response.data);
-        })
+        }
     };
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
             <div className='form-input-row'>
-                <label htmlFor='volume'>Potensi Kandungan</label>
+                <label htmlFor='potensi_kandungan'>Potensi Kandungan</label>
                 <input id='potensi_kandungan' type='number' value={potensi_kandungan} onChange={(e) => setPotensiKandungan(e.target.value)} />
             </div>
             <div className='button-add'>
                 <Button className="tambahDataButton" onClick={handleButtonClick} >
-                    Tambah Data
+                    {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
