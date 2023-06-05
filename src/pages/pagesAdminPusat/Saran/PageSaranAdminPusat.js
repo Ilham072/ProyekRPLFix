@@ -2,7 +2,6 @@ import React from "react";
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import Header from "../../../components/Header/Header";
 // import "./Beranda.css";
-import InputFormSaran from "../../../components/Contents/Saran/InputFormSaran";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
 import HasilSaran from "../../../components/Contents/Saran/HasilSaran";
 const PageSaranAdminPusat = () => {
