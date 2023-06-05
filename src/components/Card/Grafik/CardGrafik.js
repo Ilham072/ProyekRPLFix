@@ -66,7 +66,7 @@ export default function CardGrafik({ data, title, xLabel, yLabel }) {
     <div className="card-cover">
       <div className="card-body">
         <div className="chart-container">
-          <canvas ref={chartRef}></canvas>
+          <canvas ref={chartRef} height="400"></canvas>
         </div>
       </div>
     </div>

@@ -54,14 +54,16 @@ const PariwisataAdmin = () => {
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Pariwisata</h3></div>
+                <div><h3>Pendataan || Pariwisata</h3></div>
                 <PariwisataCategory selectedCategory={selectedJenisWisata} onCategoryChange={handleJenisWisataChange}/>
                 <DataPariwisata jenis_wisata={selectedJenisWisata}/>
-                <Link to='/tambahDataPariwisata'>
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataPariwisata">
+                        <Button className="tambahDataButton">
+                            Tambah Data
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

@@ -45,6 +45,7 @@ function DropdownSektor({ selectedSektor, onSektorChange, sektor, pariwisata=tru
       <div className='dropdown-sektor'>
         <button className="dropdown-button-sektor" onClick={handleDropdownClick}>
           <span className="dropdown-button-label-sektor">{selectedSektor || "Pilih Sektor"}</span>
+          <img className="dropdown-icon" src='assets/icon/button/buttonDropdown.png'/>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&

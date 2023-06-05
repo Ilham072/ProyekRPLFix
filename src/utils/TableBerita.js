@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../components";
 import axios from "axios";
+import SubTextTable from "./SubTextTable";
 
 export function getTableBerita(navigateToEdit) {
     const deleteHandler = async (id) => {
@@ -52,7 +53,7 @@ export function getTableBerita(navigateToEdit) {
         },
         {
             name: "Isi",
-            selector: row => row.isi,
+            selector: row => {SubTextTable(row.isi)},
             sortable: true
         },
         {

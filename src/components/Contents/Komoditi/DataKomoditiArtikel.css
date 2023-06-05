@@ -1,0 +1,28 @@
+.dropdown-konten-komoditi {
+    width: 100%;
+    display: flex;
+}
+.konten-kooditi {
+    display: flex;
+    flex: 1;
+    overflow-x: auto;
+   
+}
+.konten-komoditi DataTable {
+    width: 100%;
+    max-width: 100%;
+}
+.content-komoditi {
+    display:list-item;
+    width: 100%;
+    list-style: none;
+}
+
+DataTable{
+    border-collapse: separate;
+    overflow-x: hidden;
+}
+
+columns {
+    padding: 5px;
+}

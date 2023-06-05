@@ -47,13 +47,15 @@ const PeternakanAdmin = () => {
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Peternakan</h3></div>
+                <div><h3>Pendataan || Peternakan</h3></div>
                 <DataPeternakan/>
-                <Link to="/tambahDataPeternakan">
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataPeternakan">
+                        <Button className="tambahDataButton">
+                            Tambah Data
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

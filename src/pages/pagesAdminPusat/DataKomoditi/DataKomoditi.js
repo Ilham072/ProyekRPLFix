@@ -104,9 +104,13 @@ const DataKomoditi = () => {
         
             <div className='content'>
                 <div><h3>Data</h3></div>
-                <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange} />
+                <div style={{width: "100%"}}>
+                    <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange} />
+                </div>
                 <div><h3>Sektor {sektor? sektor : ""}</h3></div>
-                {renderTable(sektor)}
+                <div style={{width: "100%"}}>
+                    {renderTable(sektor)}
+                </div>
             </div>
         {}
       </div>

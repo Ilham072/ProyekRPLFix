@@ -26,9 +26,7 @@
 } 
 
  .dropdown-tambah-data-peternakan {
-    width:  100%;
-    /* background-color: tomato; */
-    justify-content: space-between;
+    width:  50%;
     display: flex;
  }
 

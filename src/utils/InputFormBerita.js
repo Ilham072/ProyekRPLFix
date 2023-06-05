@@ -72,9 +72,6 @@ function InputFormBerita({sektor, kecamatan, editData}) {
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
-            <div className='judul-input-banner'>
-                <h3>Uraian</h3>
-            </div>
             <div className='form-input-row'>
                     <label htmlFor='judul'>Judul</label>
                     <input id='judul' type='text' value={judul} onChange={(e) => setJudul(e.target.value)} />
@@ -97,9 +94,9 @@ function InputFormBerita({sektor, kecamatan, editData}) {
                     }}
                     rows={Math.min(20, isi?.split('\n').length)}/>
             </div>
-            <div className='button-tambah-berita'>
+            <div style={{display: "flex", textAlign: "right", width: "100%"}}>
                 <Button className='ButtonTambahBerita' type='submit'>
-                {editData ? 'Ubah Data' : 'Tambah Data'}
+                    {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
             </div>
         </form>

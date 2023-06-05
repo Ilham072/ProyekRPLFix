@@ -1,5 +1,5 @@
 .container-news{
-    background-color: #F7F7F7;
+    background-color: tomato;
     height: 100%;
     width: 100%;
     display: grid;
@@ -13,7 +13,7 @@
       display: grid;
       grid-area: NewsInfo;
       background-color:white;
-      width: 550px;
+      width: 75%;
       height: min-content;
       text-align: justify;
       border-radius: 13px;

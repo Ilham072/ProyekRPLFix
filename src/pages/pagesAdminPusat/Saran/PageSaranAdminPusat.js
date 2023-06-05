@@ -4,6 +4,7 @@ import Header from "../../../components/Header/Header";
 // import "./Beranda.css";
 import InputFormSaran from "../../../components/Contents/Saran/InputFormSaran";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
+import HasilSaran from "../../../components/Contents/Saran/HasilSaran";
 const PageSaranAdminPusat = () => {
     return (
       <div className='container'>
@@ -24,7 +25,7 @@ const PageSaranAdminPusat = () => {
         <div className='content'>
           <div><h3>Saran</h3></div>
             <div className="isi_content">
-                <InputFormSaran/>
+                <HasilSaran/>
             </div>
         </div>
         

@@ -1,10 +1,10 @@
 .container-login{
     height: 100%;
     width: 100%;
-    display: grid;
+    display: flex;
     justify-content: center;
     grid-template: 1fr 5fr/ 6fr 6fr;
-    gap: 0;
+    gap: 80px;
     grid-template-areas: 
         "logoPemda login-image"
         "cover login-image";
@@ -12,31 +12,44 @@
 
 .logoPemda {
     padding: 20px;
+    width: 100%;
+    position: fixed;
+}
+
+.container_form_login{
+    background-color: #ffffff;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 150px;
+    display: flex;
+    flex: 1;
 }
 
 .cover{
     grid-area: cover;
     background-color: #ffffff;
-    width:350px;
-    height:450px;
-    position:relative;
+    width:max-content;
+    height:max-content;
+    position: fixed;
     border-radius: 15px;
     box-shadow: 0 0.5em 0.550em rgba(6, 56, 82, 0.468);
-    display: grid;
+    display: flex;
     flex-direction: column;
-    text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
-    margin-left: 150px;
+    padding: 30px;
+    flex: 1;
 }
 
 .login-image{
     grid-area: login-image;
-    display: grid;
+    display: flex;
     justify-content: right;
+    height: 100%;
     margin-right: 0;
     padding-right: 0;
+    flex: 2;
 }
 
 .page{
@@ -46,8 +59,6 @@
     justify-content: center;
     align-items: center;
 }
-
-
 
 input{
     
@@ -77,11 +88,11 @@ input:focus{
     font-size: 14px;
     font-weight: 600;
     text-align: left;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 }
 
 .login-btn2 button{
-    width: 279px;
+    width: 278px;
     height:45px;
     background-color: rgb(70,146,253);
     display:grid;
@@ -122,7 +133,7 @@ input:focus{
     transform: scale(0);
 }
 
-.login-popup{
+/* .login-popup{
     position:absolute;
     height: 30em;
     width:30em;
@@ -136,4 +147,4 @@ input:focus{
     bottom: 0;
     transform: scale(1);
     transition: 1.5s;
-}
+} */

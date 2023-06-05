@@ -33,6 +33,7 @@ function DropdownBidang({ selectedBidang, onBidangChange, bidang=""}) {
       <div className='dropdown-bidang'>
         <button className="dropdown-button-bidang" onClick={handleDropdownClick}>
           <span className="dropdown-button-label-bidang">{selectedBidang || "Pilih Bidang"}</span>
+          <img className="dropdown-icon" src='assets/icon/button/buttonDropdown.png'/>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&

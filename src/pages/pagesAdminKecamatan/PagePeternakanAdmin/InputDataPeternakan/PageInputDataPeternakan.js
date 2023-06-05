@@ -86,7 +86,7 @@ const PageInputDataPeternakan= () => {
             </div>
         
             <div className='content'>
-                <h3>Pendataan || Petertanian || Tambah Data </h3>
+                <h3>Pendataan || Peternakan || Tambah Data </h3>
                 <div className='dropdown-tambah-data-peternakan'>
                 <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPeternakan.komoditi}/>
                 </div>

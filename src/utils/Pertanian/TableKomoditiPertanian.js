@@ -24,7 +24,7 @@ const TableKomoditiPertanian = () => {
 
     const handleConfirm = () => {
         // Logika ketika tombol "Ya" ditekan
-        deleteHandler(row.id)
+        deleteHandler()
         console.log("Data telah dihapus.");
         setShowPopupDeleted(false);
     };

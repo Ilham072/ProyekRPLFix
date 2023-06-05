@@ -31,6 +31,7 @@ function DropdownPariwisata({ selectedWisata, onWisataChange, pariwisata }) {
       <div className='dropdown-pariwisata'>
         <button className="dropdown-button-pariwisata" onClick={handleDropdownClick}>
           <span className="dropdown-button-label-pariwisata">{selectedWisata || "Pilih Jenis Wisata"}</span>
+          <img className="dropdown-icon" src='assets/icon/button/buttonDropdown.png'/>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&

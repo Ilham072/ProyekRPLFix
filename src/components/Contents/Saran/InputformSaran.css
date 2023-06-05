@@ -14,6 +14,7 @@
   
   .container-saran {
     background-color: transparent;
+    width: 100%;
 
   }
   .form-control:focus {
@@ -35,4 +36,9 @@
   .ButtonTambahSaran{
       display: flex;
       flex: 2;
+  }
+
+  .container-button-tambah-data {
+    display: flex;
+    text-align: right;
   }

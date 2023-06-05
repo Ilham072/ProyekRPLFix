@@ -1,10 +1,9 @@
 .dropdown-container-sektor {
-    position: relative;
+    position:relative;
     display: flex;
-    flex: 1;
+    flex: 2;
     flex-direction: row;
-    width: 100%;
-    background-color: F7F7F7;
+    max-width: 50%;
     justify-content: left;
     /* background-color: tomato; */
     /* grid-template: 5fr/ 4fr 3fr;
@@ -18,11 +17,11 @@
     margin-right: 0;
     /* background-color: tomato; */
     padding: 3px;
+    width: 100%;
   }
   
   .dropdown-button-sektor {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
     height: 50px;
@@ -39,6 +38,8 @@
   
   .dropdown-button-label-sektor {
     margin-right: 0;
+    width: 100%;
+    text-align: left;
   }
   
   .dropdown-menu-sektor {

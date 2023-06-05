@@ -54,14 +54,16 @@ const PertanianAdmin = () => {
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Pertanian</h3></div>
+                <div><h3>Pendataan || Pertanian</h3></div>
                 <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={setSelectedBidang}/>
                 <DataPertanian bidang={selectedBidang}/>
-                <Link to='/tambahDataPertanian'>
-                    <Button className="tambahDataButton" >
-                        Tambah Data
-                    </Button>
-                </Link>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataPertanian">
+                        <Button className="tambahDataButton">
+                            Tambah Data
+                        </Button>
+                    </Link>
+                </div>
                 
             </div>
         {/* <div className='footer'>footer</div> */}

@@ -6,7 +6,7 @@ import LogoApp from '../../../components/LogoApp/LogoApp';
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
 import InputFormBerita from "../../../utils/InputFormBerita";
 import DropdownSektor from "../../../components/Dropdown/DropdownSektor/DropdownSektor"
-import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
+import DropdownKecamatanV2 from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatanV2";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
@@ -85,10 +85,10 @@ const PageInputBerita= () => {
             </div>
         
             <div className='content'>
-                <h3>Pendataan || Petertanian || Tambah Data </h3>
+                <h3>Input Berita </h3>
                 <div className='dropdown-tambah-data-berita'>
                     <DropdownSektor selectedSektor={selectedSektor} onSektorChange={handleSektorChange} sektor={dataBerita.sektor}/>
-                    <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange} kecamatan={dataBerita.kecamatan}/>
+                    <DropdownKecamatanV2 selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange} kecamatan={dataBerita.kecamatan}/>
                 </div>
                 <div className='cover_tambah_data_berita'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

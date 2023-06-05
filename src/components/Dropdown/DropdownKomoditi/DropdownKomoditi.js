@@ -33,6 +33,7 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditiOptions, 
       <div className='dropdown-komoditi'>
         <button className="dropdown-button-komoditi" onClick={handleDropdownClick}>
           <span className="dropdown-button-label-komoditi">{selectedKomoditi ? selectedKomoditi : (pariwisata ? "Pilih Nama Wisata" : "Pilih Komoditi")}</span>
+          <img className="dropdown-icon" src='assets/icon/button/buttonDropdown.png'/>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&

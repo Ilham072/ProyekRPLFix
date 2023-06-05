@@ -49,13 +49,15 @@ const PerikananAdmin = () => {
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Perikanan</h3></div>
+                <div><h3>Pendataan || Perikanan</h3></div>
                 <DataPerikanan/>
-                <Link to='/tambahDataPerikanan'>
-                    <Button className="tambahDataButton">
-                        Tambah Data
-                    </Button>
-                </Link>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataPerikanan">
+                        <Button className="tambahDataButton">
+                            Tambah Data
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

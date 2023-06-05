@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import { getTableBerita } from "../../../utils/TableBerita";
-import dataBerita from "../../../config/Konten/dataBerita.json";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import "../../../pages/pagesAdminPusat//PageInputKonten/PageDataBerita.css";
 
 const DataBerita = () => {
   const [tableBerita, setDataBerita] = useState([]);
@@ -29,7 +28,12 @@ const DataBerita = () => {
   return (
     <div className="container-table-berita">
       <DataTable columns={getTableBerita(navigate)} 
-      data={tableBerita} />
+      data={tableBerita}
+      style={{
+        marginLeft: "5px", // Atur jarak kiri
+        marginRight: "5px", // Atur jarak kanan
+      }}
+      />
     </div>
   );
 };

@@ -21,6 +21,36 @@
     color: #ffffff;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
+.BackButton {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: max-content;
+  height: max-content;
+  margin: 20px;
+  border: none;
+  border-radius: 13px;
+  background-color: tomato;
+  color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.TambahSaran {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: max-content;
+  height: max-content;
+  margin: 20px;
+  border: none;
+  border-radius: 13px;
+  background-color: #4692FD;
+  color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
   .btn-edit {
     border: none;
@@ -72,7 +102,7 @@
   }
   .ButtonSave {
     padding: 15px;
-    width: 250px;
+    width: 100%;
     height: max-content;
     /* margin: 20px; */
     border: none;

@@ -1,5 +1,9 @@
 .tambah-konten-komoditi {
-
     display: flex;
     justify-content: right;
+    width: 100%;
+}
+
+.content-page-komoditi {
+    display: flex;
 }

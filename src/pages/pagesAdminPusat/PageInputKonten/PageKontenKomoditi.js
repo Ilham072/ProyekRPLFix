@@ -16,27 +16,30 @@ import GrafikKomoditiPariwisata from "../../../utils/Pariwisata/GrafikKomoditiPa
 import checkTokenExpiration from '../../../utils/checkTokenExpiration';
 import { useNavigate, useLocation, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import "./PageKontenKomoditi.css";
 
- const token = localStorage.getItem("token");
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        if(!token) {
-            navigate('/login')
-        }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }, []);
-
-    useEffect(() => {
-        const isTokenExpired = checkTokenExpiration();
-        if(isTokenExpired) {
-            localStorage.clear();
-            navigate('/login');
-        }
-    });
-    
 
 const PageKontenKomoditi = () => {
+
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if(!token) {
+          navigate('/login')
+      }
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }, []);
+
+  useEffect(() => {
+      const isTokenExpired = checkTokenExpiration();
+      if(isTokenExpired) {
+          localStorage.clear();
+          navigate('/login');
+      }
+  });
+  
   return (
     <div className="container">
       <div className="logo">
@@ -54,7 +57,7 @@ const PageKontenKomoditi = () => {
       </div>
 
       <div className="content">
-        <div className="content-page-berita">
+        <div className="content-page-komoditi">
           <DataKomoditiArtikel />
         </div>
         <div className="tambah-konten-komoditi">
@@ -65,11 +68,11 @@ const PageKontenKomoditi = () => {
           </Link>
           
         </div>
-        <GrafikKomoditiPertanian />
+        {/* <GrafikKomoditiPertanian />
         <GrafikKomoditiPeternakan />
         <GrafikKomoditiPerindustrian />
         <GrafikKomoditiPerikanan/>
-        <GrafikKomoditiPariwisata/>
+        <GrafikKomoditiPariwisata/> */}
       </div>
     </div>
   );

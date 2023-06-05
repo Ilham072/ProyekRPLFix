@@ -4,7 +4,6 @@
     flex: 1;
     flex-direction: row;
     width: 50%;
-    background-color: F7F7F7;
     justify-content: left;
     /* background-color: tomato; */
     /* grid-template: 5fr/ 4fr 3fr;
@@ -16,16 +15,15 @@
   }
 
   .dropdown-pariwisata{
-    margin-right: 0;
     /* background-color: tomato; */
     padding: 3px;
+    width: 100%;
   }
   
   .dropdown-button-pariwisata {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 490px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+    width:50%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
     height: 50px;
     border: none;
     border-radius: 13px;
@@ -40,6 +38,8 @@
   
   .dropdown-button-label-pariwisata {
     margin-right: 0;
+    width: 100%;
+    text-align: left;
   }
   
   .dropdown-menu-pariwisata {
@@ -47,11 +47,13 @@
     top: 100%;
     left: 0;
     z-index: 1;
-    width: 490px;
+    width: 50%;
     max-height: 200px;
     overflow-y: auto;
     background-color: #FFF;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-left: 15px;
+    margin-right: 15px;
   }
   
   .dropdown-menu-pariwisata div {

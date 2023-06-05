@@ -36,6 +36,7 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
       <div className='dropdown-kecamatan'>
         <button className="dropdown-button" onClick={handleDropdownClick}>
           <span className="dropdown-button-label">{selectedKecamatan || "Pilih Kecamatan"}</span>
+          <img className="dropdown-icon" src='assets/icon/button/buttonDropdown.png'/>
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&

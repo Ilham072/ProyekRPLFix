@@ -106,7 +106,7 @@ const PageInputDataPertanian= () => {
             </div>
         
             <div className='content'>
-                <h3>Pendataan || Petertanian || Tambah Data </h3>
+                <h3>Pendataan || Pertanian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pertanian'>
                     <DropdownBidang selectedBidang={selectedBidang} onBidangChange={handleBidangChange} bidang={dataPertanian.bidang}/>
                     <DropdownKomoditi selectedKomoditi={selectedKomoditi}

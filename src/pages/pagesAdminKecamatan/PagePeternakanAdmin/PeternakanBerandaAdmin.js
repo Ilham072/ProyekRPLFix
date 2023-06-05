@@ -7,6 +7,8 @@ import SidebarAdmin from "../../../components/Sidebar/SidebarAdmin";
 import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/DropdownKecamatan";
 import DataBerandaPeternakan from "../../../components/Contents/TablePeternakan/DataBerandaPeternakan";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components";
 
 const PeternakanBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
@@ -51,6 +53,13 @@ const PeternakanBerandaAdmin = () => {
                 <div><h3>Beranda Peternakan</h3></div>
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
                 <DataBerandaPeternakan kecamatan={selectedKecamatan}/>
+                <div className="container-button-tambah-data">
+                    <Link to="/berandaAdmin">
+                        <Button className="BackButton">
+                            Kembali 
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

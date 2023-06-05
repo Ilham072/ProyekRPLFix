@@ -12,12 +12,23 @@ import dataKontenKomoditiPeternakan from "../../../config/Peternakan/dataKontenK
 import dataKontenKomoditiPerindustrian from "../../../config/Perindustrian/dataKontenKomoditiPerindustrian.json";
 import dataKontenKomoditiParikanan from "../../../config/Perikanan/dataKontenKomoditiPerikanan.json";
 import axios from "axios";
+import "./DataKomoditiArtikel.css";
 import { useNavigate } from "react-router-dom";
 
 const DataKomoditiArtikel = () => {
     const [sektor, setSektor] = useState("");
     const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
     const navigate = useNavigate();
+
+    const tableStyles = {
+      table: {
+        borderCollapse: "separate",
+        borderSpacing: "10px",
+      },
+      cell: {
+        padding: "5px",
+      },
+    };
 
     const handleSektorChange = (value) => {
         setSektor(value);
@@ -67,47 +78,49 @@ const DataKomoditiArtikel = () => {
         case "Pertanian":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPertanian(navigate)} data={dataKontenKomoditi} />
+              <DataTable columns={getTableKontenKomoditiPertanian(navigate)} data={dataKontenKomoditi} customStyles={tableStyles}/>
             </div>
           );
         case "Peternakan":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPeternakan(navigate)} data={dataKontenKomoditi} />
+              <DataTable columns={getTableKontenKomoditiPeternakan(navigate)} data={dataKontenKomoditi} customStyles={tableStyles}/>
             </div>
           );
         case "Perikanan":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPerikanan(navigate)} data={dataKontenKomoditi} />
+              <DataTable columns={getTableKontenKomoditiPerikanan(navigate)} data={dataKontenKomoditi} customStyles={tableStyles}/>
             </div>
           );
         case "Perindustrian":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPerindustrian(navigate)} data={dataKontenKomoditi} />
+              <DataTable columns={getTableKontenKomoditiPerindustrian(navigate)} data={dataKontenKomoditi} customStyles={tableStyles}/>
             </div>
           );
         case "Pariwisata":
           return (
             <div className="konten-komoditi">
-              <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} />
+              <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} customStyles={tableStyles} />
             </div>
           );
 
           default:
             return (
               <div className="konten-komoditi">
-                <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} />
+                <DataTable columns={getTableKontenKomoditiPariwisata(navigate)} data={dataKontenKomoditi} customStyles={tableStyles} />
               </div>
             );
         }
       };
 
   return (
-    <div className='content'>
+    <div className='content-komoditi'>
                 <div><h3>Data</h3></div>
-                <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange}/>
+                <div className="dropdown-konten-komoditi">
+                  <DropdownSektor selectedSektor={sektor} onSektorChange={handleSektorChange}/>
+                </div>
                 <div><h3>Sektor {sektor ? sektor : ""}</h3></div>
                 {renderTable(sektor)}
             </div>

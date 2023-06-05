@@ -38,8 +38,10 @@ function App() {
             <Sidebar />
         </div>
         <div className='content'>
-            <h4>Beranda</h4>
-            <NewsContent news={dataBerita}/>
+            <h4>Berita</h4>
+            <div className="container-page-content-news">
+                <NewsContent news={dataBerita}/>
+            </div>
         </div>
         {/* <div className='footer'>footer</div> */}
       </div>

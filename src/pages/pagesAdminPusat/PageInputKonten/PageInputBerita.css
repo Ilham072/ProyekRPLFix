@@ -32,16 +32,9 @@
     /* background-color: blue; */
  }
 
- .content-page-berita {
-    /* padding: 20px; */
-    display:inline-flex;
-    width: 100%;
-    background-color: tomato;
- }
  
  .dropdown-tambah-data-berita {
-    /* background-color: tomato; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 15px;
  }

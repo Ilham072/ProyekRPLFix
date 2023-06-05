@@ -48,11 +48,13 @@ const PageDataAdmin = () => {
             <div className='content'>
                 <div><h3>Admin</h3></div>
                 <DataAdmin/>
-                <Link to="/tambahAdmin">
-                    <Button className="tambahDataButton">
-                        Tambah Admin
-                    </Button>
-                </Link>    
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahAdmin">
+                        <Button className="tambahDataButton">
+                            Tambah Admin
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

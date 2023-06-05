@@ -45,15 +45,15 @@ const PerindustrianAdmin = () => {
             </div>
         
             <div className='content'>
-                <div><h3>Beranda Perindustrian</h3></div>
+                <div><h3>Pendataan || Perindustrian</h3></div>
                 <DataPerindustrian/>
-               <div className="button-add2">
-                    <Link to='/tambahDataPerindustrian'>
-                            <Button className="tambahDataButton">
-                                Tambah Data
-                            </Button>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataPerindustrian">
+                        <Button className="tambahDataButton">
+                            Tambah Data
+                        </Button>
                     </Link>
-               </div>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

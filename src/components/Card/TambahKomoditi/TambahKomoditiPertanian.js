@@ -52,7 +52,7 @@ const TambahKomoditiPertanian= ({ sektor }) => {
   }
 
   return (
-    <Col className="tambah-komoditi-pertanian">
+    <Col className="container-tambah-komoditi">
       <div className="cover-tambah-komoditi">
         <h1>Tambah Komoditi</h1>
         <h3>Nama Komoditi</h3>
@@ -64,7 +64,7 @@ const TambahKomoditiPertanian= ({ sektor }) => {
         />
         <h3>Bidang Komoditi</h3>
         <select value={selectedBidangKomoditi} onChange={handleBidangKomoditiChange}>
-          <option value="">- Pilih Bidang -</option>
+          <option value="">Pilih Bidang</option>
           <option value="Tanaman Pangan">Tanaman Pangan</option>
           <option value="Hortikultura">Hortikultura</option>
           <option value="Perkebunan">Perkebunan</option>

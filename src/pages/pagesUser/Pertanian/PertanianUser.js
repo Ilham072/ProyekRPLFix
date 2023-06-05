@@ -41,7 +41,7 @@ const Pertanian = () => {
         <div className='content'>
           <div><h3>Pertanian</h3></div>
 
-          <Komoditi komoditi={komoditiPertanian}/>
+          <Komoditi komoditi={dataKontenKomoditi}/>
           
         </div>
         

@@ -7,24 +7,7 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
 
 
 
-    const [showPopupAdd, setShowPopupAdd] = useState(false);
-
-  const handleConfirm = () => {
-    // Logika ketika tombol "Ya" ditekan
-    console.log("Data telah ditambahkan.");
-    setShowPopupAdd(false);
-  };
-
-  const handleCancel = () => {
-    // Logika ketika tombol "Tidak" ditekan
-    console.log("Batal menambahkan data.");
-    setShowPopupAdd(false);
-  };
-
-  const handleButtonClick = () => {
-    // Logika ketika tombol utama ditekan
-    setShowPopupAdd(true);
-  };
+    
 
 function InputFormPerikanan({komoditi, editData}) {
 

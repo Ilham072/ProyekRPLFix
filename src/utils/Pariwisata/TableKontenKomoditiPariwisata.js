@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../components/Button/Button";
 import axios from "axios";
+import SubTextTable from "../SubTextTable";
 
 export function getTableKontenKomoditiPariwisata(navigateToEdit) {
     const deleteHandler = async (id) => {
@@ -35,12 +36,12 @@ export function getTableKontenKomoditiPariwisata(navigateToEdit) {
         },
         {
             name: "Gambar",
-            selector: row => <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "100px" }} />,
+            selector: row => <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "auto" }} />,
             sortable: true
         },
         {
             name: "Isi",
-            selector: row => row.isi,
+            selector: row => {SubTextTable(row.isi)},
             sortable: true
         },
         {

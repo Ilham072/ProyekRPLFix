@@ -51,6 +51,8 @@ import PageSaranUser from './pages/pagesUser/Saran/PageSaranUser';
 import PageSaranAdmin from './pages/pagesAdminKecamatan/Saran/PageSaranAdmin';
 import PageSaranAdminPusat from './pages/pagesAdminPusat/Saran/PageSaranAdminPusat';
 import PageInputKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageInputKontenKomoditi';
+import Laporan from './pages/pagesAdminKecamatan/Laporan/Laporan';
+import LaporanPusat from './pages/pagesAdminKecamatan/Laporan/LaporanPusat';
 
 const router = createBrowserRouter([
   {
@@ -272,6 +274,14 @@ const router = createBrowserRouter([
   {
     path: "/editKontenKomoditi",
     element: <PageInputKontenKomoditi/>,
+  },
+  {
+    path: "/laporan",
+    element: <Laporan/>,
+  },
+  {
+    path: "/laporanPusat",
+    element: <LaporanPusat/>,
   },
 ]);
 

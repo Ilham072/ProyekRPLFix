@@ -9,6 +9,8 @@ import DataBerandaPertanian from "../../../components/Contents/TablePertanian/Da
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components";
 
 const PertanianBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
@@ -64,7 +66,13 @@ const PertanianBerandaAdmin = () => {
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
                 <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={handleBidangChange}/>
                 <DataBerandaPertanian kecamatan={selectedKecamatan} bidang={selectedBidang} />
-                
+                <div className="container-button-tambah-data">
+                    <Link to="/berandaAdmin">
+                        <Button className="BackButton">
+                            Kembali 
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

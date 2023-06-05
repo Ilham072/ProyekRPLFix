@@ -1,107 +1,71 @@
-nav {
-  position: sticky;
-  top: 0;
-  display: grid;
-  background-color: blue;
-  color: #333;
-  text-align: left;
-  text-decoration: none;
-  /* overflow-y: hidden; */
-}
-.sidebar {
-    position: sticky;
-    top: 0;
-    background-color: tomato;
-    /* width: max-content;
-    height: max-content; */
-    height: 100%;
-    /* overflow-y: hidden; */
-    
+.navbar ul li {
+  position: relative;
 }
 
-.navbar{
-  position: sticky;
-  /* top: 50px; */
-  background-color: #ffffff;
-  display: grid;
-  width: 100%;
-  height: 100%;
-  /* overflow-y: hidden; */
-}
 .navbar ul li a {
-    display: block;
-    padding: 5px;
-    color: #333;
-    text-decoration: none;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  
-  .navbar ul li a:hover {
-    background-color: #4692FD;
-  }
-  
-  .navbar ul li a img {
-    display: inline-block;
-    margin-right: 0;
-    width: 20px;
-    height: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  
-  .navbar ul li img {
-    width: 100%;
-    height: 1px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  
-  /* .navbar ul li:last-child {
-    margin:0;
-  } */
-  
-  /* .navbar ul li:last-child b {
-    margin-top: 0;
-  } */
-  
-  /* .navbar ul li:last-child a {
-    color: #999;
-  } */
-/*     
-  .navbar ul li:last-child a:hover {
-    background-color: #fff;
-  } */
-  
-  /* .navbar ul li:last-child a img {
-    margin-right: 0px;
-  } */
-  /* Tampilan saat link aktif */
-  .navbar ul li a.active {
-    background-color:aqua;
-    color: #fff;
-  }
-  
-  /* Tampilan saat link non-aktif */
-  .navbar ul li a.disabled {
-    opacity: 0.5;
-    /* pointer-events: none; */
-    /* style lain yang diinginkan */
-  }
-  .dropdown-menu{
-    width: 150px;
-    margin-left: 20px;
-  }
+  display: block;
+  padding: 5px;
+  color: #333;
+  text-decoration: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0px;
-  }
-  li {
-    padding: 3px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+.navbar ul li a:hover {
+  background-color: #4692FD;
+  color: #fff;
+}
 
+.navbar ul li a img {
+  display: inline-block;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
+/* Tampilan saat link aktif */
+.navbar ul li a.active {
+  background-color: #4692FD;
+  color: #fff;
+}
+
+/* Tampilan saat link non-aktif */
+.navbar ul li a.disabled {
+  opacity: 0.5;
+  /* pointer-events: none; */
+  /* style lain yang diinginkan */
+}
+
+.dropdown-menu {
+  width: 150px;
+  margin-left: 20px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.dropdown{
+  margin-right: 0;
+  display: block;
+  width: 100%;
+}
+
+.dropdown-icon-sidebar{
+  display:flex;
+  flex: 1;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin-left: 30px;
+}

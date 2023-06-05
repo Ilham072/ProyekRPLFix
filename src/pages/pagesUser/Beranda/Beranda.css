@@ -50,6 +50,7 @@
   grid-area: content;
   padding-left: 20px;
   padding-right: 45px;
+  overflow-x: hidden;
   /* margin-left: 20px; */
 }
 

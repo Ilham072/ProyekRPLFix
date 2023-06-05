@@ -3,15 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Sidebar.css";
 
-const SidebarAdmin = () => {
-  const [showDropdown, setShowDropdown] = useState(false);
-
+const SidebarAdminPusat = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
+  const [showSubnav, setShowSubnav] = useState(false);
 
   const logoutHandler = async () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -23,6 +19,14 @@ const SidebarAdmin = () => {
       });
   }
 
+  const toggleSubnav = () => {
+    setShowSubnav(!showSubnav);
+  };
+
+  const closeSubnav = (e) => {
+    setShowSubnav(!showSubnav);
+  };
+
   return (
     <div className="sidebar">
       <nav className="navbar">
@@ -31,63 +35,68 @@ const SidebarAdmin = () => {
             <b>MENU</b>
           </li>
           <li>
-            <Link to="/berandaAdmin">
-              <img src="assets/icon/icon_sidebar/icon_beranda.svg" /> Beranda
+            <Link to="/berandaAdmin" className={window.location.pathname === "/berandaAdmin" ? "active" : ""}>
+                <img src={window.location.pathname === "/berandaAdmin" ? "assets/icon/icon_sidebar/icon_beranda_active.svg" : "assets/icon/icon_sidebar/icon_beranda_inactive.svg"} alt="Beranda" /> Beranda
             </Link>
           </li>
           {/* dropdown menu for "Pendataan" */}
           <li
-            className={showDropdown ? "dropdown active" : "dropdown"}
-            onClick={toggleDropdown}
+            className={showSubnav ? "dropdown active" : "dropdown"}
+            onClick={toggleSubnav}
           >
             <a href="#">
-              <img src="assets/icon/icon_sidebar/icon_pendataan.svg" /> Pendataan
+              <img className='sidebar-icon' src="assets/icon/icon_sidebar/icon_pendataan.svg" /> Pendataan <img className="dropdown-icon-sidebar" src="assets/icon/icon_sidebar/icon_dropdown_sidebar.svg"/>
             </a>
-            <ul className="dropdown-menu">
+            {showSubnav && (
+            <ul className="dropdown-menu" onClick={closeSubnav}>
               <li>
-                <Link to="/adminpertanian">
-                  <img src="assets/icon/logo_komoditi/pertanian_logo.svg" /> Pertanian
+                <Link to="/adminpertanian" className={window.location.pathname === "/adminpertanian" ? "active" : ""}>
+                    <img src={window.location.pathname === "/adminpertanian" ? "assets/icon/icon_sidebar/icon_pertanian_active.svg" : "assets/icon/icon_sidebar/icon_pertanian_inactive.svg"  } alt="pertanian"/> Pertanian
                 </Link>
               </li>
               <li>
-                <Link to="/adminpeternakan">
-                  <img src="assets/icon/logo_komoditi/peternakan_logo.svg" /> Peternakan
+                <Link to="/adminpeternakan" className={window.location.pathname === "/adminpeternakan" ? "active" : ""}>
+                    <img src={window.location.pathname === "/adminpeternakan" ? "assets/icon/icon_sidebar/icon_peternakan_active.svg" : "assets/icon/icon_sidebar/icon_peternakan_inactive.svg"  } alt="peternakan"/> Peternakan
                 </Link>
               </li>
               <li>
-                <Link to="/adminperikanan">
-                  <img src="assets/icon/logo_komoditi/perikanan_logo.svg" /> Perikanan
+                <Link to="/adminperikanan" className={window.location.pathname === "/adminperikanan" ? "active" : ""}>
+                    <img src={window.location.pathname === "/adminperikanan" ? "assets/icon/icon_sidebar/icon_perikanan_active.svg" : "assets/icon/icon_sidebar/icon_perikanan_inactive.svg"  } alt="perikanan"/> Perikanan
                 </Link>
               </li>
               <li>
-                <Link to="/adminperindustrian">
-                  <img src="assets/icon/logo_komoditi/perindustrian_logo.svg" /> Perindustrian
+                <Link to="/adminperindustrian" className={window.location.pathname === "/adminperindustrian" ? "active" : ""}> 
+                    <img src={window.location.pathname === "/adminperindustrian" ? "assets/icon/icon_sidebar/icon_perindustrian_active.svg" : "assets/icon/icon_sidebar/icon_perindustrian_inactive.svg"  } alt="perindustrian"/> Perindustrian
                 </Link>
               </li>
               <li>
-                <Link to="/adminpariwisata">
-                  <img src="assets/icon/logo_komoditi/pariwisata_logo.svg" /> Pariwisata
+                <Link to="/adminpariwisata" className={window.location.pathname === "/adminpariwisata" ? "active" : ""}>
+                    <img src={window.location.pathname === "/adminpariwisata" ? "assets/icon/icon_sidebar/icon_pariwisata_active.svg" : "assets/icon/icon_sidebar/icon_pariwisata_inactive.svg"  } alt="pariwisata"/> Pariwisata
                 </Link>
               </li>
             </ul>
+            )}
           </li>
           {/* end of dropdown menu for "Pendataan" */}
           <li>
-            <Link to="/laporan">
-              <img src="assets/icon/icon_sidebar/icon_laporan.svg" /> Laporan
+            <Link to="/laporan" className={window.location.pathname === "/laporan" ? "active" : ""}>
+                <img src={window.location.pathname === "/laporan" ? "assets/icon/icon_sidebar/icon_laporan_active.svg" : "assets/icon/icon_sidebar/icon_laporan.svg"  } alt="laporan"/> Laporan
             </Link>
           </li>
           <li>
-            <img src="assets/icon/icon_sidebar/line1.png" />
+            <img className='sidebar-icon' src="assets/icon/icon_sidebar/line1.png"/>
+
           </li>
           <li>
-            <Link to="/saranAdmin">
-              <img src="assets/icon/icon_sidebar/icon_saran.svg" /> Saran
+            <Link to="/saranAdmin" className={window.location.pathname === "/saranAdmin" ? "active" : ""}>
+                <img src={window.location.pathname === "/saranAdmin" ? "assets/icon/icon_sidebar/icon_saran_active.svg" : "assets/icon/icon_sidebar/icon_saran.svg"} alt="Saran" /> Saran
             </Link>
           </li>
+         
+
           <li>
           <a href="#" onClick={logoutHandler}>
-              <img src="assets/icon/icon_sidebar/icon_keluar.svg" /> Keluar
+              <img className='sidebar-icon' src="assets/icon/icon_sidebar/icon_keluar.svg" /> Keluar
             </a>
           </li>
         </ul>
@@ -96,4 +105,4 @@ const SidebarAdmin = () => {
   );
 }
 
-export default SidebarAdmin;
+export default SidebarAdminPusat;

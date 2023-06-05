@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "../../components/Button/Button";
 import axios from "axios";
+import "../table.css";
+import SubTextTable from "../SubTextTable";
 
 export function getTableKontenKomoditiPeternakan(navigateToEdit) {
     const deleteHandler = async (id) => {
@@ -30,17 +32,29 @@ export function getTableKontenKomoditiPeternakan(navigateToEdit) {
         },
         {
             name: "Judul",
-            selector: row => row.judul,
+            selector: row => (
+                <div className="column-container"> {/* Tambahkan kelas untuk mengatur jarak antara kolom */}
+                    <div>{row.judul}</div>
+                </div>
+            ),
             sortable: true
         },
         {
             name: "Gambar",
-            selector: row => <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "100px" }} />,
+            selector: row =>(
+                <div className="column-container"> {/* Tambahkan kelas untuk mengatur jarak antara kolom */}
+                    <img src={row.gambar} alt="Gambar" style={{ width: "100px", height: "auto" }} />,
+                </div>
+            ), 
             sortable: true
         },
         {
             name: "Isi",
-            selector: row => row.isi,
+            selector: row => (
+                <div className="column-container"> {/* Tambahkan kelas untuk mengatur jarak antara kolom */}
+                    <div>{SubTextTable(row.isi)}</div>
+                </div>
+            ),
             sortable: true
         },
         {

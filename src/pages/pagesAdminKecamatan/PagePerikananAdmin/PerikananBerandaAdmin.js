@@ -7,6 +7,8 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import DataBerandaPerikanan from "../../../components/Contents/TablePerikanan/DataBerandaPerikanan";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components";
 const PerikananBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
     const token = localStorage.getItem("token");
@@ -50,6 +52,13 @@ const PerikananBerandaAdmin = () => {
                 <div><h3>Beranda Perikanan</h3></div>
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
                 <DataBerandaPerikanan kecamatan={selectedKecamatan}/>
+                <div className="container-button-tambah-data">
+                    <Link to="/berandaAdmin">
+                        <Button className="BackButton">
+                            Kembali 
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

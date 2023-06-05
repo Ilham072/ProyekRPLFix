@@ -10,36 +10,36 @@ const Sidebar = () => {
           <li>
             <b>MENU</b>
           </li>
-          <li>
-            <Link to="/" activeClassName="active">
-              <img src="assets/icon/icon_sidebar/icon_beranda.svg" /> Beranda
-            </Link>
-          </li>
-          <li>
-            <Link to="/Pertanian" activeClassName="active">
-              <img src="assets/icon/logo_komoditi/pertanian_logo.svg" /> Pertanian
-            </Link>
-          </li>
-          <li>
-            <Link to="/Peternakan" activeClassName="active">
-              <img src="assets/icon/logo_komoditi/peternakan_logo.svg" /> Peternakan
-            </Link>
-          </li>
-          <li>
-            <Link to="/Perikanan" activeClassName="active">
-              <img src="assets/icon/logo_komoditi/perikanan_logo.svg" /> Perikanan
-            </Link>
-          </li>
-          <li>
-            <Link to="/Perindustrian" activeClassName="active">
-              <img src="assets/icon/logo_komoditi/perindustrian_logo.svg" /> Perindustrian
-            </Link>
-          </li>
-          <li>
-            <Link to="/Pariwisata" activeClassName="active">
-              <img src="assets/icon/logo_komoditi/pariwisata_logo.svg" /> Pariwisata
-            </Link>
-          </li>
+              <li>
+                <Link to="/" className={window.location.pathname === "/" ? "active" : ""}>
+                    <img src={window.location.pathname === "/" ? "assets/icon/icon_sidebar/icon_beranda_active.svg" : "assets/icon/icon_sidebar/icon_beranda_inactive.svg"} alt="Beranda" /> Beranda
+                </Link>
+              </li>
+              <li>
+                <Link to="/pertanian" className={window.location.pathname === "/pertanian" ? "active" : ""}>
+                    <img src={window.location.pathname === "/pertanian" ? "assets/icon/icon_sidebar/icon_pertanian_active.svg" : "assets/icon/icon_sidebar/icon_pertanian_inactive.svg"  } alt="pertanian"/> Pertanian
+                </Link>
+              </li>
+              <li>
+                <Link to="/peternakan" className={window.location.pathname === "/peternakan" ? "active" : ""}>
+                    <img src={window.location.pathname === "/peternakan" ? "assets/icon/icon_sidebar/icon_peternakan_active.svg" : "assets/icon/icon_sidebar/icon_peternakan_inactive.svg"  } alt="peternakan"/> Peternakan
+                </Link>
+              </li>
+              <li>
+                <Link to="/perikanan" className={window.location.pathname === "/perikanan" ? "active" : ""}>
+                    <img src={window.location.pathname === "/perikanan" ? "assets/icon/icon_sidebar/icon_perikanan_active.svg" : "assets/icon/icon_sidebar/icon_perikanan_inactive.svg"  } alt="perikanan"/> Perikanan
+                </Link>
+              </li>
+              <li>
+                <Link to="/perindustrian" className={window.location.pathname === "/perindustrian" ? "active" : ""}> 
+                    <img src={window.location.pathname === "/perindustrian" ? "assets/icon/icon_sidebar/icon_perindustrian_active.svg" : "assets/icon/icon_sidebar/icon_perindustrian_inactive.svg"  } alt="perindustrian"/> Perindustrian
+                </Link>
+              </li>
+              <li>
+                <Link to="/pariwisata" className={window.location.pathname === "/pariwisata" ? "active" : ""}>
+                    <img src={window.location.pathname === "/pariwisata" ? "assets/icon/icon_sidebar/icon_pariwisata_active.svg" : "assets/icon/icon_sidebar/icon_pariwisata_inactive.svg"  } alt="pariwisata"/> Pariwisata
+                </Link>
+              </li>
           <li>
             <img src="assets/icon/icon_sidebar/line1.png" />
           </li>
@@ -47,8 +47,8 @@ const Sidebar = () => {
             <b>LAINNYA</b>
           </li>
           <li>
-            <Link to="/saran" activeClassName="active">
-              <img src="assets/icon/icon_sidebar/icon_saran.svg" /> Saran
+            <Link to="/saran" className={window.location.pathname === "/saran" ? "active" : ""}>
+                <img src={window.location.pathname === "/saran" ? "assets/icon/icon_sidebar/icon_saran_active.svg" : "assets/icon/icon_sidebar/icon_saran.svg"} alt="Saran" /> Saran
             </Link>
           </li>
         </ul>

@@ -27,8 +27,8 @@
 
  .dropdown-tambah-data-pertanian {
     width:  100%;
-    /* background-color: tomato; */
     display: flex;
+    gap: 15px;
  }
 
 

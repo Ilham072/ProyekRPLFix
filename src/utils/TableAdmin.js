@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { Button } from "../components";
 import PopupEdit from '../components/PopUp/PopupEdit';
 import PopupDeleted from '../components/PopUp/PopupDeleted';
-import React from "react";
 import axios from "axios";
 
 const TableAdmin = (navigateToEdit) => {
@@ -28,7 +27,7 @@ const TableAdmin = (navigateToEdit) => {
 
     const handleConfirm = () => {
         // Logika ketika tombol "Ya" ditekan
-        deleteHandler(row.id);
+        deleteHandler();
         console.log("Data telah ditambahkan.");
         setShowPopupDeleted(false);
     };
@@ -48,7 +47,7 @@ const TableAdmin = (navigateToEdit) => {
 
     const handleConfirmEdit = () => {
         // Logika ketika tombol "Ya" ditekan
-        handleEdit(row);
+        handleEdit();
         console.log("Data telah ditambahkan.");
         setShowPopupEdit(false);
     };
@@ -63,10 +62,6 @@ const TableAdmin = (navigateToEdit) => {
         // Logika ketika tombol utama ditekan
         setShowPopupEdit(true);
     };
-
-  
-
-
 
     return [
         {

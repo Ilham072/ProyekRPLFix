@@ -5,7 +5,6 @@
     flex: 1;
     flex-direction: row;
     width: 50%;
-    background-color: F7F7F7;
     justify-content: left;
   }
 
@@ -14,13 +13,14 @@
   margin-right: 0;
   /* background-color: tomato; */
   padding: 3px;
+  width: 100%;
 }
 
 .dropdown-button-bidang {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 490px; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+  width: 100%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
   height: 50px;
   border: none;
   border-radius: 13px;
@@ -35,6 +35,8 @@
 
 .dropdown-button-label-bidang {
   margin-right: 0;
+  width: 100%;
+  text-align: left;
 }
 
 .dropdown-menu-bidang {
@@ -42,7 +44,7 @@
   top: 100%;
   left: 0;
   z-index: 1;
-  width: 490px;
+  width: 100%;
   max-height: 200px;
   overflow-y: auto;
   background-color: #FFF;

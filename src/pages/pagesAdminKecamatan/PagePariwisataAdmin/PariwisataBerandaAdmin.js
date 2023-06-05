@@ -8,6 +8,8 @@ import DropdownKecamatan from "../../../components/Dropdown/DropdownKecamatan/Dr
 import PariwisataCategory from "../../../utils/PariwisataCategory";
 import DataBerandaPariwisata from "../../../components/Contents/TablePariwisata/DataBerandaPariwisata";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components";
 
 
 
@@ -62,6 +64,13 @@ const PariwisataBerandaAdmin = () => {
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
                 <PariwisataCategory selectedCategory={selectedJenisWisata} onCategoryChange={handleJenisWisataChange}/>
                 <DataBerandaPariwisata kecamatan={selectedKecamatan} jenis_wisata={selectedJenisWisata}/>
+                <div className="container-button-tambah-data">
+                    <Link to="/berandaAdmin">
+                        <Button className="BackButton">
+                            Kembali 
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

@@ -55,11 +55,13 @@ const PageDataBerita = () => {
                 <div className="content-page-berita">
                     <DataBerita/>
                 </div>
-                <Link to="/tambahDataBerita">
-                    <Button className="tambahDataButton">
-                        Tambah Berita
-                    </Button>
-                </Link>
+                <div className="container-button-tambah-data">
+                    <Link to="/tambahDataBerita">
+                        <Button className="tambahDataButton">
+                            Tambah Berita
+                        </Button>
+                    </Link>
+                </div>
             </div>
         {/* <div className='footer'>footer</div> */}
       </div>

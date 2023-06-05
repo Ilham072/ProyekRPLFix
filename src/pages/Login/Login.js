@@ -41,18 +41,20 @@ const Login = () => {
 
   return (
      <div className="container-login">
-        <div className="logoPemda">
-          <img src="assets/images/logo/logoPemda.png"/>
-        </div>
-        <div className="cover">
-          <h1>Login Admin</h1>
-          <h3>Username</h3>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username"/>
-          <h3>Password</h3>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password"/>
+         <div className="logoPemda">
+            <img src="assets/images/logo/logoPemda.png"/>
+          </div>
+        <div className='container_form_login'>
+          <div className="cover">
+            <h1>Login Admin</h1>
+            <h3>Username</h3>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username"/>
+            <h3>Password</h3>
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password"/>
 
-          <div className="login-btn2">
-              <button onClick={loginHandler}>Masuk</button>
+            <div className="login-btn2">
+                <button onClick={loginHandler}>Masuk</button>
+            </div>
           </div>
         </div>
             
