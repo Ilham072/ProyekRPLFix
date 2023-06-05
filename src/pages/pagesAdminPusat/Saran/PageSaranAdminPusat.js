@@ -3,7 +3,7 @@ import LogoApp from "../../../components/LogoApp/LogoApp";
 import Header from "../../../components/Header/Header";
 // import "./Beranda.css";
 import SidebarAdminPusat from "../../../components/Sidebar/SidebarAdminPusat";
-import HasilSaran from "../../../components/Contents/Saran/HasilSaran";
+import HasilSaranPusat from "../../../components/Contents/Saran/Hasil SaranPusat";
 const PageSaranAdminPusat = () => {
     return (
       <div className='container'>
@@ -24,7 +24,7 @@ const PageSaranAdminPusat = () => {
         <div className='content'>
           <div><h3>Saran</h3></div>
             <div className="isi_content">
-                <HasilSaran/>
+                <HasilSaranPusat/>
             </div>
         </div>
         

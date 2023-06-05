@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../Button/Button";
 
-const HasilSaran = () => {
+const HasilSaranPusat = () => {
   const [saranData, setSaranData] = useState([]);
 
   return (
@@ -19,8 +19,19 @@ const HasilSaran = () => {
             <h2>{saran}</h2>
           </div>
         ))}
+        <div style={{
+              backgroundColor: "#ffffff",
+              border: "none",
+              display: "flex",
+              textAlign: "right",
+              width: "100%"
+          }}>
+          <Button className="btn-delete"> 
+              <img src="assets/icon/button/button-delete.svg"/>
+          </Button>
+        </div>
     </div>
   );
 };
 
-export default HasilSaran;
+export default HasilSaranPusat;
