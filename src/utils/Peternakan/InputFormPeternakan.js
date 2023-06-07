@@ -126,7 +126,7 @@ function InputFormPeternakan({komoditi, editData}) {
                 <input id='populasi' type='number' value={populasi} onChange={(e) => setPopulasi(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton" >
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

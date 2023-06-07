@@ -3,7 +3,6 @@ import DataTable from "react-data-table-component";
 import TableAdmin from "../../../utils/TableAdmin";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import AdminData from "../../../config/Admin/AdminData.json";
 import "../TablePertanian/DataPertanian.css";
 
 const DataAdmin = () => {
@@ -28,10 +27,6 @@ const DataAdmin = () => {
       fetchDataAdmin();
   }, []);
   
-  useEffect(() => {
-    setDataAdmin(AdminData);
-  }, []);
-
   return (
     <div className="container-table">
       <DataTable columns={TableAdmin(navigate)} data={tableAdmin} />

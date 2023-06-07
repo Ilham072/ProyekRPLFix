@@ -8,7 +8,7 @@
     background-color: #FFFFFF;
     border-radius: 13px;
     margin: 15px 10px 15px 10px;
-    padding: 8px; 
+    padding: 8px;
 }
 
 .CardNews-category {
@@ -36,10 +36,10 @@
 }
 
 .CardNews-image {
-    position: relative;
+    display: flex;
     margin-top: 10px;
     margin-bottom: 0px;
-    height: max-content;
+    height: 118px;
     width: 100%;
     /* background-color: aqua; */
 }

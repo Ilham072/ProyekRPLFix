@@ -119,11 +119,11 @@ const PageInputDataPariwisata= () => {
                 <h3>Pendataan || Pariwisata || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pariwisata'>
                 <DropdownPariwisata selectedWisata={selectedWisata} onWisataChange={handleWisataChange} pariwisata={dataPariwisata.jenis_wisata}/>
-
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPariwisata.nama_wisata} pariwisata={true}/>
                 </div>
                 <div className='cover_tambah_data_pariwisata'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
-                    <InputFormPariwisata jenis_wisata={selectedWisata} editData={dataPariwisata}/>
+                    <InputFormPariwisata jenis_wisata={selectedWisata} nama_wisata={selectedKomoditi} editData={dataPariwisata}/>
                 </div>
                 <br/>
                 

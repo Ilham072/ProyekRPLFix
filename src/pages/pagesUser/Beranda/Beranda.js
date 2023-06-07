@@ -13,6 +13,7 @@ import SidebarNew from "../../../components/Sidebar/SidebarNew";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 const Beranda = () => {
     const [dataBerita, setDataBerita] = useState([]);
+    const [banner, setBanner] = useState([]);
     
     useEffect(() => {
       async function fetchDataKontenBerita() {
@@ -28,6 +29,18 @@ const Beranda = () => {
           setDataBerita(data);
       }
       fetchDataKontenBerita();
+    }, []);
+
+    useEffect(() => {
+      async function fetchBanner() {
+        try{
+          const response = await axios.get('http://localhost:8000/api/Konten Banner');
+          setBanner(response.data);
+        } catch(err){
+        }
+      }
+
+      fetchBanner()
     }, []);
 
     return (
@@ -49,7 +62,7 @@ const Beranda = () => {
         <div className='content'>
           <div><h3>Beranda</h3></div>
             <div className="isi_content">
-                <CarouselNew/>
+                <CarouselNew banner={banner}/>
                 <News news={dataBerita}/>
             </div>
         </div>

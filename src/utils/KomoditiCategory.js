@@ -1,8 +1,8 @@
 import React from "react";
-import kategoriKomoditi from "../config/KomoditiCategory/kategori_Komoditi.json";
 import CardKomoditiCategory from "../components/Card/KomoditiCategory/CardKomoditiCategory.js";
 
-const KomoditiCategory = () => {
+const KomoditiCategory = ({sektor}) => {
+    let i = 0;
     return (
         <div style={
             {
@@ -13,9 +13,10 @@ const KomoditiCategory = () => {
             }
         }>
             {
-                kategoriKomoditi && kategoriKomoditi.map(item => {
+                sektor && sektor.map(item => {
+                    i += 1
                     return (
-                     <CardKomoditiCategory key={item.id} komoditi={item}/>
+                     <CardKomoditiCategory key={item.id} sektor={item} image={item.image} url={item.url}/>
                     ) 
                  })
             }

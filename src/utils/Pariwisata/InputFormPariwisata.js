@@ -9,7 +9,7 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
    
 
 
-function InputFormPariwisata({jenis_wisata, editData}) {
+function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
     const handleConfirm = () => {
@@ -29,7 +29,6 @@ function InputFormPariwisata({jenis_wisata, editData}) {
       setShowPopupAdd(true);
     };
     
-    const [nama_wisata, setNamaWisata] = useState("");
     const [desa, setDesa] = useState("");
     const [wisatawan, setWisatawan] = useState(0);
 
@@ -38,7 +37,6 @@ function InputFormPariwisata({jenis_wisata, editData}) {
 
     useEffect(() => {
         if (editData) {
-            setNamaWisata(editData.nama_wisata);
             setDesa(editData.desa);
             setWisatawan(editData.wisatawan)
         }
@@ -50,7 +48,7 @@ function InputFormPariwisata({jenis_wisata, editData}) {
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
-        formData.append('nama_wisata', toTitleCase(nama_wisata));
+        formData.append('nama_wisata', nama_wisata);
         formData.append('jenis_wisata', jenis_wisata);
         formData.append('desa', toTitleCase(desa));
         formData.append('wisatawan', wisatawan);
@@ -89,10 +87,6 @@ function InputFormPariwisata({jenis_wisata, editData}) {
     return (
         <form onSubmit={handleSubmit} className='form-input'>
             <div className='form-input-row'>
-                <label htmlFor='nama_wisata'>Nama Wisata</label>
-                <input id='nama_wisata' type='text' value={nama_wisata} onChange={(e) => setNamaWisata(e.target.value)} />
-            </div>
-            <div className='form-input-row'>
                 <label htmlFor='desa'>Desa</label>
                 <input id='desa' type='text' value={desa} onChange={(e) => setDesa(e.target.value)} />
             </div>
@@ -101,7 +95,7 @@ function InputFormPariwisata({jenis_wisata, editData}) {
                 <input id='wisatawan' type='number' value={wisatawan} onChange={(e) => setWisatawan(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton">
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

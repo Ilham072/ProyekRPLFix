@@ -2,18 +2,18 @@ import React from 'react';
 import "./CardKomoditiCategory.css"
 import { Link } from 'react-router-dom';
 
-const CardKomoditiCategory = (props) => {
+const CardKomoditiCategory = ({sektor, image, url}) => {
     return (
         <div className="CardKomoditiCategory">
             <div className="CardKomoditiCategory-content">
                 <div className="CardKomoditiCategory-logo">
-                    <img src={props.komoditi.image}/>
+                    <img src={image}/>
                 </div>
                 <div className="CardKomoditiCategory-title">
-                    <p id="Sum-Category">{props.komoditi.count}</p>
-                    <p id="Title">{props.komoditi.name}</p>
+                    <p id="Sum-Category">{sektor.count}</p>
+                    <p id="Title">{sektor.name}</p>
                 </div>
-                <Link to={props.komoditi.url} className="CardKomoditiCategory-button">
+                <Link to={url} className="CardKomoditiCategory-button">
                     <img src="assets/icon/button/Button2.svg"/>
                 </Link>
             </div>

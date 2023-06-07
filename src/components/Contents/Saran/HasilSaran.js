@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../Button/Button";
 
-const HasilSaran = () => {
-  const [saranData, setSaranData] = useState([]);
+const HasilSaran = ({saranData}) => {
 
   return (
     <div style={{
@@ -16,7 +15,7 @@ const HasilSaran = () => {
       }}>
         {saranData.map((saran, index) => (
           <div key={index}>
-            <h2>{saran}</h2>
+            <p>{saran.saran}</p>
           </div>
         ))}
     </div>

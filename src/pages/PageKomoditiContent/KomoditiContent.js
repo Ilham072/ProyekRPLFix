@@ -5,24 +5,38 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import KomoditiArtikel from "../../components/Contents/Komoditi/KomoditiArtikel";
 import LogoApp from "../../components/LogoApp/LogoApp";
+import { saveAs } from 'file-saver';
 
 const KomoditiContent = () => {
     const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
-    useEffect(() => {
-      async function fetchDataKontenKomoditiById() {
-        const searchParams = new URLSearchParams(window.location.search);
-        const kontenId = searchParams.get('id');
-        let data;
-        await axios.get(`http://localhost:8000/api/Konten Komoditi/${kontenId}`)
-          .then((response) => {
-            data = response.data.konten_komoditi;
-          }).catch((error) => {
-            console.log(error.response.message);
-          })
-          setDataKontenKomoditi(data);
+    const searchParams = new URLSearchParams(window.location.search);
+    const kontenId = searchParams.get('id');
+    async function fetchDataKontenKomoditiById(id) {
+      let data;
+      await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
+        .then((response) => {
+          data = response.data.konten_komoditi;
+        }).catch((error) => {
+          console.log(error.response.message);
+        })
+        setDataKontenKomoditi(data);
+    }
+
+    const downloadExcel = async (sektor, komoditi) => {
+      try {
+          const response = await axios.get(`http://localhost:8000/api/${sektor} ${komoditi}/xslx`, {
+              responseType: 'blob', // Set response type to 'blob'
+          });
+          saveAs(response.data, `Laporan ${komoditi}`);
+          
+      } catch (error) {
+          console.log(error);
       }
-      fetchDataKontenKomoditiById()
-    }, []);
+  }
+
+    useEffect(() => {
+      fetchDataKontenKomoditiById(kontenId)
+    }, [kontenId]);
     return (
       <div className='container'>
         <div className='logo'>
