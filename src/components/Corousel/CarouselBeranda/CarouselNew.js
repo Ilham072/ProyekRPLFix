@@ -8,7 +8,6 @@ const CarouselNew = ({banner}) => {
     { url: "/assets/images/carousel/carousel3.svg", title: "banner3" },
   ];
   for (let i = 0; i < banner.length; i++) {
-    console.log(banner[i].banner)
     slides[i].url = banner[i].banner;
   }
 

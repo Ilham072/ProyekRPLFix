@@ -24,7 +24,6 @@ const Beranda = () => {
         } else {
           const response = await axios.get('http://localhost:8000/api/Konten Berita');
           data = response.data;
-          localStorage.setItem('dataKontenBerita', JSON.stringify(data));
         }
           setDataBerita(data);
       }

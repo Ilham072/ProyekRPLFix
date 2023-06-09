@@ -11,7 +11,7 @@ import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNe
 import kategori_komoditi from "../../../config/KomoditiCategory/kategori_Komoditi.json";
 
 const BerandaAdmin = () => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [kategoriKomoditi, setKategoriKomoditi] = useState([]);
@@ -21,7 +21,9 @@ const BerandaAdmin = () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         await axios.get('http://localhost:8000/api/adminkecamatan')
         .then((response) => {
-            setUser(response.data.kecamatan);
+            const data = [response.data.name, response.data.kecamatan];
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify(data));
         })
     }
 
@@ -78,7 +80,7 @@ const BerandaAdmin = () => {
             </div>
             <div className='header'>
                 <div>
-                    <HeaderAdmin />
+                    <HeaderAdmin user={user}/>
                 </div>
             </div>
             <div className='nav'>

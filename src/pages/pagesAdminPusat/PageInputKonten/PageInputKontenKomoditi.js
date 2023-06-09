@@ -17,6 +17,7 @@ const PageInputKontenKomoditi= () => {
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
     const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
     const [komoditiOptions, setKomoditiOptions] = useState([]);
+    const kontenKomoditi=true;
 
     const handleSektorChange = (value) => {
         setSelectedSektor(value);
@@ -26,23 +27,22 @@ const PageInputKontenKomoditi= () => {
         setSelectedKomoditi(value);
     }
 
-    const fetchKomoditi = async () => {
-        if (selectedSektor) {
-            try {
-          const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${selectedSektor}`);
-          const data = response.data;
-          console.log(data);
-          setKomoditiOptions(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+    // const fetchKomoditi = async () => {
+    //     if (selectedSektor) {
+    //         try {
+    //       const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${selectedSektor}`);
+    //       const data = response.data;
+    //       setKomoditiOptions(data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
         
-      }
+    //   }
 
-    useEffect(() => {
-        fetchKomoditi();
-    }, [selectedSektor]);
+    // useEffect(() => {
+    //     fetchKomoditi();
+    // }, [selectedSektor]);
 
     // const komoditiOptions = [
     //     { value: "Sayuran", label: "Sayuran" },
@@ -118,11 +118,11 @@ const PageInputKontenKomoditi= () => {
             <div className='content'>
                 <div className='dropdown-tambah-konten-komoditi'>
                     <DropdownSektor selectedSektor={selectedSektor} onSektorChange={handleSektorChange} sektor={dataKontenKomoditi.sektor}/>
-                    <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataKontenKomoditi.judul}/>
+                    <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} sektor={selectedSektor} komoditi={dataKontenKomoditi.judul} kontenKomoditi={kontenKomoditi}/>
                 </div>
                 <div className='cover_tambah_konten_komoditi'>
                     <h1 className='judul_tambah_konten_komoditi'></h1>
-                    <InputFormKontenKomoditi sektor={selectedSektor} komoditi={selectedKomoditi} editData={dataKontenKomoditi}/>
+                    <InputFormKontenKomoditi sektor={selectedSektor} komoditi={selectedKomoditi} editData={dataKontenKomoditi} />
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}

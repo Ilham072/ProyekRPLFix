@@ -15,7 +15,6 @@ function App() {
         let data;
         await axios.get(`http://localhost:8000/api/Konten Berita/${newsId}`)
         .then((response) => {
-            console.log(response.data.konten_berita);
             data = response.data.konten_berita;
         }).catch((error) => {
           console.log(error.response.message);

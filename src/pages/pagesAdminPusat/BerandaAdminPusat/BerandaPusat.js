@@ -11,7 +11,7 @@ import checkTokenExpiration from './../../../utils/checkTokenExpiration';
 import kategori_komoditi from "../../../config/KomoditiCategory/kategori_Komoditi.json";
 // import './BerandaAdmin.css';
 const BerandaPusat = () => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const [kategoriKomoditi, setKategoriKomoditi] = useState([]);
@@ -21,7 +21,9 @@ const BerandaPusat = () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         await axios.get('http://localhost:8000/api/adminpusat')
         .then((response) => {
-            setUser(response.data.kecamatan);
+            const data = [response.data.name, 'Admin Pusat']
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify(data));
         })
     }
 
@@ -79,7 +81,7 @@ const BerandaPusat = () => {
             </div>
             <div className='header'>
                 <div>
-                    <HeaderAdmin />
+                    <HeaderAdmin user={user}/>
                 </div>
             </div>
             <div className='nav'>

@@ -80,6 +80,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
             history('/adminpertanian');
         } catch (error) {
             setValidation(error.response.data);
+            console.log(error.response)
             }
     };
 

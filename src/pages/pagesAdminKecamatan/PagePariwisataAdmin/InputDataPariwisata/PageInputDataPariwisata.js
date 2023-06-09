@@ -20,6 +20,7 @@ const PageInputDataPariwisata= () => {
     const [dataPariwisata, setDataPariwisata] = useState([]);
     const [komoditiOptions, setKomoditiOptions] = useState([]);
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
+    const kecamatan = localStorage.getItem('kecamatan');
 
     const handleWisataChange = (value) => {
         setSelectedWisata(value);
@@ -44,23 +45,23 @@ const PageInputDataPariwisata= () => {
         setSelectedKomoditi(value);
     }
 
-    const fetchWisata = async (wisata) => {
-        const kecamatan = localStorage.getItem('kecamatan');
-        try {
-          const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pariwisata&bidang=${wisata}&kecamatan=${kecamatan}`);
-          const data = response.data;
-          setKomoditiOptions(data);
-        } catch (error) {
-          console.log(error);
-        }
-      }
+    // const fetchWisata = async (wisata) => {
+        
+    //     try {
+    //       const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pariwisata&bidang=${wisata}&kecamatan=${kecamatan}`);
+    //       const data = response.data;
+    //       setKomoditiOptions(data);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
 
-    useEffect(() => {
-        if (selectedWisata) {
-            fetchWisata(selectedWisata);
-        }
-        console.log(komoditiOptions);
-    }, [selectedWisata]);
+    // useEffect(() => {
+    //     if (selectedWisata) {
+    //         fetchWisata(selectedWisata);
+    //     }
+    //     console.log(komoditiOptions);
+    // }, [selectedWisata]);
 
     useEffect(() => {
         if(!token) {
@@ -119,7 +120,7 @@ const PageInputDataPariwisata= () => {
                 <h3>Pendataan || Pariwisata || Tambah Data </h3>
                 <div className='dropdown-tambah-data-pariwisata'>
                 <DropdownPariwisata selectedWisata={selectedWisata} onWisataChange={handleWisataChange} pariwisata={dataPariwisata.jenis_wisata}/>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPariwisata.nama_wisata} pariwisata={true}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditi={dataPariwisata.nama_wisata} pariwisata={true} bidang={selectedWisata} sektor='Pariwisata' kecamatan={kecamatan}/>
                 </div>
                 <div className='cover_tambah_data_pariwisata'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

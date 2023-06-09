@@ -15,6 +15,7 @@ import { saveAs } from 'file-saver';
 const LaporanPusat = () => {
     const [selectedSektor, setSelectedSektor] = useState('');
     const [selectedTahun, setSelectedTahun] = useState(0);
+    const [dataKomoditi, setDataKomoditi] = useState([]);
 
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
@@ -57,6 +58,26 @@ const LaporanPusat = () => {
             
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    const fetchDataKomoditi = async (sektor, tahun = false) => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        if (tahun) {
+            try {
+                const response = await axios.get(`http://localhost:8000/api/${sektor}/${tahun}`);
+                setDataKomoditi(response.data);
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            tahun = new Date().getFullYear();
+            try {
+                const response = await axios.get(`http://localhost:8000/api/${sektor}/${tahun}`);
+                setDataKomoditi(response.data);
+            } catch (e) {
+                console.log(e);
+            }
         }
     }
     

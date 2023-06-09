@@ -21,7 +21,6 @@ const PageInputDataPertanian= () => {
     const [komoditiOptions, setKomoditiOptions] = useState([]);
     const [dataPertanian, setDataPertanian] = useState([]);
     //const editData = JSON.parse(localStorage.getItem('editData'));    
-
     const handleBidangChange = (value) => {
         setSelectedBidang(value);
     }
@@ -30,26 +29,26 @@ const PageInputDataPertanian= () => {
         setSelectedKomoditi(value);
     }
 
-    const fetchKomoditi = async () => {
-        if (selectedBidang) {
-            try {
-          const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pertanian&bidang=${selectedBidang}`);
-          const data = response.data;
-          setKomoditiOptions(data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+    // const fetchKomoditi = async (bidang) => {
+    //     if (selectedBidang) {
+    //         try {
+    //       const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=Pertanian&bidang=${bidang}`);
+    //       const data = response.data;
+    //       setKomoditiOptions(data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
         
-      }
+    //   }
 
-    useEffect(() => {
-        fetchKomoditi();
-    }, [selectedBidang]);
+    // useEffect(() => {
+    //     fetchKomoditi(selectedBidang);
+    // }, [selectedBidang]);
 
-    const handleClick = (event) =>{
-        console.log(event);
-    }
+    // const handleClick = (event) =>{
+    //     console.log(event);
+    // }
 
 
     async function fetchDataPertanianById(id) {
@@ -111,7 +110,7 @@ const PageInputDataPertanian= () => {
                     <DropdownBidang selectedBidang={selectedBidang} onBidangChange={handleBidangChange} bidang={dataPertanian.bidang}/>
                     <DropdownKomoditi selectedKomoditi={selectedKomoditi}
                         onKomoditiChange={handleKomoditiChange}
-                        komoditiOptions={komoditiOptions} komoditi={dataPertanian.komoditi}/>
+                        komoditi={dataPertanian.komoditi} bidang={selectedBidang} sektor='Pertanian'/>
                 </div>
                 <div className='cover_tambah_data_pertanian'>
                     <h1 className='judul_tambah_data'>Uraian</h1>
