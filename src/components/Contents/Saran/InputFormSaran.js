@@ -3,17 +3,27 @@ import Form from "react-bootstrap/Form";
 import { Button } from "../../Button/Button";
 import HasilSaran from "./HasilSaran";
 import "./InputformSaran.css";
+import axios from "axios";
 
 const InputFormSaran = () => {
   const [saran, setSaran] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [saranData, setSaranData] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSaranData([...saranData, saran]);
-    setSaran("");
-    setSubmitted(true);
+    
+    const formData = new FormData();
+    formData.append('saran', saran);
+
+    await axios.post('http://localhost:8000/api/Saran', formData)
+      .then((response) => {
+        console.log(response.data.message);
+      }).catch((error) => {
+        console.log(error.response.message);
+      })
+
+      window.location.reload(false);
   };
 
   if (submitted) {

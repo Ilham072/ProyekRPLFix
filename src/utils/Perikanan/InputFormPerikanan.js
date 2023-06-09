@@ -95,7 +95,7 @@ function InputFormPerikanan({komoditi, editData}) {
             </div>
             <div className='button-add'>
 
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton" >
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

@@ -2,18 +2,18 @@ import React from 'react';
 import CardGrafik from '../../components/Card/Grafik/CardGrafik';
 import dataGrafikPerikanan from "../../config/Perikanan/dataGrafikPerikanan.json";
 
-const GrafikKomoditiPerikanan = () => {
-  const data = dataGrafikPerikanan.slice(0, 10);
-  const reversedData = data.map(item => ({
+const GrafikKomoditiPerikanan = ({dataPerikanan}) => {
+  const reversedData = dataPerikanan.map(item => ({
     kecamatan: item.kecamatan,
-    value: item.volume, 
+    value: item.total_volume, 
   }));
   reversedData.sort((a, b) => b.value - a.value);
+  const data = reversedData.slice(0, 10);
 
   return (
     <div>
       <CardGrafik
-        data={reversedData}
+        data={data}
         title="Jumlah Ton"
         xLabel="Volume"
         yLabel="Kecamatan"

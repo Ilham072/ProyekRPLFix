@@ -80,6 +80,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
             history('/adminpertanian');
         } catch (error) {
             setValidation(error.response.data);
+            console.log(error.response)
             }
     };
 
@@ -98,7 +99,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
                 <input id='produktivitas' type='number' value={produktivitas} onChange={(e) => setProduktivitas(e.target.value)} />
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton">
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

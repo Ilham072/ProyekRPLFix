@@ -11,10 +11,12 @@ import { useNavigate } from "react-router-dom";
 import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components";
+import kategoriPertanian from "../../../config/pertanian/kategoriPertanian.json"
 
 const PertanianBerandaAdmin = () => {
     const [selectedKecamatan, setSelectedKecamatan] = useState("");
     const [selectedBidang, setSelectedBidang] = useState(null);
+    const [bidangPertanian, setBidangPertanian] = useState([]);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
@@ -30,20 +32,37 @@ const PertanianBerandaAdmin = () => {
         console.log(event);
     }
 
-    // useEffect(() => {
-    //     if(!token) {
-    //         navigate('/login')
-    //     }
-    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // }, []);
+    const fetchPertanianBidang = async () => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const response = await axios.get('http://localhost:8000/api/Count Pertanian');
+        setBidangPertanian(response.data);
+        for (let i=0; i < bidangPertanian.length; i++) {
+            for (let j=0; j < bidangPertanian.length; j++) {
+                if (kategoriPertanian[i].name === bidangPertanian[j].bidang) {
+                    kategoriPertanian[i].count = bidangPertanian[j].count;
+                }
+            }
+        }
+    }
 
-    // useEffect(() => {
-    //     const isTokenExpired = checkTokenExpiration();
-    //     if(isTokenExpired) {
-    //         localStorage.clear();
-    //         navigate('/login');
-    //     }
-    // });
+    useEffect(() => {
+        fetchPertanianBidang();
+    }, [])
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
 
     return (
         <div className='container'>
@@ -64,7 +83,7 @@ const PertanianBerandaAdmin = () => {
             <div className='content'>
                 <div><h3>Beranda Pertanian</h3></div>
                 <DropdownKecamatan selectedKecamatan={selectedKecamatan} onKecamatanChange={handleKecamatanChange}/>
-                <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={handleBidangChange}/>
+                <PertanianCategory selectedCategory={selectedBidang} onCategoryChange={handleBidangChange} kategoriPertanian={kategoriPertanian}/>
                 <DataBerandaPertanian kecamatan={selectedKecamatan} bidang={selectedBidang} />
                 <div className="container-button-tambah-data">
                     <Link to="/berandaAdmin">

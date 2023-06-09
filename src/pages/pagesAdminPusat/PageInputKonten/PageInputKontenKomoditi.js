@@ -16,6 +16,8 @@ const PageInputKontenKomoditi= () => {
     const [selectedSektor, setSelectedSektor] = useState("");
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
     const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
+    const [komoditiOptions, setKomoditiOptions] = useState([]);
+    const kontenKomoditi=true;
 
     const handleSektorChange = (value) => {
         setSelectedSektor(value);
@@ -25,20 +27,37 @@ const PageInputKontenKomoditi= () => {
         setSelectedKomoditi(value);
     }
 
-    const komoditiOptions = [
-        { value: "Sayuran", label: "Sayuran" },
-        { value: "Buah-buahan", label: "Buah-buahan" },
-        { value: "Bunga", label: "Bunga" },
-        { value: "Padi", label: "Padi" },
-        { value: "Jagung", label: "Jagung" },
-        { value: "Kedelai", label: "Kedelai" },
-        { value: "Kelapa", label: "Kelapa" },
-        { value: "Kopi", label: "Kopi" },
-        { value: "Sapi", label: "Sapi" },
-        { value: "Ikan Windu", label: "Ikan Windu" },
-        { value: "Tembaga", label: "Tembaga" },
-        { value: "Tanjung Pallette", label: "Tanjung Pallette" },
-    ];
+    // const fetchKomoditi = async () => {
+    //     if (selectedSektor) {
+    //         try {
+    //       const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${selectedSektor}`);
+    //       const data = response.data;
+    //       setKomoditiOptions(data);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+        
+    //   }
+
+    // useEffect(() => {
+    //     fetchKomoditi();
+    // }, [selectedSektor]);
+
+    // const komoditiOptions = [
+    //     { value: "Sayuran", label: "Sayuran" },
+    //     { value: "Buah-buahan", label: "Buah-buahan" },
+    //     { value: "Bunga", label: "Bunga" },
+    //     { value: "Padi", label: "Padi" },
+    //     { value: "Jagung", label: "Jagung" },
+    //     { value: "Kedelai", label: "Kedelai" },
+    //     { value: "Kelapa", label: "Kelapa" },
+    //     { value: "Kopi", label: "Kopi" },
+    //     { value: "Sapi", label: "Sapi" },
+    //     { value: "Ikan Windu", label: "Ikan Windu" },
+    //     { value: "Tembaga", label: "Tembaga" },
+    //     { value: "Tanjung Pallette", label: "Tanjung Pallette" },
+    // ];
 
     async function fetchDataKontenKomoditiById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -99,11 +118,11 @@ const PageInputKontenKomoditi= () => {
             <div className='content'>
                 <div className='dropdown-tambah-konten-komoditi'>
                     <DropdownSektor selectedSektor={selectedSektor} onSektorChange={handleSektorChange} sektor={dataKontenKomoditi.sektor}/>
-                    <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataKontenKomoditi.judul}/>
+                    <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} sektor={selectedSektor} komoditi={dataKontenKomoditi.judul} kontenKomoditi={kontenKomoditi}/>
                 </div>
                 <div className='cover_tambah_konten_komoditi'>
                     <h1 className='judul_tambah_konten_komoditi'></h1>
-                    <InputFormKontenKomoditi sektor={selectedSektor} komoditi={selectedKomoditi} editData={dataKontenKomoditi}/>
+                    <InputFormKontenKomoditi sektor={selectedSektor} komoditi={selectedKomoditi} editData={dataKontenKomoditi} />
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}
