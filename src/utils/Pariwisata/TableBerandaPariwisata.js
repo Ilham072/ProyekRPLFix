@@ -17,6 +17,11 @@ export function getTableBerandaPariwisata() {
             sortable: true
         },
         {
+            name: "Kecamatan",
+            selector: row => row.kecamatan,
+            sortable: true
+        },
+        {
             name: "Desa",
             selector: row => row.desa,
             sortable: true

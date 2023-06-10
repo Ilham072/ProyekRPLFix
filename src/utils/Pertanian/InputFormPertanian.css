@@ -68,3 +68,15 @@
     display:flex;
     justify-content: center;
   }
+
+  .alert-danger {
+    background-color:#e11515a1;
+    height: max-content;
+    width: 289px;
+    margin: 3px;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}

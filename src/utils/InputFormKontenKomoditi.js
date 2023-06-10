@@ -56,7 +56,7 @@ function InputFormKontenKomoditi({sektor, komoditi, editData}) {
         }
         history('/kontenKomoditi');
     } catch (error) {
-        setValidation(error.response.data);
+        setValidation(error.response.data.errors);
     }
 
     };
@@ -75,9 +75,23 @@ function InputFormKontenKomoditi({sektor, komoditi, editData}) {
             <div className='judul-input-konten-komoditi'>
                 <h1>Uraian</h1>
             </div>
+            {
+              validation.judul && (
+                <div className="alert-danger">
+                  Sektor dan Komoditi harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='fileInput'>Pilih Gambar</label>
                 <input id='fileInput' type='file' onChange={handleGambarChange}/>
+                {
+              validation.image && (
+                <div className="alert-danger">
+                  {validation.image[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='isi'>Isi</label>
@@ -92,6 +106,13 @@ function InputFormKontenKomoditi({sektor, komoditi, editData}) {
                         resize: 'vertical',
                     }}
                     rows={Math.min(20, isi?.split('\n').length)}/>
+                    {
+              validation.isi && (
+                <div className="alert-danger">
+                  {validation.isi[0]}
+                </div>
+              )
+                }
             </div>
             <div className='button-tambah-konten-komoditi'>
                 <Button className='ButtonTambahBerita' type='submit'>

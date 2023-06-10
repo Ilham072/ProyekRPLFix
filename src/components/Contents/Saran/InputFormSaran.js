@@ -19,11 +19,19 @@ const InputFormSaran = () => {
     await axios.post('http://localhost:8000/api/Saran', formData)
       .then((response) => {
         console.log(response.data.message);
+<<<<<<< HEAD
       }).catch((error) => {
         console.log(error.response.message);
       })
 
       window.location.reload(false);
+=======
+        window.location.reload(false);
+      }).catch((error) => {
+        console.log(error.response.data);
+      })
+
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
   };
 
   if (submitted) {
@@ -36,7 +44,7 @@ const InputFormSaran = () => {
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Control
             as="textarea"
-            rows={10}
+            rows={20}
             value={saran}
             onChange={(e) => setSaran(e.target.value)}
           />

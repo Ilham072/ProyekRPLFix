@@ -1,8 +1,7 @@
 import React from 'react';
-import kategoriPertanian from "../config/pertanian/kategoriPertanian.json"
 import CardCategory from '../components/Card/CardCategory/Cardcategory';
 
-const PertanianCategory = ({selectedCategory, onCategoryChange}) => {
+const PertanianCategory = ({selectedCategory, onCategoryChange, kategoriPertanian}) => {
     const handleCategorySelect = (category) => {
       onCategoryChange(category);
     };

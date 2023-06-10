@@ -2,7 +2,7 @@ import React from "react";
 import kategoriPariwisata from "../config/Pariwisata/kategoriPariwisata.json";
 import CardCategory from "../components/Card/CardCategory/Cardcategory";
 
-const PariwisataCategory = ({selectedCategory, onCategoryChange}) => {
+const PariwisataCategory = ({selectedCategory, onCategoryChange, kategoriPariwisata}) => {
     const handleCategorySelect = (category) => {
         onCategoryChange(category);
     };

@@ -8,7 +8,10 @@ import { Button } from "../../../components/Button/Button";
 import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNew";
 import checkTokenExpiration from './../../../utils/checkTokenExpiration';
 import kategori_komoditi from "../../../config/KomoditiCategory/kategori_Komoditi.json";
+<<<<<<< HEAD
 import KomoditiCategoryPusat from "../../../utils/KomoditiCategoryPusat";
+=======
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
 // import './BerandaAdmin.css';
 const BerandaPusat = () => {
     const [user, setUser] = useState([]);
@@ -92,7 +95,11 @@ const BerandaPusat = () => {
                 <div><h3>Beranda</h3></div>
                 <div className="isi_content">
                     <CarouselNew banner={banner}/>
+<<<<<<< HEAD
                     <KomoditiCategoryPusat sektor={kategori_komoditi}/>
+=======
+                    <KomoditiCategory sektor={kategori_komoditi}/>
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
                     
                 </div>
             </div>

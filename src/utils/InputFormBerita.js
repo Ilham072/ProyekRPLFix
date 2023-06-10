@@ -57,7 +57,7 @@ function InputFormBerita({sektor, kecamatan, editData}) {
             }
             history('/berita');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
         }
     };
 
@@ -72,13 +72,41 @@ function InputFormBerita({sektor, kecamatan, editData}) {
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
+             {
+              validation.sektor && (
+                <div className="alert-danger">
+                  {validation.sektor[0]}
+                </div>
+              )
+            }
+             {
+              validation.kecamatan && (
+                <div className="alert-danger">
+                  {validation.kecamatan[0]}
+                </div>
+              )
+            }
             <div className='form-input-row'>
                     <label htmlFor='judul'>Judul</label>
                     <input id='judul' type='text' value={judul} onChange={(e) => setJudul(e.target.value)} />
+                    {
+              validation.judul && (
+                <div className="alert-danger">
+                  {validation.judul[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='fileInput'>Pilih Gambar</label>
                 <input id='fileInput' type='file' onChange={handleGambarChange}/>
+                {
+              validation.image && (
+                <div className="alert-danger">
+                  {validation.image[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='isi'>Isi</label>
@@ -93,6 +121,13 @@ function InputFormBerita({sektor, kecamatan, editData}) {
                         resize: 'vertical',
                     }}
                     rows={Math.min(20, isi?.split('\n').length)}/>
+                    {
+              validation.isi && (
+                <div className="alert-danger">
+                  {validation.isi[0]}
+                </div>
+              )
+                }
             </div>
             <div style={{display: "flex", textAlign: "right", width: "100%"}}>
                 <Button className='ButtonTambahBerita' type='submit'>

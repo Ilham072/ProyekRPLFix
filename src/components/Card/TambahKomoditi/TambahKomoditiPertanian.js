@@ -46,7 +46,8 @@ const TambahKomoditiPertanian= ({ sektor }) => {
         }
         window.location.reload(false);
     }catch(error) {
-      setValidation(error.response.data);
+      setValidation(error.response.data.error);
+      console.log(error.response.data);
     }
     
   }
@@ -62,6 +63,13 @@ const TambahKomoditiPertanian= ({ sektor }) => {
           value={nama}
           onChange={(event) => setNama(event.target.value)}
         />
+         {
+              validation.nama && (
+                <div className="alert-danger">
+                  {validation.nama[0]}
+                </div>
+              )
+          }
         <h3>Bidang Komoditi</h3>
         <select value={selectedBidangKomoditi} onChange={handleBidangKomoditiChange}>
           <option value="">Pilih Bidang</option>

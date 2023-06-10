@@ -25,9 +25,9 @@ const TableAdmin = (navigateToEdit) => {
 
     const [showPopupDeleted, setShowPopupDeleted] = useState(false);
 
-    const handleConfirm = () => {
+    const handleConfirm = (id) => {
         // Logika ketika tombol "Ya" ditekan
-        deleteHandler();
+        deleteHandler(id);
         console.log("Data telah dihapus.");
         setShowPopupDeleted(false);
     };
@@ -45,9 +45,9 @@ const TableAdmin = (navigateToEdit) => {
 
     const [showPopupEdit, setShowPopupEdit] = useState(false);
 
-    const handleConfirmEdit = () => {
+    const handleConfirmEdit = (id) => {
         // Logika ketika tombol "Ya" ditekan
-        handleEdit();
+        handleEdit(id);
         console.log("Data telah ditambahkan.");
         setShowPopupEdit(false);
     };
@@ -97,16 +97,16 @@ const TableAdmin = (navigateToEdit) => {
                     {showPopupEdit && (
                         <PopupEdit
                             message="Apakah Anda yakin akan mengedit data?"
-                            onConfirm={handleConfirmEdit}
+                            onConfirm={() => handleConfirmEdit(row.id)}
                             onCancel={handleCancelEdit}
                         />
                     )}
                     <Button className="btn-delete" onClick={handleButtonClick}><img src="assets/icon/button/button-delete.svg"/></Button>
                     {showPopupDeleted && (
                         <PopupDeleted
-                            message="Apakah Anda yakin menghapus data?"
-                            onConfirm={handleConfirm}
-                            onCancel={handleCancel}
+                        message="Apakah Anda yakin menghapus data?"
+                        onConfirm={() => handleConfirm(row.id)}
+                        onCancel={handleCancel}
                         />
                     )}
                 </div>

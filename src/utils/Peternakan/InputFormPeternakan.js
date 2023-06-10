@@ -53,7 +53,7 @@ function InputFormPeternakan({komoditi, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(komoditi, total, kelahiran, kematian, pemotongan, ternak_keluar, ternak_masuk, populasi);
+        // console.log(komoditi, total, kelahiran, kematian, pemotongan, ternak_keluar, ternak_masuk, populasi);
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
@@ -92,41 +92,99 @@ function InputFormPeternakan({komoditi, editData}) {
             }
             navigate('/adminpeternakan');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
         }
     };      
     return (
         <form onSubmit={handleSubmit} className='form-input'>
+            {
+              validation.komoditi && (
+                <div className="alert-danger">
+                  Komoditi harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='total'>Total</label>
                 <input id='total' type='number' value={total} onChange={(e) => setTotal(e.target.value)} />
+                {
+              validation.total && (
+                <div className="alert-danger">
+                  {validation.total[0]}
+                </div>
+              )
+            }   
             </div>
+            
             <div className='form-input-row'>
                 <label htmlFor='kelahiran'>Kelahiran</label>
                 <input id='kelahiran' type='number' value={kelahiran} onChange={(e) => setKelahiran(e.target.value)} />
+                {
+              validation.kelahiran && (
+                <div className="alert-danger">
+                  {validation.kelahiran[0]}
+                </div>
+              )
+            }
             </div>
+            
             <div className='form-input-row'>
                 <label htmlFor='kematian'>Kematian</label>
                 <input id='kematian' type='number' value={kematian} onChange={(e) => setKematian(e.target.value)} />
+            {
+              validation.kematian && (
+                <div className="alert-danger">
+                  {validation.kematian[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='pemotongan'>Pemotongan</label>
                 <input id='pemotongan' type='number' value={pemotongan} onChange={(e) => setPemotongan(e.target.value)} />
+            {
+              validation.pemotongan && (
+                <div className="alert-danger">
+                  {validation.pemotongan[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='ternak_keluar'>Ternak Keluar</label>
                 <input id='ternak_keluar' type='number' value={ternak_keluar} onChange={(e) => setTernakKeluar(e.target.value)} />
+            {
+              validation.ternak_keluar && (
+                <div className="alert-danger">
+                  {validation.ternak_keluar[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='ternak_masuk'>Ternak Masuk</label>
                 <input id='ternak_masuk' type='number' value={ternak_masuk} onChange={(e) => setTernakMasuk(e.target.value)} />              
+            {
+              validation.ternak_masuk && (
+                <div className="alert-danger">
+                  {validation.ternak_masuk[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='populasi'>Populasi</label>
                 <input id='populasi' type='number' value={populasi} onChange={(e) => setPopulasi(e.target.value)} />
+            {
+              validation.populasi && (
+                <div className="alert-danger">
+                  {validation.populasi[0]}
+                </div>
+              )
+            }
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton" >
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

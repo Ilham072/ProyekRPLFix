@@ -73,18 +73,32 @@ function InputFormPerindustrian({komoditi, editData}) {
             }
             history('/adminperindustrian');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
+            {
+              validation.komoditi && (
+                <div className="alert-danger">
+                  Komoditi harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='potensi_kandungan'>Potensi Kandungan</label>
                 <input id='potensi_kandungan' type='number' value={potensi_kandungan} onChange={(e) => setPotensiKandungan(e.target.value)} />
+                {
+              validation.potensi_kandungan && (
+                <div className="alert-danger">
+                  {validation.potensi_kandungan[0]}
+                </div>
+              )
+            }
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton" >
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

@@ -5,7 +5,7 @@ import axios from 'axios';
 import toTitleCase from './titleCase';
 
 function InputFormAdmin({editData}) {
-    const [namaLengkap, setNamaLengkap] = useState("");
+    const [name, setName] = useState("");
     const [kecamatan, setKecamatan] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ function InputFormAdmin({editData}) {
 
     useEffect(() => {
         if (editData) {
-            setNamaLengkap(editData.name);
+            setName(editData.name);
             setUsername(editData.username);
             setKecamatan(editData.kecamatan);
             setPassword(editData.password);
@@ -25,12 +25,12 @@ function InputFormAdmin({editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(namaLengkap, kecamatan, username, password);
+        console.log(name, kecamatan, username, password);
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
 
-        formData.append('name', namaLengkap);
+        formData.append('name', name);
         formData.append('username', username);
         formData.append('kecamatan', toTitleCase(kecamatan));
         formData.append('password', password);
@@ -56,6 +56,7 @@ function InputFormAdmin({editData}) {
             }
             navigate('/dataAdmin');
         } catch (error) {
+            console.log(error.response.data);
             setValidation(error.response.data);
         }
     };
@@ -63,20 +64,48 @@ function InputFormAdmin({editData}) {
     return (
         <form onSubmit={handleSubmit} className='form-input'>
             <div className='form-input-row'>
-                <label htmlFor='namaLengkap'>Nama Lengkap</label>
-                <input id='namaLengkap' type='text' value={namaLengkap} onChange={(e) => setNamaLengkap(e.target.value)} />
+                <label htmlFor='name'>Nama Lengkap</label>
+                <input id='name' type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                {
+              validation.name && (
+                <div className="alert-danger">
+                  {validation.name[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='kecamatan'>Kecamatan</label>
                 <input id='kecamatan' type='text' value={kecamatan} onChange={(e) => setKecamatan(e.target.value)} />
+                {
+              validation.kecamatan && (
+                <div className="alert-danger">
+                  {validation.kecamatan[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='username'>Username</label>
                 <input id='username' type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+                {
+              validation.username && (
+                <div className="alert-danger">
+                  {validation.username[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='password'>Password</label>
                 <input id='password' type='text' value={password} onChange={(e) => setPassword(e.target.value)} />
+                {
+              validation.password && (
+                <div className="alert-danger">
+                  {validation.password[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='pass_confirm'>Konfirmasi Password</label>

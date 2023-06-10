@@ -9,7 +9,7 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
    
 
 
-function InputFormPariwisata({jenis_wisata, editData}) {
+function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
     const handleConfirm = () => {
@@ -30,7 +30,6 @@ function InputFormPariwisata({jenis_wisata, editData}) {
       setShowPopupAdd(true);
     };
     
-    const [nama_wisata, setNamaWisata] = useState("");
     const [desa, setDesa] = useState("");
     const [wisatawan, setWisatawan] = useState(0);
 
@@ -39,7 +38,6 @@ function InputFormPariwisata({jenis_wisata, editData}) {
 
     useEffect(() => {
         if (editData) {
-            setNamaWisata(editData.nama_wisata);
             setDesa(editData.desa);
             setWisatawan(editData.wisatawan)
         }
@@ -47,11 +45,11 @@ function InputFormPariwisata({jenis_wisata, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(nama_wisata, jenis_wisata, desa, wisatawan);
+        // console.log(nama_wisata, jenis_wisata, desa, wisatawan);
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
-        formData.append('nama_wisata', toTitleCase(nama_wisata));
+        formData.append('nama_wisata', nama_wisata);
         formData.append('jenis_wisata', jenis_wisata);
         formData.append('desa', toTitleCase(desa));
         formData.append('wisatawan', wisatawan);
@@ -82,27 +80,45 @@ function InputFormPariwisata({jenis_wisata, editData}) {
             }
             history('/adminpariwisata');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
+            console.log(error.response.data.errors);
         }
 
     };
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
-            <div className='form-input-row'>
-                <label htmlFor='nama_wisata'>Nama Wisata</label>
-                <input id='nama_wisata' type='text' value={nama_wisata} onChange={(e) => setNamaWisata(e.target.value)} />
-            </div>
+            {
+              validation.nama_wisata && (
+                <div className="alert-danger">
+                  Jenis Wisata dan Nama Wisata harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='desa'>Desa</label>
                 <input id='desa' type='text' value={desa} onChange={(e) => setDesa(e.target.value)} />
+                {
+              validation.desa && (
+                <div className="alert-danger">
+                  {validation.desa[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='wisatawan'>Wisatawan</label>
                 <input id='wisatawan' type='number' value={wisatawan} onChange={(e) => setWisatawan(e.target.value)} />
+                {
+              validation.wisatawan && (
+                <div className="alert-danger">
+                  {validation.wisatawan[0]}
+                </div>
+              )
+                }
             </div>
             <div className='button-add'>
-                <Button className="tambahDataButton" onClick={handleButtonClick} >
+                <Button className="tambahDataButton">
                     {editData ? 'Ubah Data' : 'Tambah Data'}
                 </Button>
                     {showPopupAdd && (

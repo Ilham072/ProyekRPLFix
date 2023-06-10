@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, {useState, useEffect} from "react";
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
 import LogoApp from "../../../components/LogoApp/LogoApp";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import DataBerandaPertanian from "../../../components/Contents/TablePertanian/DataBerandaPertanian";
@@ -17,6 +21,7 @@ import checkTokenExpiration from "../../../utils/checkTokenExpiration";
 import { saveAs } from 'file-saver';
 
 const LaporanPusat = () => {
+<<<<<<< HEAD
     const [Sektor, setSektor] = useState('');
     const [selectedTahun, setSelectedTahun] = useState(0);
     const [selectedTable, setSelectedTable] = useState(null); // Tambahkan state untuk menyimpan komponen tabel yang dipilih
@@ -27,18 +32,34 @@ const LaporanPusat = () => {
     useEffect(() => {
         const isTokenExpired = checkTokenExpiration();
         if (isTokenExpired) {
+=======
+    const [selectedSektor, setSelectedSektor] = useState('');
+    const [selectedTahun, setSelectedTahun] = useState(0);
+
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
             localStorage.clear();
             navigate('/login');
         }
     });
 
     useEffect(() => {
+<<<<<<< HEAD
         if (!token) {
+=======
+        if(!token) {
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
             navigate('/login')
         }
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     }, []);
 
+<<<<<<< HEAD
     const renderSelectedTable = (Sektor) => {
         switch (Sektor) {
           case "Pertanian":
@@ -76,6 +97,8 @@ const LaporanPusat = () => {
         }
       };
 
+=======
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
     const downloadPDF = async (sektor, tahun) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {
@@ -83,7 +106,11 @@ const LaporanPusat = () => {
                 responseType: 'blob', // Set response type to 'blob'
             });
             saveAs(response.data, `Laporan ${sektor} tahun ${tahun}`);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
         } catch (error) {
             console.log(error);
         }
@@ -96,11 +123,19 @@ const LaporanPusat = () => {
                 responseType: 'blob', // Set response type to 'blob'
             });
             saveAs(response.data, `Laporan ${sektor} tahun ${tahun}`);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
         } catch (error) {
             console.log(error);
         }
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
 
     return (
         <div className='container'>
@@ -117,17 +152,31 @@ const LaporanPusat = () => {
             <div className='content'>
                 <div><h3>Laporan</h3></div>
                 <div className='dropdown-laporan'>
+<<<<<<< HEAD
                     <DropdownSektor Sektor={Sektor} onSektorChange={setSektor} />
                     <DropdownTahun selectedTahun={selectedTahun} onTahunChange={setSelectedTahun} />
+=======
+                    <DropdownSektor selectedSektor={selectedSektor} onSektorChange={setSelectedSektor}/>
+                    <DropdownTahun selectedTahun={selectedTahun} onTahunChange={setSelectedTahun}/>
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
                 </div>
                 <div style={{ width: "100%" }}>{renderSelectedTable(Sektor)}</div>
                 <div className="button_download">
+<<<<<<< HEAD
                     <Button className="btn-pdf" onClick={() => downloadPDF(Sektor, selectedTahun)}>
                         <img src="assets/icon/button/icon_pdf.svg" /> Pdf
                     </Button>
                     <Button className="btn-excel" onClick={() => downloadExcel(Sektor, selectedTahun)}>
                         <img src="assets/icon/button/icon_excel.svg" /> Excel
                     </Button>
+=======
+                        <Button className="btn-pdf" onClick={() => downloadPDF(selectedSektor, selectedTahun)}>
+                            <img src="assets/icon/button/icon_pdf.svg"/> Pdf
+                        </Button>
+                        <Button className="btn-excel" onClick={() => downloadExcel(selectedSektor, selectedTahun)}>
+                            <img src="assets/icon/button/icon_excel.svg"/> Excel
+                        </Button>
+>>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
                 </div>
 
             </div>
