@@ -11,6 +11,11 @@ export function getTableBerandaPeternakan() {
             sortable: true
         },
         {
+            name: "Kecamatan",
+            selector: row => row.kecamatan,
+            sortable: true
+        },
+        {
             name: "Total",
             selector: row => row.total,
             sortable: true

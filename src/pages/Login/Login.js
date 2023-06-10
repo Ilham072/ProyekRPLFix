@@ -48,10 +48,30 @@ const Login = () => {
           <div className="cover">
             <h1>Login Admin</h1>
             <h3>Username</h3>
+            {
+              validation.message && (
+                <div className="alert-danger">
+                  {validation.message}
+                </div>
+              )
+            }
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Masukkan Username"/>
+            {
+              validation.username && (
+                <div className="alert-danger">
+                  {validation.username[0]}
+                </div>
+              )
+            }
             <h3>Password</h3>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Masukkan Password"/>
-
+            {
+              validation.password && (
+                <div className="alert-danger">
+                  {validation.password[0]}
+                </div>
+              )
+            }
             <div className="login-btn2">
                 <button onClick={loginHandler}>Masuk</button>
             </div>

@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom';
 const Card = (props) => {
     const navigate = useNavigate();
     function kontenKomoditiHandler(navigate) {
-        const kontenId = props.komoditi.id;
-        navigate(`/KomoditiContent?id=${kontenId}`);
+        const komoditi = props.komoditi.judul;
+        const sektor = props.komoditi.sektor;
+        const id = props.komoditi.id;
+        navigate(`/KomoditiContent?id=${id}&komoditi=${komoditi}&sektor=${sektor}`);
     }
     return (
         <div className="card">

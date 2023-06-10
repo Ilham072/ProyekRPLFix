@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import { Button } from "../../Button/Button";
+import "./HasilSaran.css";
 
 const HasilSaran = ({saranData}) => {
 
   return (
-    <div style={{
-      backgroundColor: "#ffffff", 
+    <div style={{ 
       width: "100%", 
-      height: "200px", 
+      height: "maxContent", 
       padding: "10px", 
       display: "flex",
       borderRadius: "15px"
 
       }}>
-        {saranData.map((saran, index) => (
-          <div key={index}>
-            <p>{saran.saran}</p>
-          </div>
-        ))}
+        <div className="saranStyleContainer">
+            {saranData.map((saran, index) => (
+              <div key={index} className="saranStyle">
+                <p>{saran.saran}</p>
+              </div>
+            ))}
+        </div>
     </div>
   );
 };

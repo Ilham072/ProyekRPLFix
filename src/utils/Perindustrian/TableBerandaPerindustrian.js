@@ -12,6 +12,11 @@ export function getTableBerandaPerindustrian() {
             sortable: true
         },
         {
+            name: "Kecamatan",
+            selector: row => row.kecamatan,
+            sortable: true
+        },
+        {
             name: "Potensi Kandungan",
             selector: row => row.potensi_kandungan,
             sortable: true

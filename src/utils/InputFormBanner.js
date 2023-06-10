@@ -27,7 +27,7 @@ function InputFormBanner() {
           window.location.reload(false);
       })
       .catch((error) => {
-          setValidation(error.response.data);
+          setValidation(error.response.data.errors);
       })
   };
 
@@ -49,6 +49,13 @@ function InputFormBanner() {
         {/* <label htmlFor='fileInput'></label> */}
         <input id='fileInput' type='file' onChange={handleBannerChange} />
       </div>
+      {
+              validation.banner && (
+                <div className="alert-danger">
+                  {validation.banner.map((err) => err)}
+                </div>
+              )
+      }
       <div className='button-save'>
         <Button className='ButtonSave' type='submit'>
           Simpan

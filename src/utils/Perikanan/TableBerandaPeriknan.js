@@ -11,6 +11,11 @@ export function getTableBerandaPerikanan() {
             sortable: true
         },
         {
+            name: "Kecamatan",
+            selector: row => row.kecamatan,
+            sortable: true
+        },
+        {
             name: "Volume(Ton)",
             selector: row => row.volume,
             sortable: true

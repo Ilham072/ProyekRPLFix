@@ -45,7 +45,7 @@ function InputFormPerikanan({komoditi, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(komoditi, volume, nilai_produksi);
+        // console.log(komoditi, volume, nilai_produksi);
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
@@ -79,19 +79,40 @@ function InputFormPerikanan({komoditi, editData}) {
             }
             history('/adminperikanan');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
+            {
+              validation.komoditi && (
+                <div className="alert-danger">
+                  Komoditi harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='volume'>Volume (Ton)</label>
                 <input id='volume' type='number' value={volume} onChange={(e) => setVolume(e.target.value)} />
+                {
+              validation.volume && (
+                <div className="alert-danger">
+                  {validation.volume[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='nilai_produksi'>Nilai Produksi</label>
                 <input id='nilai_produksi' type='number' value={nilai_produksi} onChange={(e) => setNilaiProduksi(e.target.value)} />
+                {
+              validation.nilai_produksi && (
+                <div className="alert-danger">
+                  {validation.nilai_produksi[0]}
+                </div>
+              )
+                }
             </div>
             <div className='button-add'>
 
