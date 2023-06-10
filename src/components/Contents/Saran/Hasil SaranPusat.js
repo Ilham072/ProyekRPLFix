@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../Button/Button";
 import axios from "axios";
+import "./HasilSaran.css";
 
 const HasilSaranPusat = ({saranData}) => {
   const token = localStorage.getItem('token');
@@ -16,30 +17,33 @@ const HasilSaranPusat = ({saranData}) => {
   }
   return (
     <div style={{
-      backgroundColor: "#ffffff", 
       width: "100%", 
-      height: "200px", 
+      height: "maxContent", 
       padding: "10px", 
       display: "flex",
       borderRadius: "15px"
 
       }}>
-        {saranData.map((saran, index) => (
-          <div key={saran.id}>
-            <p>{saran.saran}</p>
-            <Button className="btn-delete" onClick={() => deleteHandler(saran.id)}> 
-              <img src="assets/icon/button/button-delete.svg"/>
-            </Button>
-          </div>
-        ))}
-        <div style={{
+        <div className="saranStyleContainer">
+          {saranData.map((saran, index) => (
+            <div key={saran.id} className="saranStyle">
+              <span>{saran.saran}</span>
+              <span className="container-delete-saran">
+                <Button className="btn-delete" onClick={() => deleteHandler(saran.id)}> 
+                  <img src="assets/icon/button/button-delete.svg"/>
+                </Button>
+              </span>
+            </div>
+          ))}
+        </div>
+        {/* <div style={{
               backgroundColor: "#ffffff",
               border: "none",
               display: "flex",
               textAlign: "right",
               width: "100%"
           }}>
-        </div>
+        </div> */}
     </div>
   );
 };

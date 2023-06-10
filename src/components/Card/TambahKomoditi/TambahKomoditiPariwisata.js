@@ -64,6 +64,13 @@ const TambahKomoditiPariwisata= ({ sektor }) => {
           value={nama}
           onChange={(event) => setNama(event.target.value)}
         />
+        {
+              validation.nama && (
+                <div className="alert-danger">
+                  {validation.nama[0]}
+                </div>
+              )
+          }
         <h3>Jenis Wisata</h3>
         <select id="jenisWisata" value={selectedJenisWisata} onChange={handleJenisWisataChange}>
           <option value="">- Pilih Jenis Wisata -</option>

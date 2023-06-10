@@ -44,7 +44,7 @@ function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(nama_wisata, jenis_wisata, desa, wisatawan);
+        // console.log(nama_wisata, jenis_wisata, desa, wisatawan);
 
         const token = localStorage.getItem('token');
         const formData = new FormData();
@@ -79,20 +79,42 @@ function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
             }
             history('/adminpariwisata');
         } catch (error) {
-            setValidation(error.response.data);
+            setValidation(error.response.data.errors);
+            console.log(error.response.data.errors);
         }
 
     };
 
     return (
         <form onSubmit={handleSubmit} className='form-input'>
+            {
+              validation.nama_wisata && (
+                <div className="alert-danger">
+                  Jenis Wisata dan Nama Wisata harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='desa'>Desa</label>
                 <input id='desa' type='text' value={desa} onChange={(e) => setDesa(e.target.value)} />
+                {
+              validation.desa && (
+                <div className="alert-danger">
+                  {validation.desa[0]}
+                </div>
+              )
+                }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='wisatawan'>Wisatawan</label>
                 <input id='wisatawan' type='number' value={wisatawan} onChange={(e) => setWisatawan(e.target.value)} />
+                {
+              validation.wisatawan && (
+                <div className="alert-danger">
+                  {validation.wisatawan[0]}
+                </div>
+              )
+                }
             </div>
             <div className='button-add'>
                 <Button className="tambahDataButton">

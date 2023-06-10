@@ -8,29 +8,31 @@ import LogoApp from "../../components/LogoApp/LogoApp";
 import { saveAs } from 'file-saver';
 
 const KomoditiContent = () => {
-    const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
-
+    const searchParams = new URLSearchParams(window.location.search);
+    const sektor = searchParams.get('sektor');
+    const komoditi = searchParams.get('komoditi');
+    const id = searchParams.get('id');
     
 
-    useEffect(() => {
-      async function fetchDataKontenKomoditiById(id) {
-        let data;
-        await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
-          .then((response) => {
-            data = response.data.konten_komoditi;
-            setDataKontenKomoditi(data);
-          }).catch((error) => {
-            console.log(error.response.message);
-          })
-      }
+    // useEffect(() => {
+    //   async function fetchDataKontenKomoditiById(id) {
+    //     let data;
+    //     await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
+    //       .then((response) => {
+    //         data = response.data.konten_komoditi;
+    //         setDataKontenKomoditi(data);
+    //       }).catch((error) => {
+    //         console.log(error.response.message);
+    //       })
+    //   }
       
-      const searchParams = new URLSearchParams(window.location.search);
-      const kontenId = searchParams.get('id');
+    //   const searchParams = new URLSearchParams(window.location.search);
+    //   const kontenId = searchParams.get('id');
 
-      console.log(kontenId);
-      fetchDataKontenKomoditiById(kontenId);
-      console.log(dataKontenKomoditi);
-    }, []);
+    //   console.log(kontenId);
+    //   fetchDataKontenKomoditiById(kontenId);
+    //   console.log(dataKontenKomoditi);
+    // }, []);
 
     const downloadExcel = async (sektor, komoditi) => {
       try {
@@ -58,8 +60,8 @@ const KomoditiContent = () => {
             <Sidebar />
         </div>
         <div className='content'>
-            <h4>{dataKontenKomoditi.sektor} || {dataKontenKomoditi.judul}</h4>
-            <KomoditiArtikel kontenKomoditi={dataKontenKomoditi}/>
+            <h4>{sektor} || {komoditi}</h4>
+            <KomoditiArtikel id={id} sektor={sektor} komoditi={komoditi}/>
             
         </div>
         {/* <div className='footer'>footer</div> */}

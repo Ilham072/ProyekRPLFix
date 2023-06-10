@@ -54,6 +54,13 @@ const TambahKomoditiPerikanan= ({ sektor }) => {
           value={nama}
           onChange={(event) => setNama(event.target.value)}
         />
+        {
+              validation.nama && (
+                <div className="alert-danger">
+                  {validation.nama[0]}
+                </div>
+              )
+          }
         <div className="tambah-btn" onClick={handleSubmit}>
           Simpan
         </div>

@@ -8,8 +8,9 @@ import GrafikKomoditiPerindustrian from "../../../utils/Perindustrian/GrafikKomo
 import GrafikKomoditiPariwisata from "../../../utils/Pariwisata/GrafikKomoditiPariwisata";
 import DataPariwisata from './../TablePariwisata/DataPariwisata';
 
-const KomoditiArtikel = ({ kontenKomoditi }) => {
+const KomoditiArtikel = ({ id, sektor, komoditi }) => {
   const [dataKomoditi, setDataKomoditi] = useState([]);
+  const [kontenKomoditi, setKontenKomoditi] = useState([]);
   let grafikKomoditi;
 
   async function fetchDataKomoditi(sektor, komoditi) {
@@ -21,20 +22,32 @@ const KomoditiArtikel = ({ kontenKomoditi }) => {
     }
   }
 
+  async function fetchKontenKomoditi(id) {
+    let data;
+    await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
+      .then((response) => {
+        data = response.data.konten_komoditi;
+        setKontenKomoditi(data);
+    }).catch((error) => {
+        console.log(error.response.message);
+    })
+  }
+
   useEffect(() => {
-    fetchDataKomoditi(kontenKomoditi.sektor, kontenKomoditi.judul)
-  }, [kontenKomoditi.sektor, kontenKomoditi.judul])
+    fetchDataKomoditi(sektor, komoditi);
+    fetchKontenKomoditi(id);
+  }, [id, sektor, komoditi])
 
   // Menentukan grafik komoditi berdasarkan sektor konten yang dipilih
-  if (kontenKomoditi.sektor === "Peternakan") {
+  if (sektor === "Peternakan") {
     grafikKomoditi = <GrafikKomoditiPeternakan dataPeternakan={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Pertanian") {
+  } else if (sektor === "Pertanian") {
     grafikKomoditi = <GrafikKomoditiPertanian dataPertanian={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Perikanan") {
+  } else if (sektor === "Perikanan") {
     grafikKomoditi = <GrafikKomoditiPerikanan dataPerikanan={dataKomoditi} />;
-  } else if (kontenKomoditi.sektor === "Perindustrian") {
+  } else if (sektor === "Perindustrian") {
     grafikKomoditi = <GrafikKomoditiPerindustrian dataPerindustrian={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Pariwisata") {
+  } else if (sektor === "Pariwisata") {
     grafikKomoditi = <GrafikKomoditiPariwisata dataPariwisata={dataKomoditi}/>;
   }
 

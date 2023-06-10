@@ -43,7 +43,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(luas_lahan, produksi, produktivitas, bidang, komoditi);
+        // console.log(luas_lahan, produksi, produktivitas, bidang, komoditi);
         
         const token = localStorage.getItem('token');
         const formData = new FormData();
@@ -79,24 +79,52 @@ function InputFormPertanian({bidang, komoditi, editData}) {
             }
             history('/adminpertanian');
         } catch (error) {
-            setValidation(error.response.data);
-            console.log(error.response)
+            setValidation(error.response.data.errors);
+            console.log(error.response.data.errors);
             }
     };
 
-    return (
+    return (    
         <form onSubmit={handleSubmit} className='form-input'>
+            {
+              validation.komoditi && (
+                <div className="alert-danger">
+                  Bidang dan Komoditi harus dipilih
+                </div>
+              )
+            }
             <div className='form-input-row'>
                 <label htmlFor='luas_lahan'>Luas Panen (Ha)</label>
                 <input id='luas_lahan' type='number' value={luas_lahan} onChange={(e) => setLuasLahan(e.target.value)} />
+            {
+              validation.luas_lahan && (
+                <div className="alert-danger">
+                  {validation.luas_lahan[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='produksi'>Produksi (Ton)</label>
                 <input id='produksi' type='number' value={produksi} onChange={(e) => setProduksi(e.target.value)} />
+            {
+              validation.produksi && (
+                <div className="alert-danger">
+                  {validation.produksi[0]}
+                </div>
+              )
+            }
             </div>
             <div className='form-input-row'>
                 <label htmlFor='produktivitas'>Produktivitas (Kw/Ha)</label>
                 <input id='produktivitas' type='number' value={produktivitas} onChange={(e) => setProduktivitas(e.target.value)} />
+            {
+              validation.produktivitas && (
+                <div className="alert-danger">
+                  {validation.produktivitas[0]}
+                </div>
+              )
+            }
             </div>
             <div className='button-add'>
                 <Button className="tambahDataButton">

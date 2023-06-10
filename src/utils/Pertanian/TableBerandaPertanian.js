@@ -18,6 +18,11 @@ export function getTableBerandaPertanian() {
             sortable: true
         },
         {
+            name: "Kecamatan",
+            selector: row => row.kecamatan,
+            sortable: true
+        },
+        {
             name: "Luas Panen (Ha)",
             selector: row => row.luas_lahan,
             sortable: true
