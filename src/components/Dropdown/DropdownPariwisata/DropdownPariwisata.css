@@ -23,7 +23,7 @@
   .dropdown-button-pariwisata {
     display: flex;
     align-items: center;
-    width:50%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
+    width:100%; /* Ubah nilai ini untuk menentukan lebar button dropdown */
     height: 50px;
     border: none;
     border-radius: 13px;

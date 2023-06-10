@@ -22,15 +22,15 @@ const PageInputDataPeternakan= () => {
         setSelectedKomoditi(value);
     }
 
-    async function fetchKomoditi() {
-        const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Peternakan');
-        const data = response.data;
-        setKomoditiOptions(data);
-    } 
+    // async function fetchKomoditi() {
+    //     const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Peternakan');
+    //     const data = response.data;
+    //     setKomoditiOptions(data);
+    // } 
 
-    useEffect(() => {
-        fetchKomoditi();
-    }, []);
+    // useEffect(() => {
+    //     fetchKomoditi();
+    // }, []);
     
     useEffect(() => {
         if(!token) {
@@ -88,7 +88,7 @@ const PageInputDataPeternakan= () => {
             <div className='content'>
                 <h3>Pendataan || Peternakan || Tambah Data </h3>
                 <div className='dropdown-tambah-data-peternakan'>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPeternakan.komoditi}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditi={dataPeternakan.komoditi} sektor='Peternakan'/>
                 </div>
                 <div className='cover_tambah_data_peternakan'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

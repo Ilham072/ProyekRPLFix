@@ -28,7 +28,7 @@ const TableAdmin = (navigateToEdit) => {
     const handleConfirm = () => {
         // Logika ketika tombol "Ya" ditekan
         deleteHandler();
-        console.log("Data telah ditambahkan.");
+        console.log("Data telah dihapus.");
         setShowPopupDeleted(false);
     };
 

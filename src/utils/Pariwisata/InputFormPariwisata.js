@@ -14,6 +14,7 @@ function InputFormPariwisata({jenis_wisata, editData}) {
 
     const handleConfirm = () => {
       // Logika ketika tombol "Ya" ditekan
+      handleSubmit(true);
       console.log("Data telah ditambahkan.");
       setShowPopupAdd(false);
     };

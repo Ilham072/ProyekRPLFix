@@ -51,3 +51,12 @@
     color: #4692FD;
     border: 1px solid #4692FD;
 }
+
+.profilAdmin {
+    background-color: transparent;
+    margin: 10px;
+}
+.profilAdmin p{
+    font-style: oblique;
+    text-align: right;
+}

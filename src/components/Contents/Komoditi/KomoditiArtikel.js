@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./KomoditiArtikel.css";
 import GrafikKomoditiPeternakan from "../../../utils/Peternakan/GrafikKomoditiPeternakan";
 import GrafikKomoditiPertanian from "../../../utils/Pertanian/GrafikKomoditiPertanian";
@@ -7,20 +8,35 @@ import GrafikKomoditiPerindustrian from "../../../utils/Perindustrian/GrafikKomo
 import GrafikKomoditiPariwisata from "../../../utils/Pariwisata/GrafikKomoditiPariwisata";
 
 const KomoditiArtikel = ({ kontenKomoditi }) => {
+  const [dataKomoditi, setDataKomoditi] = useState([]);
   let grafikKomoditi;
+
+  async function fetchDataKomoditi(sektor, komoditi) {
+    try{
+      const response = await axios.get(`http://localhost:8000/api/${sektor}/${komoditi}`);
+      setDataKomoditi(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchDataKomoditi(kontenKomoditi.sektor, kontenKomoditi.judul)
+  }, [kontenKomoditi.sektor, kontenKomoditi.judul])
 
   // Menentukan grafik komoditi berdasarkan sektor konten yang dipilih
   if (kontenKomoditi.sektor === "Peternakan") {
-    grafikKomoditi = <GrafikKomoditiPeternakan />;
+    grafikKomoditi = <GrafikKomoditiPeternakan dataPeternakan={dataKomoditi}/>;
   } else if (kontenKomoditi.sektor === "Pertanian") {
-    grafikKomoditi = <GrafikKomoditiPertanian />;
+    grafikKomoditi = <GrafikKomoditiPertanian dataPertanian={dataKomoditi}/>;
   } else if (kontenKomoditi.sektor === "Perikanan") {
-    grafikKomoditi = <GrafikKomoditiPerikanan />;
+    grafikKomoditi = <GrafikKomoditiPerikanan dataPerikanan={dataKomoditi} />;
   } else if (kontenKomoditi.sektor === "Perindustrian") {
-    grafikKomoditi = <GrafikKomoditiPerindustrian />;
+    grafikKomoditi = <GrafikKomoditiPerindustrian dataPerindustrian={dataKomoditi}/>;
   } else if (kontenKomoditi.sektor === "Pariwisata") {
-    grafikKomoditi = <GrafikKomoditiPariwisata />;
+    grafikKomoditi = <GrafikKomoditiPariwisata dataPariwisata={dataKomoditi}/>;
   }
+
 
   return (
     <div className="container-komoditi">

@@ -23,21 +23,16 @@ const PageInputDataPertanian= () => {
         setSelectedKomoditi(value);
     }
 
-    async function fetchKomoditi() {
-        const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Perindustrian');
-        const data = response.data;
-        setKomoditiOptions(data);
-    } 
+    // async function fetchKomoditi() {
+    //     const response = await axios.get('http://localhost:8000/api/KomoditiBySektor?sektor=Perindustrian');
+    //     const data = response.data;
+    //     setKomoditiOptions(data);
+    // } 
 
-    useEffect(() => {
-        fetchKomoditi();
-    }, []);
+    // useEffect(() => {
+    //     fetchKomoditi();
+    // }, []);
 
-    const komoditiPerindustrian = [
-        {value: 'Batu Bara', label: 'Batu Bara'},
-        {value: 'Besi', label: 'Besi'},
-        {value: 'Tembaga', label: 'Tembaga'}
-    ];
 
     useEffect(() => {
         if(!token) {
@@ -95,7 +90,7 @@ const PageInputDataPertanian= () => {
             <div className='content'>
                 <h3>Pendataan || Perindustrian || Tambah Data </h3>
                 <div className='dropdown-tambah-data-perindustrian'>
-                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditiOptions={komoditiOptions} komoditi={dataPerindustrian.komoditi}/>
+                <DropdownKomoditi selectedKomoditi={selectedKomoditi} onKomoditiChange={handleKomoditiChange} komoditi={dataPerindustrian.komoditi} sektor='Perindustrian'/>
                 </div>
                 <div className='cover_tambah_data_perindustrian'>
                     <h1 className='judul_tambah_data'>Uraian</h1>

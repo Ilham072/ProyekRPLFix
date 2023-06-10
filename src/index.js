@@ -53,6 +53,11 @@ import PageSaranAdminPusat from './pages/pagesAdminPusat/Saran/PageSaranAdminPus
 import PageInputKontenKomoditi from './pages/pagesAdminPusat/PageInputKonten/PageInputKontenKomoditi';
 import Laporan from './pages/pagesAdminKecamatan/Laporan/Laporan';
 import LaporanPusat from './pages/pagesAdminKecamatan/Laporan/LaporanPusat';
+import PertanianBerandaAdminPusat from './pages/pagesAdminPusat/PertanianAdminPusat/PertanianBerandaAdminPusat';
+import PeternakanBerandaAdminPusat from './pages/pagesAdminPusat/PeternakanAdminPusat/PeternakanBerandaAdminPusat';
+import PerikananBerandaAdminPusat from './pages/pagesAdminPusat/PerikananAdminPusat/PerikananBerandaAdminPusat';
+import PerindustrianBerandaAdminPusat from './pages/pagesAdminPusat/PerindustrianAdminPusat/PerindustrianBerandaAdminPusat';
+import PariwisataBerandaAdminPusat from './pages/pagesAdminPusat/PariwisataAdminPusat/PariwisataBerandaAdminPusat';
 
 const router = createBrowserRouter([
   {
@@ -282,6 +287,26 @@ const router = createBrowserRouter([
   {
     path: "/laporanPusat",
     element: <LaporanPusat/>,
+  },
+  {
+    path: "/berandaAdminPusatPertanian",
+    element: <PertanianBerandaAdminPusat/>,
+  },
+  {
+    path: "/berandaAdminPusatPeternakan",
+    element: <PeternakanBerandaAdminPusat/>,
+  },
+  {
+    path: "/berandaAdminPusatPerikanan",
+    element: <PerikananBerandaAdminPusat/>,
+  },
+  {
+    path: "/berandaAdminPusatPerindustrian",
+    element: <PerindustrianBerandaAdminPusat/>,
+  },
+  {
+    path: "/berandaAdminPusatPariwisata",
+    element: <PariwisataBerandaAdminPusat/>,
   },
 ]);
 

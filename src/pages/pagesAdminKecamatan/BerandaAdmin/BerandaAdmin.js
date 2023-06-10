@@ -8,34 +8,69 @@ import KomoditiCategory from "../../../utils/KomoditiCategory";
 // import './BerandaAdmin.css';
 import checkTokenExpiration from './../../../utils/checkTokenExpiration';
 import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNew";
+import kategori_komoditi from "../../../config/KomoditiCategory/kategori_Komoditi.json";
+
 const BerandaAdmin = () => {
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    const [kategoriKomoditi, setKategoriKomoditi] = useState([]);
+    const [banner, setBanner] = useState([]);
     
     const fetchData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         await axios.get('http://localhost:8000/api/adminkecamatan')
         .then((response) => {
-            setUser(response.data.kecamatan);
+            const data = [response.data.name, response.data.kecamatan];
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify(data));
         })
     }
 
-    // useEffect(() => {
-    //     if(!token) {
-    //         navigate('/login');
-    //     }
+    const fetchKategoriKomoditi = async () => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const response = await axios.get('http://localhost:8000/api/CountSektor')
+        setKategoriKomoditi(response.data);
+        for (let i=0; i < kategoriKomoditi.length; i++) {
+            for (let j=0; j < kategoriKomoditi.length; j++) {
+                if (kategori_komoditi[i].name === kategoriKomoditi[j].sektor) {
+                    kategori_komoditi[i].count = kategoriKomoditi[j].count
+                }
+            }
+        }
+    }
 
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        async function fetchBanner() {
+          try{
+            const response = await axios.get('http://localhost:8000/api/Konten Banner');
+            setBanner(response.data);
+          } catch(err){
+          }
+        }
+  
+        fetchBanner()
+      }, []);
 
-    // useEffect(() => {
-    //     const isTokenExpired = checkTokenExpiration();
-    //     if(isTokenExpired) {
-    //         localStorage.clear();
-    //         navigate('/login');
-    //     }
-    // });
+    useEffect(() => {
+        fetchKategoriKomoditi()
+    }, []);
+
+    useEffect(() => {
+        if(!token) {
+            navigate('/login');
+        }
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
     return (
         <div className='container'>
             <div className='logo'>
@@ -45,7 +80,7 @@ const BerandaAdmin = () => {
             </div>
             <div className='header'>
                 <div>
-                    <HeaderAdmin />
+                    <HeaderAdmin user={user}/>
                 </div>
             </div>
             <div className='nav'>
@@ -55,8 +90,8 @@ const BerandaAdmin = () => {
             <div className='content'>
                 <div><h3>Beranda</h3></div>
                 <div className="isi_content">
-                    <CarouselNew/>
-                    <KomoditiCategory/>
+                    <CarouselNew banner={banner}/>
+                    <KomoditiCategory sektor={kategori_komoditi}/>
                 </div>
             </div>
         {/* <div className='footer'>footer</div> */}
