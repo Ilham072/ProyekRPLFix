@@ -16,7 +16,7 @@ const DataBerita = () => {
       if (storedData) {
         data = JSON.parse(storedData);
       } else {
-        const response = await axios.get('http://localhost:8000/api/Konten Berita');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Berita`);
         data = response.data;
         localStorage.setItem('dataKontenBerita', JSON.stringify(data));
       }

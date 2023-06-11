@@ -16,7 +16,7 @@ const DataBerandaPariwisata = ({kecamatan, jenis_wisata}) => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/Pariwisata');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pariwisata`);
                 data = response.data;
                 localStorage.setItem('tablePariwisata', JSON.stringify(data));
             }
@@ -29,17 +29,17 @@ const DataBerandaPariwisata = ({kecamatan, jenis_wisata}) => {
         async function fetchDataByKecamatan() {
           if (kecamatan && jenis_wisata) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            const response = await axios.get(`http://localhost:8000/api/Pariwisata?kecamatan=${kecamatan}&jenis_wisata=${jenis_wisata}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pariwisata?kecamatan=${kecamatan}&jenis_wisata=${jenis_wisata}`);
             const data = response.data;
             setDataPariwisata(data);
           } else if (kecamatan) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            const response = await axios.get(`http://localhost:8000/api/Pariwisata?kecamatan=${kecamatan}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pariwisata?kecamatan=${kecamatan}`);
             const data = response.data;
             setDataPariwisata(data);
           } else if (jenis_wisata) {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            const response = await axios.get(`http://localhost:8000/api/Pariwisata?jenis_wisata=${jenis_wisata}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pariwisata?jenis_wisata=${jenis_wisata}`);
             const data = response.data;
             setDataPariwisata(data);
           } else {

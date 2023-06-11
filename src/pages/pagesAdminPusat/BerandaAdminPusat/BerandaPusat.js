@@ -8,10 +8,7 @@ import { Button } from "../../../components/Button/Button";
 import CarouselNew from "../../../components/Corousel/CarouselBeranda/CarouselNew";
 import checkTokenExpiration from './../../../utils/checkTokenExpiration';
 import kategori_komoditi from "../../../config/KomoditiCategory/kategori_Komoditi.json";
-<<<<<<< HEAD
 import KomoditiCategoryPusat from "../../../utils/KomoditiCategoryPusat";
-=======
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
 // import './BerandaAdmin.css';
 const BerandaPusat = () => {
     const [user, setUser] = useState([]);
@@ -22,32 +19,32 @@ const BerandaPusat = () => {
     
     const fetchData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get('http://localhost:8000/api/adminpusat')
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/adminpusat`)
         .then((response) => {
-            const data = [response.data.name, 'Admin Pusat']
+            const data = [response?.data.name, 'Admin Pusat']
             setUser(data);
             localStorage.setItem('user', JSON.stringify(data));
         })
     }
 
-    const fetchKategoriKomoditi = async () => {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.get('http://localhost:8000/api/CountSektor')
-        setKategoriKomoditi(response.data);
-        for (let i=0; i < kategoriKomoditi.length; i++) {
-            for (let j=0; j < kategoriKomoditi.length; j++) {
-                if (kategori_komoditi[i].name === kategoriKomoditi[j].sektor) {
-                    kategori_komoditi[i].count = kategoriKomoditi[j].count
-                }
-            }
-        }
-    }
+    // const fetchKategoriKomoditi = async () => {
+    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    //     const response = await axios.get('http://localhost:8000/api/CountSektor')
+    //     setKategoriKomoditi(response.data);
+    //     for (let i=0; i < kategoriKomoditi.length; i++) {
+    //         for (let j=0; j < kategoriKomoditi.length; j++) {
+    //             if (kategori_komoditi[i].name === kategoriKomoditi[j].sektor) {
+    //                 kategori_komoditi[i].count = kategoriKomoditi[j].count
+    //             }
+    //         }
+    //     }
+    // }
 
     useEffect(() => {
         async function fetchBanner() {
           try{
-            const response = await axios.get('http://localhost:8000/api/Konten Banner');
-            setBanner(response.data);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Banner`);
+            setBanner(response?.data);
           } catch(err){
           }
         }
@@ -55,9 +52,9 @@ const BerandaPusat = () => {
         fetchBanner()
       }, []);
 
-    useEffect(() => {
-        fetchKategoriKomoditi()
-    }, []);
+    // useEffect(() => {
+    //     fetchKategoriKomoditi()
+    // }, []);
 
     useEffect(() => {
         if(!token) {
@@ -95,11 +92,7 @@ const BerandaPusat = () => {
                 <div><h3>Beranda</h3></div>
                 <div className="isi_content">
                     <CarouselNew banner={banner}/>
-<<<<<<< HEAD
-                    <KomoditiCategoryPusat sektor={kategori_komoditi}/>
-=======
-                    <KomoditiCategory sektor={kategori_komoditi}/>
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
+                    <KomoditiCategoryPusat/>
                     
                 </div>
             </div>

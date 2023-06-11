@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
 import Reac, { useState, useEffect } from "react";
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
 import axios from "axios";
 import "./KomoditiArtikel.css";
 import GrafikKomoditiPeternakan from "../../../utils/Peternakan/GrafikKomoditiPeternakan";
@@ -12,44 +8,23 @@ import GrafikKomoditiPerindustrian from "../../../utils/Perindustrian/GrafikKomo
 import GrafikKomoditiPariwisata from "../../../utils/Pariwisata/GrafikKomoditiPariwisata";
 import DataPariwisata from './../TablePariwisata/DataPariwisata';
 
-<<<<<<< HEAD
-const KomoditiArtikel = ({ kontenKomoditi }) => {
-  const [dataKomoditi, setDataKomoditi] = useState([]);
-=======
 const KomoditiArtikel = ({ id, sektor, komoditi }) => {
   const [dataKomoditi, setDataKomoditi] = useState([]);
   const [kontenKomoditi, setKontenKomoditi] = useState([]);
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
   let grafikKomoditi;
 
   async function fetchDataKomoditi(sektor, komoditi) {
     try{
-      const response = await axios.get(`http://localhost:8000/api/${sektor}/${komoditi}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor}/${komoditi}`);
       setDataKomoditi(response.data);
     } catch (error) {
       console.error(error);
     }
   }
 
-<<<<<<< HEAD
-  useEffect(() => {
-    fetchDataKomoditi(kontenKomoditi.sektor, kontenKomoditi.judul)
-  }, [kontenKomoditi.sektor, kontenKomoditi.judul])
-
-  // Menentukan grafik komoditi berdasarkan sektor konten yang dipilih
-  if (kontenKomoditi.sektor === "Peternakan") {
-    grafikKomoditi = <GrafikKomoditiPeternakan dataPeternakan={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Pertanian") {
-    grafikKomoditi = <GrafikKomoditiPertanian dataPertanian={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Perikanan") {
-    grafikKomoditi = <GrafikKomoditiPerikanan dataPerikanan={dataKomoditi} />;
-  } else if (kontenKomoditi.sektor === "Perindustrian") {
-    grafikKomoditi = <GrafikKomoditiPerindustrian dataPerindustrian={dataKomoditi}/>;
-  } else if (kontenKomoditi.sektor === "Pariwisata") {
-=======
   async function fetchKontenKomoditi(id) {
     let data;
-    await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
+    await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Komoditi ${id}`)
       .then((response) => {
         data = response.data.konten_komoditi;
         setKontenKomoditi(data);
@@ -73,7 +48,6 @@ const KomoditiArtikel = ({ id, sektor, komoditi }) => {
   } else if (sektor === "Perindustrian") {
     grafikKomoditi = <GrafikKomoditiPerindustrian dataPerindustrian={dataKomoditi}/>;
   } else if (sektor === "Pariwisata") {
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
     grafikKomoditi = <GrafikKomoditiPariwisata dataPariwisata={dataKomoditi}/>;
   }
 

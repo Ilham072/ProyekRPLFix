@@ -18,7 +18,7 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
   useEffect(() => {
     async function fetchDataKecamatan() {
       let data;
-      const response = await axios.get('http://localhost:8000/api/Kecamatan');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Kecamatan`);
       data = response.data;
       setDataKecamatan(data);
     }

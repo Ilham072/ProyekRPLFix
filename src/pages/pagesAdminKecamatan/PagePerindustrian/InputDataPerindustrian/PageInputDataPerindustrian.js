@@ -51,7 +51,7 @@ const PageInputDataPertanian= () => {
 
     async function fetchDataPerindustrianById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Perindustrian/${id}`)
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/Perindustrian ${id}`)
             .then((response) => {
                 setDataPerindustrian(response.data.perindustrian)
             })

@@ -20,7 +20,7 @@ const DataPeternakan = () => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PeternakanByUser');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/PeternakanByUser`);
                 data = response.data;
                 localStorage.setItem('dataPeternakan', JSON.stringify(data));
             }

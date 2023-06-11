@@ -15,7 +15,7 @@ const Pertanian = () => {
   useEffect(() => {
     async function fetchDataKontenKomoditi() {
       let data;
-      const response = await axios.get('http://localhost:8000/api/Konten Komoditi?sektor=Pertanian');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Komoditi?sektor=Pertanian`);
       data = response.data;
       setDataKontenKomoditi(data);
     }

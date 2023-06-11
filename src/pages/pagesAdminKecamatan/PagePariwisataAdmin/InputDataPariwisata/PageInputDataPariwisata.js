@@ -80,7 +80,7 @@ const PageInputDataPariwisata= () => {
 
     async function fetchDataPariwisataById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Pariwisata/${id}`)
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/Pariwisata ${id}`)
             .then((response) => {
                 setDataPariwisata(response.data.pariwisata)
             })

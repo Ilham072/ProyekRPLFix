@@ -10,8 +10,41 @@ function InputFormPerindustrian({komoditi, editData}) {
 
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
+    const token = localStorage.getItem('token');
+        const formData = new FormData();
+        formData.append('komoditi', komoditi);
+        formData.append('potensi_kandungan', potensi_kandungan);
+
+        const url = editData
+      ? `${process.env.REACT_APP_API_URL}/api/Perindustrian/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Perindustrian`;
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Perindustrian');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Perindustrian');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePerindustrian');
+            const storedData = localStorage.getItem('dataPerindustrian');
+            if (storedDataBeranda) {
+                localStorage.removeItem('tablePerindustrian');
+            }
+            if (storedData) {
+                localStorage.removeItem('dataPerindustrian')
+            }
+            history('/adminperindustrian');
+        } catch (error) {
+            setValidation(error.response.data.errors);
+        }
     console.log("Data telah ditambahkan.");
     setShowPopupAdd(false);
   };
@@ -39,42 +72,7 @@ function InputFormPerindustrian({komoditi, editData}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log(komoditi, potensi_kandungan);
-
-        const token = localStorage.getItem('token');
-        const formData = new FormData();
-        formData.append('komoditi', komoditi);
-        formData.append('potensi_kandungan', potensi_kandungan);
-
-        const url = editData
-      ? `http://localhost:8000/api/Perindustrian/${editData.id}`
-      : 'http://localhost:8000/api/Perindustrian';
-
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-        try {
-            if (editData) {
-                await axios.post(url, formData);
-                console.log('Sukses Mengupdate Data Perindustrian');
-                localStorage.removeItem('editData');
-            } else {
-                await axios.post(url, formData);
-                console.log('Sukses Menambahkan Data Perindustrian');
-            }
-
-            const storedDataBeranda = localStorage.getItem('tablePerindustrian');
-            const storedData = localStorage.getItem('dataPerindustrian');
-            if (storedDataBeranda) {
-                localStorage.removeItem('tablePerindustrian');
-            }
-            if (storedData) {
-                localStorage.removeItem('dataPerindustrian')
-            }
-            history('/adminperindustrian');
-        } catch (error) {
-            setValidation(error.response.data.errors);
-        }
+        setShowPopupAdd(true);   
     };
 
     return (
@@ -103,7 +101,7 @@ function InputFormPerindustrian({komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

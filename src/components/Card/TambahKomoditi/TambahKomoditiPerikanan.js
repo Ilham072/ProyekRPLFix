@@ -30,7 +30,7 @@ const TambahKomoditiPerikanan= ({ sektor }) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     try{
-      await axios.post('http://localhost:8000/api/Komoditi', formData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/Komoditi`, formData);
       console.log('Sukses Menambahkan Data Komoditi');
       const storedData = localStorage.getItem('dataKomoditi');
         if (storedData) {

@@ -6,7 +6,7 @@ export function getTablePeternakan(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Peternakan/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Peternakan/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Peternakan');
                 const storedData = localStorage.getItem('dataPeternakan');

@@ -20,7 +20,7 @@ const DataPertanian = ({bidang}) => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PertanianByUser');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/PertanianByUser`);
                 data = response.data;
                 localStorage.setItem('dataPertanian', JSON.stringify(data));
             }
@@ -33,7 +33,7 @@ const DataPertanian = ({bidang}) => {
         if (bidang) {
             async function fetchDataPertanianByBidang() {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/PertanianByUser?bidang=${bidang}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/PertanianByUser?bidang=${bidang}`);
                 const data = response.data;
                 setDataPertanian(data);
             }

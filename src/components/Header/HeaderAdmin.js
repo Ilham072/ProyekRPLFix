@@ -13,11 +13,7 @@ const HeaderAdmin = ({user = false}) => {
         <header className="header-container">
                 <h1><b>Digitalisasi Data Sumber Daya Alam</b></h1>
             <div className="btn">
-<<<<<<< HEAD
-                <div className="profilAdmin">
-=======
                 <div>
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
                     <p>{data[0]}</p>
                     <p>{data[1]}</p>
                 </div>

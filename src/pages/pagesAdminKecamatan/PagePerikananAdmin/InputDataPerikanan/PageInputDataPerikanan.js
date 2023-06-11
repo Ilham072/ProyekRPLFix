@@ -49,7 +49,7 @@ const PageInputDataPerikanan= () => {
 
     async function fetchDataPerikananById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Perikanan/${id}`)
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/Perikanan ${id}`)
             .then((response) => {
                 setDataPerikanan(response.data.perikanan)
             })

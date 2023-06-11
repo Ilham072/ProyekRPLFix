@@ -39,7 +39,7 @@ const DataKomoditiArtikel = () => {
       let data;
       async function fetchDataKontenKomoditi() {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const url = 'http://localhost:8000/api/Konten Komoditi';
+        const url = `${process.env.REACT_APP_API_URL}/api/Konten Komoditi`;
     const storedData = localStorage.getItem("dataKontenKomoditi");
     if (storedData) {
       data = JSON.parse(storedData);
@@ -59,7 +59,7 @@ const DataKomoditiArtikel = () => {
       async function fetchDataKontenKomoditi(sektor) {
         if (sektor) {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          const response = await axios.get(`http://localhost:8000/api/Konten Komoditi?sektor=${sektor}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Komoditi?sektor=${sektor}`);
           data = response.data;
           setDataKontenKomoditi(data);
         } else {

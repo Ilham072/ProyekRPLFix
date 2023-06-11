@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Button } from "../../components";
 import axios from "axios";
+import Komoditi from './../Komoditi';
 
 
 
@@ -8,7 +9,7 @@ export function getTablePertanian(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Pertanian/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Pertanian/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Pertanian');
                 const storedData = localStorage.getItem('dataPertanian');
@@ -30,8 +31,8 @@ export function getTablePertanian(navigateToEdit) {
     // };
 
     const handleEdit = (row) => {
-        const queryParam = encodeURIComponent(row.id);
-        navigateToEdit(`/editDataPertanian?id=${queryParam}`);
+        const id = row.id;
+        navigateToEdit(`/editDataPertanian?id=${id}`);
     };
       
 

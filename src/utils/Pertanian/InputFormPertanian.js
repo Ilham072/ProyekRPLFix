@@ -7,10 +7,46 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
 
 function InputFormPertanian({bidang, komoditi, editData}) {
 
-    const [showPopupAdd, setShowPopupAdd] = useState(false);
+  const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
+    const token = localStorage.getItem('token');
+        const formData = new FormData();
+        formData.append('bidang', bidang);
+        formData.append('komoditi', komoditi);
+        formData.append('luas_lahan', luas_lahan);
+        formData.append('produksi', produksi);
+        formData.append('produktivitas',produktivitas);
+
+        const url = editData
+      ? `${process.env.REACT_APP_API_URL}/api/Pertanian/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Pertanian`;
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Pertanian');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Pertanian');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePertanian');
+            const storedData = localStorage.getItem('dataPertanian');
+            if (storedDataBeranda) {
+                localStorage.removeItem('tablePertanian');
+            }
+            if (storedData) {
+                localStorage.removeItem('dataPertanian')
+            }
+            history('/adminpertanian');
+        } catch (error) {
+            setValidation(error.response.data.errors);
+            }
     console.log("Data telah ditambahkan.");
     setShowPopupAdd(false);
   };
@@ -44,49 +80,8 @@ function InputFormPertanian({bidang, komoditi, editData}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // console.log(luas_lahan, produksi, produktivitas, bidang, komoditi);
+        setShowPopupAdd(true);
         
-        const token = localStorage.getItem('token');
-        const formData = new FormData();
-        formData.append('bidang', bidang);
-        formData.append('komoditi', komoditi);
-        formData.append('luas_lahan', luas_lahan);
-        formData.append('produksi', produksi);
-        formData.append('produktivitas',produktivitas);
-
-        const url = editData
-      ? `http://localhost:8000/api/Pertanian/${editData.id}`
-      : 'http://localhost:8000/api/Pertanian';
-
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-        try {
-            if (editData) {
-                await axios.post(url, formData);
-                console.log('Sukses Mengupdate Data Pertanian');
-                localStorage.removeItem('editData');
-            } else {
-                await axios.post(url, formData);
-                console.log('Sukses Menambahkan Data Pertanian');
-            }
-
-            const storedDataBeranda = localStorage.getItem('tablePertanian');
-            const storedData = localStorage.getItem('dataPertanian');
-            if (storedDataBeranda) {
-                localStorage.removeItem('tablePertanian');
-            }
-            if (storedData) {
-                localStorage.removeItem('dataPertanian')
-            }
-            history('/adminpertanian');
-        } catch (error) {
-<<<<<<< HEAD
-            setValidation(error.response.data);
-            console.log(error.response)
-=======
-            setValidation(error.response.data.errors);
-            console.log(error.response.data.errors);
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
-            }
     };
 
     return (    
@@ -137,7 +132,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

@@ -6,7 +6,7 @@ export function getTableBanner() {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Konten Banner/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Konten Banner/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Konten Banner');
                 const storedData = localStorage.getItem('dataKontenBanner');

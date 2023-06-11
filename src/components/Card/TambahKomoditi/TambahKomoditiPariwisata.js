@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Col } from 'react-bootstrap';
 import "./TambahKomoditi.css";
 import toTitleCase from './../../../utils/titleCase';
@@ -9,6 +9,7 @@ const TambahKomoditiPariwisata= ({ sektor }) => {
   const [kecamatan, setKecamatan] = useState("");
   const [validation, setValidation] = useState([]);
   const [nama, setNama] = useState("");
+  const [listKecamatan, setListKecamatan] = useState([]);
   
 
   const handleJenisWisataChange = (event) => {
@@ -41,7 +42,7 @@ const TambahKomoditiPariwisata= ({ sektor }) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
     try{
-      await axios.post('http://localhost:8000/api/Komoditi', formData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/Komoditi`, formData);
       console.log('Sukses Menambahkan Data Komoditi');
       const storedData = localStorage.getItem('dataKomoditi');
         if (storedData) {
@@ -52,6 +53,16 @@ const TambahKomoditiPariwisata= ({ sektor }) => {
       setValidation(error.response.data);
     }
   }
+
+  useEffect(() => {
+    async function fetchDataKecamatan() {
+      let data;
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Kecamatan`);
+      data = response.data;
+      setListKecamatan(data);
+    }
+    fetchDataKecamatan();
+  }, []);
 
   return (
     <Col className="tambah-komoditi-pariwisata">
@@ -80,11 +91,14 @@ const TambahKomoditiPariwisata= ({ sektor }) => {
         </select>
         <h3>Kecamatan</h3>
         <select id="kecamatan" value={kecamatan} onChange={handleKecamatanChange}>
-          <option value="">- Pilih Kecamatan -</option>
-          <option value="Tanete Riattang">Tanete Riattang</option>
-          <option value="Bengo">Bengo</option>
-          <option value="Pallette">Pallette</option>
-        </select>
+  <option value="">- Pilih Kecamatan -</option>
+  {listKecamatan &&
+    listKecamatan.map((kecamatan) => (
+      <option key={kecamatan.kecamatan} value={kecamatan.kecamatan}>
+        {kecamatan.kecamatan}
+      </option>
+    ))}
+</select>
         <div className="tambah-btn" onClick={handleSubmit}>Simpan</div>
       </div>
     </Col>

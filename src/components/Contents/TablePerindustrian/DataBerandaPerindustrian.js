@@ -16,7 +16,7 @@ const DataBerandaPerindustrian = ({kecamatan}) => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/Perindustrian');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Perindustrian`);
                 data = response.data;
                 localStorage.setItem('tablePerindustrian', JSON.stringify(data));
             }
@@ -29,7 +29,7 @@ const DataBerandaPerindustrian = ({kecamatan}) => {
         if (kecamatan) {
             async function fetchDataByKecamatan() {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/Perindustrian?kecamatan=${kecamatan}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Perindustrian?kecamatan=${kecamatan}`);
                 const data = response.data;
                 setDataPerindustrian(data);
             }
