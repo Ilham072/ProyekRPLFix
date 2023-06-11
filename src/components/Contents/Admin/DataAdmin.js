@@ -18,7 +18,7 @@ const DataAdmin = () => {
               data = JSON.parse(storedData);
           } else {
               axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-              const response = await axios.get('http://localhost:8000/api/Admin');
+              const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Admin`);
               data = response.data;
               localStorage.setItem('dataAdmin', JSON.stringify(data));
           }

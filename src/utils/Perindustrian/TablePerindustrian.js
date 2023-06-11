@@ -6,7 +6,7 @@ export function getTablePerindustrian(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Perindustrian/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Perindustrian/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Perindustrian');
                 const storedData = localStorage.getItem('dataPerindustrian');

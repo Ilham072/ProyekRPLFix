@@ -11,7 +11,7 @@ const SidebarAdminPusat = () => {
 
   const logoutHandler = async () => {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    await axios.post('http://localhost:8000/api/logout')
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/logout`)
       .then(() => {
         localStorage.removeItem("token");
         localStorage.clear();

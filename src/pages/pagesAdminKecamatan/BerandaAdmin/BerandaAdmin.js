@@ -19,7 +19,7 @@ const BerandaAdmin = () => {
     
     const fetchData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get('http://localhost:8000/api/adminkecamatan')
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/adminkecamatan`)
         .then((response) => {
             const data = [response.data.name, response.data.kecamatan];
             setUser(data);
@@ -32,7 +32,7 @@ const BerandaAdmin = () => {
     useEffect(() => {
         const fetchKategoriKomoditi = async () => {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            const response = await axios.get('http://localhost:8000/api/CountSektor')
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/CountSektor`)
             setKategoriKomoditi(response.data);
             for (let i=0; i < kategoriKomoditi.length; i++) {
                 for (let j=0; j < kategoriKomoditi.length; j++) {
@@ -44,7 +44,7 @@ const BerandaAdmin = () => {
         }
         async function fetchBanner() {
           try{
-            const response = await axios.get('http://localhost:8000/api/Konten Banner');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Banner`);
             setBanner(response.data);
           } catch(err){
           }

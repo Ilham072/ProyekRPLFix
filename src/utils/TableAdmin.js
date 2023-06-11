@@ -8,7 +8,7 @@ const TableAdmin = (navigateToEdit) => {
 
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:8000/api/Admin/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Admin/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Admin');
                 const storedData = localStorage.getItem('dataAdmin');

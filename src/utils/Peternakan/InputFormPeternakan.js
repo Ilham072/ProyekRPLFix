@@ -25,8 +25,8 @@ function InputFormPeternakan({komoditi, editData}) {
         formData.append('populasi', populasi);
 
         const url = editData
-      ? `http://localhost:8000/api/Peternakan/${editData.id}`
-      : 'http://localhost:8000/api/Peternakan';
+      ? `${process.env.REACT_APP_API_URL}/api/Peternakan/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Peternakan`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {

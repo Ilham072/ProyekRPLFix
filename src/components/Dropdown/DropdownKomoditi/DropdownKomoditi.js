@@ -36,7 +36,7 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditi="", pari
   const fetchKomoditi = async (sektor, bidang, kecamatan, kontenKomoditi=false) => {
     if (kecamatan) {
         try {
-      const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${sektor}&bidang=${bidang}&kecamatan=${kecamatan}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/KomoditiBySektor?sektor=${sektor}&bidang=${bidang}&kecamatan=${kecamatan}`);
       const data = response.data;
       setKomoditiOptions(data);
         } catch (error) {
@@ -44,7 +44,7 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditi="", pari
         }
     } else if (bidang) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${sektor}&bidang=${bidang}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/KomoditiBySektor?sektor=${sektor}&bidang=${bidang}`);
         const data = response.data;
         setKomoditiOptions(data);
           } catch (error) {
@@ -52,7 +52,7 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditi="", pari
           }
     } else if (kontenKomoditi) {
       try {
-        const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${sektor}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/KomoditiBySektor?sektor=${sektor}`);
         const data = response.data;
         setKomoditiOptions(data);
           } catch (error) {
@@ -60,7 +60,7 @@ function DropdownKomoditi({selectedKomoditi, onKomoditiChange, komoditi="", pari
           }
     } else if (sektor !== 'Pertanian' && sektor !== 'Pariwisata'){
       try {
-        const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${sektor}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/KomoditiBySektor?sektor=${sektor}`);
         const data = response.data;
         setKomoditiOptions(data);
           } catch (error) {

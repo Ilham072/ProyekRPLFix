@@ -57,7 +57,7 @@ const PageInputDataPertanian= () => {
 
     async function fetchDataPertanianById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Pertanian ${id}`)
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian ${id}`)
             .then((response) => {
                 setDataPertanian(response.data.pertanian)
                 console.log(response);

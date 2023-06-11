@@ -33,7 +33,7 @@ const PariwisataBerandaAdmin = () => {
 
     const fetchPariwisataBidang = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.get('http://localhost:8000/api/Count Pariwisata');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Count Pariwisata`);
         setBidangPariwisata(response.data);
         for (let i=0; i < bidangPariwisata.length; i++) {
             for (let j=0; j < bidangPariwisata.length; j++) {

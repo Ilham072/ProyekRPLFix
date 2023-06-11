@@ -9,7 +9,7 @@ const TableKomoditiPertanian = () => {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Komoditi/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Komoditi/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Komoditi');
                 const storedData = localStorage.getItem('dataKomoditi');

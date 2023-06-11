@@ -36,7 +36,7 @@ const KomoditiContent = () => {
 
     const downloadExcel = async (sektor, komoditi) => {
       try {
-          const response = await axios.get(`http://localhost:8000/api/${sektor} ${komoditi}/xslx`, {
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor} ${komoditi}/xslx`, {
               responseType: 'blob', // Set response type to 'blob'
           });
           saveAs(response.data, `Laporan ${komoditi}`);

@@ -19,7 +19,7 @@ const DataPariwisata = ({jenis_wisata}) => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/PariwisataByUser');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/PariwisataByUser`);
                 data = response.data;
                 localStorage.setItem('dataPariwisata', JSON.stringify(data));
             }
@@ -32,7 +32,7 @@ const DataPariwisata = ({jenis_wisata}) => {
         if (jenis_wisata) {
             async function fetchDataPariwisataByJenisWisata() {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/PariwisataByUser?jenis_wisata=${jenis_wisata}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/PariwisataByUser?jenis_wisata=${jenis_wisata}`);
                 const data = response.data;
                 setDataPariwisata(data);
             }

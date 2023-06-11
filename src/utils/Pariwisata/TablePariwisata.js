@@ -6,7 +6,7 @@ export function getTablePariwisata(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Pariwisata/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Pariwisata/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Pariwisata');
                 const storedData = localStorage.getItem('dataPariwisata');

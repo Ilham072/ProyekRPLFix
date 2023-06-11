@@ -15,7 +15,7 @@ const KomoditiArtikel = ({ id, sektor, komoditi }) => {
 
   async function fetchDataKomoditi(sektor, komoditi) {
     try{
-      const response = await axios.get(`http://localhost:8000/api/${sektor}/${komoditi}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor}/${komoditi}`);
       setDataKomoditi(response.data);
     } catch (error) {
       console.error(error);
@@ -24,7 +24,7 @@ const KomoditiArtikel = ({ id, sektor, komoditi }) => {
 
   async function fetchKontenKomoditi(id) {
     let data;
-    await axios.get(`http://localhost:8000/api/Konten Komoditi ${id}`)
+    await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Komoditi ${id}`)
       .then((response) => {
         data = response.data.konten_komoditi;
         setKontenKomoditi(data);

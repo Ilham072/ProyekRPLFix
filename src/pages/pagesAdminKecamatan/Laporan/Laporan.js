@@ -80,7 +80,7 @@ const Laporan = () => {
     const downloadPDF = async (sektor, tahun) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {
-            const response = await axios.get(`http://localhost:8000/api/${sektor} ${tahun}/pdf`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor} ${tahun}/pdf`, {
                 responseType: 'blob', // Set response type to 'blob'
             });
             saveAs(response.data, `Laporan ${sektor} tahun ${tahun}`);
@@ -92,7 +92,7 @@ const Laporan = () => {
     const downloadExcel = async (sektor, tahun) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         try {
-            const response = await axios.get(`http://localhost:8000/api/${sektor} ${tahun}/xslx`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor} ${tahun}/xslx`, {
                 responseType: 'blob', // Set response type to 'blob'
             });
             saveAs(response.data, `Laporan ${sektor} tahun ${tahun}`);
@@ -105,7 +105,7 @@ const Laporan = () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         if (tahun) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/${sektor}/${tahun}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor}/${tahun}`);
                 setDataKomoditi(response.data);
             } catch (e) {
                 console.log(e);
@@ -113,7 +113,7 @@ const Laporan = () => {
         } else {
             tahun = new Date().getFullYear();
             try {
-                const response = await axios.get(`http://localhost:8000/api/${sektor}/${tahun}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/${sektor}/${tahun}`);
                 setDataKomoditi(response.data);
             } catch (e) {
                 console.log(e);

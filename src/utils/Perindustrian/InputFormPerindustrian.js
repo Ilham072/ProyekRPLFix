@@ -18,8 +18,8 @@ function InputFormPerindustrian({komoditi, editData}) {
         formData.append('potensi_kandungan', potensi_kandungan);
 
         const url = editData
-      ? `http://localhost:8000/api/Perindustrian/${editData.id}`
-      : 'http://localhost:8000/api/Perindustrian';
+      ? `${process.env.REACT_APP_API_URL}/api/Perindustrian/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Perindustrian`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

@@ -13,7 +13,7 @@ function App() {
         const searchParams = new URLSearchParams(window.location.search);
   const newsId = searchParams.get('id');
         let data;
-        await axios.get(`http://localhost:8000/api/Konten Berita ${newsId}`)
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Berita ${newsId}`)
         .then((response) => {
             data = response.data.konten_berita;
         }).catch((error) => {

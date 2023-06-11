@@ -16,7 +16,7 @@ const DataBerandaPertanian = ({kecamatan, bidang, tahun}) => {
                 data = JSON.parse(storedData);
             } else {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get('http://localhost:8000/api/Pertanian');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian`);
                 data = response.data;
                 localStorage.setItem('tablePertanian', JSON.stringify(data));
             }
@@ -33,7 +33,7 @@ const DataBerandaPertanian = ({kecamatan, bidang, tahun}) => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         if (tahun) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/Pertanian/${tahun}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian/${tahun}`);
                 setDataPertanian(response.data);
             } catch (e) {
                 console.log(e);
@@ -41,7 +41,7 @@ const DataBerandaPertanian = ({kecamatan, bidang, tahun}) => {
         } else {
             tahun = new Date().getFullYear();
             try {
-                const response = await axios.get(`http://localhost:8000/api/Pertanian/${tahun}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian/${tahun}`);
                 setDataPertanian(response.data);
             } catch (e) {
                 console.log(e);
@@ -61,17 +61,17 @@ const DataBerandaPertanian = ({kecamatan, bidang, tahun}) => {
         async function fetchDataByKecamatan() {
             if (kecamatan && bidang) {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/Pertanian?kecamatan=${kecamatan}&bidang=${bidang}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian?kecamatan=${kecamatan}&bidang=${bidang}`);
                 const data = response.data;
                 setDataPertanian(data);
             } else if (kecamatan) {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/Pertanian?kecamatan=${kecamatan}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian?kecamatan=${kecamatan}`);
                 const data = response.data;
                 setDataPertanian(data);
             } else if (bidang) {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/Pertanian?bidang=${bidang}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Pertanian?bidang=${bidang}`);
                 const data = response.data;
                 setDataPertanian(data);
             } else {

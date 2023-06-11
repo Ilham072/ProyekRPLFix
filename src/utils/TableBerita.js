@@ -7,7 +7,7 @@ export function getTableBerita(navigateToEdit) {
     const deleteHandler = async (id) => {
         const token = localStorage.getItem('token');
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.delete(`http://localhost:8000/api/Konten Berita/${id}`)
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/Konten Berita/${id}`)
             .then(() => {
                 console.log('Sukses Menghapus Data Konten Berita');
                 const storedData = localStorage.getItem('dataKontenBerita');

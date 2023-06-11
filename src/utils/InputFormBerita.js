@@ -36,8 +36,8 @@ function InputFormBerita({sektor, kecamatan, editData}) {
         formData.append('isi', isi);
 
         const url = editData
-      ? `http://localhost:8000/api/Konten Berita/${editData.id}`
-      : 'http://localhost:8000/api/Konten Berita';
+      ? `${process.env.REACT_APP_API_URL}/api/Konten Berita/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Konten Berita`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

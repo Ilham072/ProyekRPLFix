@@ -16,7 +16,7 @@ const DaftarKomoditiPertanian = ({ sektor }) => {
             let data;
             if (sektor) {
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const response = await axios.get(`http://localhost:8000/api/KomoditiBySektor?sektor=${sektor}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/KomoditiBySektor?sektor=${sektor}`);
                 data = response.data;
                 localStorage.setItem('dataKomoditi', JSON.stringify(data));
                 setDaftarKomoditiPertanian(data);

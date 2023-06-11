@@ -11,7 +11,7 @@ const PeternakanUser = () => {
   useEffect(() => {
     async function fetchDataKontenKomoditi() {
       let data;
-      const response = await axios.get('http://localhost:8000/api/Konten Komoditi?sektor=Peternakan');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Komoditi?sektor=Peternakan`);
       data = response.data;
       setDataKontenKomoditi(data);
     }

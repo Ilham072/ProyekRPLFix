@@ -36,7 +36,7 @@ function InputFormAdmin({editData}) {
         formData.append('password', password);
         formData.append('password_confirmation', pass_confirm);
 
-        const url = editData ? `http://localhost:8000/api/Admin/${editData.id}` : `http://localhost:8000/api/register`;
+        const url = editData ? `${process.env.REACT_APP_API_URL}/api/Admin/${editData.id}` : `${process.env.REACT_APP_API_URL}/api/register`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

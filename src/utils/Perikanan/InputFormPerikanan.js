@@ -22,8 +22,8 @@ function InputFormPerikanan({komoditi, editData}) {
         formData.append('nilai_produksi', nilai_produksi);
 
         const url = editData
-      ? `http://localhost:8000/api/Perikanan/${editData.id}`
-      : 'http://localhost:8000/api/Perikanan';
+      ? `${process.env.REACT_APP_API_URL}/api/Perikanan/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Perikanan`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

@@ -22,8 +22,8 @@ function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
         formData.append('wisatawan', wisatawan);
 
         const url = editData
-      ? `http://localhost:8000/api/Pariwisata/${editData.id}`
-      : 'http://localhost:8000/api/Pariwisata';
+      ? `${process.env.REACT_APP_API_URL}/api/Pariwisata/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Pariwisata`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

@@ -21,7 +21,7 @@ const Beranda = () => {
         if (storedData) {
           data = JSON.parse(storedData);
         } else {
-          const response = await axios.get('http://localhost:8000/api/Konten Berita');
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Berita`);
           data = response.data;
         }
           setDataBerita(data);
@@ -32,7 +32,7 @@ const Beranda = () => {
     useEffect(() => {
       async function fetchBanner() {
         try{
-          const response = await axios.get('http://localhost:8000/api/Konten Banner');
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Banner`);
           setBanner(response.data);
         } catch(err){
         }

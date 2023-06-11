@@ -18,7 +18,7 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
   useEffect(() => {
     async function fetchDataKecamatan() {
       let data;
-      const response = await axios.get('http://localhost:8000/api/Kecamatan');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Kecamatan`);
       data = response.data;
       setDataKecamatan(data);
     }
@@ -40,7 +40,7 @@ function DropdownKecamatan({selectedKecamatan, onKecamatanChange, kecamatan}) {
           <i className={isOpen ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
         </button>
         {isOpen &&
-          <div className="dropdown-menu-kecamatan-V2">
+          <div className="dropdown-menu-kecamatan">
             {dataKecamatan.map(option => (
               <div key={option.kecamatan} onClick={() => handleOptionSelect(option.kecamatan)}>
                 {option.kecamatan}

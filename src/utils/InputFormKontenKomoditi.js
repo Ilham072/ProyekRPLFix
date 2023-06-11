@@ -35,8 +35,8 @@ function InputFormKontenKomoditi({sektor, komoditi, editData}) {
         formData.append('isi', isi);
 
         const url = editData
-      ? `http://localhost:8000/api/Konten Komoditi/${editData.id}`
-      : 'http://localhost:8000/api/Konten Komoditi';
+      ? `${process.env.REACT_APP_API_URL}/api/Konten Komoditi/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Konten Komoditi`;
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

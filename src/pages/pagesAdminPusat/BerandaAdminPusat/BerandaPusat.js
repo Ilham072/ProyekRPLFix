@@ -19,7 +19,7 @@ const BerandaPusat = () => {
     
     const fetchData = async () => {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get('http://localhost:8000/api/adminpusat')
+        await axios.get(`${process.env.REACT_APP_API_URL}/api/adminpusat`)
         .then((response) => {
             const data = [response?.data.name, 'Admin Pusat']
             setUser(data);
@@ -43,7 +43,7 @@ const BerandaPusat = () => {
     useEffect(() => {
         async function fetchBanner() {
           try{
-            const response = await axios.get('http://localhost:8000/api/Konten Banner');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Konten Banner`);
             setBanner(response?.data);
           } catch(err){
           }

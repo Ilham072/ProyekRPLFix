@@ -8,7 +8,7 @@ const HasilSaranPusat = ({saranData}) => {
   const token = localStorage.getItem('token');
   const deleteHandler = async (id) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    await axios.delete(`http://localhost:8000/api/Saran/${id}`)
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/Saran/${id}`)
       .then((response) => {
         console.log(response)
         window.location.reload(false);

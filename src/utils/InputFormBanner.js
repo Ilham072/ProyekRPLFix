@@ -17,7 +17,7 @@ function InputFormBanner() {
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-    await axios.post('http://localhost:8000/api/Konten Banner', formData)
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/Konten Banner`, formData)
       .then(() => {
         console.log('Sukses Menambahkan Konten Banner');
         const storedData = localStorage.getItem('dataKontenBanner');

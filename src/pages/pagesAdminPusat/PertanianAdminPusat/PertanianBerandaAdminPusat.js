@@ -31,20 +31,20 @@ const PertanianBerandaAdminPusat = () => {
         console.log(event);
     }
 
-    // useEffect(() => {
-    //     if(!token) {
-    //         navigate('/login')
-    //     }
-    //     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // }, []);
+    useEffect(() => {
+        if(!token) {
+            navigate('/login')
+        }
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }, []);
 
-    // useEffect(() => {
-    //     const isTokenExpired = checkTokenExpiration();
-    //     if(isTokenExpired) {
-    //         localStorage.clear();
-    //         navigate('/login');
-    //     }
-    // });
+    useEffect(() => {
+        const isTokenExpired = checkTokenExpiration();
+        if(isTokenExpired) {
+            localStorage.clear();
+            navigate('/login');
+        }
+    });
 
     return (
         <div className='container'>

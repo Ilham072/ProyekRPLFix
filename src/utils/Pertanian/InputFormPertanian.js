@@ -20,8 +20,8 @@ function InputFormPertanian({bidang, komoditi, editData}) {
         formData.append('produktivitas',produktivitas);
 
         const url = editData
-      ? `http://localhost:8000/api/Pertanian/${editData.id}`
-      : 'http://localhost:8000/api/Pertanian';
+      ? `${process.env.REACT_APP_API_URL}/api/Pertanian/${editData.id}`
+      : `${process.env.REACT_APP_API_URL}/api/Pertanian`;
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 

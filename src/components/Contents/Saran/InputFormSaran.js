@@ -16,7 +16,7 @@ const InputFormSaran = () => {
     const formData = new FormData();
     formData.append('saran', saran);
 
-    await axios.post('http://localhost:8000/api/Saran', formData)
+    await axios.post(`${process.env.REACT_APP_API_URL}/api/Saran`, formData)
       .then((response) => {
         console.log(response.data.message);
         window.location.reload(false);
