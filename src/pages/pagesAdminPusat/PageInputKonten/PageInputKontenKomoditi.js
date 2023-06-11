@@ -61,7 +61,7 @@ const PageInputKontenKomoditi= () => {
 
     async function fetchDataKontenKomoditiById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
+        await axios.get(`http://localhost:8000/api/Konten Komoditi ${id}`)
             .then((response) => {
                 setDataKontenKomoditi(response.data.konten_komoditi)
             })

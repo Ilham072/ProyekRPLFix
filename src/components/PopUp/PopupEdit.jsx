@@ -6,8 +6,8 @@ const PopupEdit = ({ message, onConfirm, onCancel }) => {
       <div className="popup">
         <h4 className="popup-message">{message}</h4>
         <div className="button-container">
-          <button className="ButtonKonfirmasiNo" onClick={onConfirm}>Tidak</button>
-          <button className="ButtonKonfirmasiYa" onClick={onCancel}>Ya</button>
+          <button className="ButtonKonfirmasiNo" onClick={onCancel}>Tidak</button>
+          <button className="ButtonKonfirmasiYa" onClick={onConfirm}>Ya</button>
         </div>
       </div>
     </div>

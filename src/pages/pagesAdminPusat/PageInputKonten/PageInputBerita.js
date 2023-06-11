@@ -48,7 +48,7 @@ const PageInputBerita= () => {
 
     async function fetchDataBeritaById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Konten Berita/${id}`)
+        await axios.get(`http://localhost:8000/api/Konten Berita ${id}`)
             .then((response) => {
                 setDataBerita(response.data.konten_berita)
             })

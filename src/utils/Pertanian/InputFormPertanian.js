@@ -7,45 +7,11 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
 
 function InputFormPertanian({bidang, komoditi, editData}) {
 
-    const [showPopupAdd, setShowPopupAdd] = useState(false);
+  const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
-    console.log("Data telah ditambahkan.");
-    setShowPopupAdd(false);
-  };
-
-  const handleCancel = () => {
-    // Logika ketika tombol "Tidak" ditekan
-    console.log("Batal menambahkan data.");
-    setShowPopupAdd(false);
-  };
-
-  const handleButtonClick = () => {
-    // Logika ketika tombol utama ditekan
-    setShowPopupAdd(true);
-  };
-
-    const [luas_lahan, setLuasLahan] = useState(0);
-    const [produksi, setProduksi] = useState(0);
-    const [produktivitas, setProduktivitas] = useState(0);
-
-    const history = useNavigate();
-    const [validation, setValidation] = useState([]);
-
-    useEffect(() => {
-        if (editData) {
-            setLuasLahan(Number.isInteger(+editData.luas_lahan) ?parseInt(editData.luas_lahan) : editData.luas_lahan);
-            setProduksi(Number.isInteger(+editData.produksi) ?parseInt(editData.produksi) : editData.produksi);
-            setProduktivitas(Number.isInteger(+editData.produktivitas) ?parseInt(editData.produktivitas) : editData.produktivitas);
-        }
-    }, [editData]);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(luas_lahan, produksi, produktivitas, bidang, komoditi);
-        
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append('bidang', bidang);
         formData.append('komoditi', komoditi);
@@ -79,14 +45,43 @@ function InputFormPertanian({bidang, komoditi, editData}) {
             }
             history('/adminpertanian');
         } catch (error) {
-<<<<<<< HEAD
-            setValidation(error.response.data);
-            console.log(error.response)
-=======
             setValidation(error.response.data.errors);
-            console.log(error.response.data.errors);
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
             }
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+
+    const [luas_lahan, setLuasLahan] = useState(0);
+    const [produksi, setProduksi] = useState(0);
+    const [produktivitas, setProduktivitas] = useState(0);
+
+    const history = useNavigate();
+    const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setLuasLahan(Number.isInteger(+editData.luas_lahan) ?parseInt(editData.luas_lahan) : editData.luas_lahan);
+            setProduksi(Number.isInteger(+editData.produksi) ?parseInt(editData.produksi) : editData.produksi);
+            setProduktivitas(Number.isInteger(+editData.produktivitas) ?parseInt(editData.produktivitas) : editData.produktivitas);
+        }
+    }, [editData]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(luas_lahan, produksi, produktivitas, bidang, komoditi);
+        setShowPopupAdd(true);
+        
     };
 
     return (    
@@ -137,7 +132,7 @@ function InputFormPertanian({bidang, komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

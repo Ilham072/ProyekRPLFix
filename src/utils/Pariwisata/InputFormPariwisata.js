@@ -12,42 +12,9 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
 function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-    const handleConfirm = () => {
+    const handleConfirm = async () => {
       // Logika ketika tombol "Ya" ditekan
-      handleSubmit(true);
-      console.log("Data telah ditambahkan.");
-      setShowPopupAdd(false);
-    };
-  
-    const handleCancel = () => {
-      // Logika ketika tombol "Tidak" ditekan
-      console.log("Batal menambahkan data.");
-      setShowPopupAdd(false);
-    };
-  
-    const handleButtonClick = () => {
-      // Logika ketika tombol utama ditekan
-      setShowPopupAdd(true);
-    };
-    
-    const [desa, setDesa] = useState("");
-    const [wisatawan, setWisatawan] = useState(0);
-
-    const history = useNavigate();
-    const [validation, setValidation] = useState([]);
-
-    useEffect(() => {
-        if (editData) {
-            setDesa(editData.desa);
-            setWisatawan(editData.wisatawan)
-        }
-    }, [editData])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(nama_wisata, jenis_wisata, desa, wisatawan);
-
-        const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append('nama_wisata', nama_wisata);
         formData.append('jenis_wisata', jenis_wisata);
@@ -83,6 +50,39 @@ function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
             setValidation(error.response.data.errors);
             console.log(error.response.data.errors);
         }
+      console.log("Data telah ditambahkan.");
+      setShowPopupAdd(false);
+    };
+  
+    const handleCancel = () => {
+      // Logika ketika tombol "Tidak" ditekan
+      console.log("Batal menambahkan data.");
+      setShowPopupAdd(false);
+    };
+  
+    const handleButtonClick = () => {
+      // Logika ketika tombol utama ditekan
+      setShowPopupAdd(true);
+    };
+    
+    const [desa, setDesa] = useState("");
+    const [wisatawan, setWisatawan] = useState(0);
+
+    const history = useNavigate();
+    const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setDesa(editData.desa);
+            setWisatawan(editData.wisatawan)
+        }
+    }, [editData])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(nama_wisata, jenis_wisata, desa, wisatawan);
+        setShowPopupAdd(true);
+        
 
     };
 
@@ -123,7 +123,7 @@ function InputFormPariwisata({jenis_wisata, nama_wisata, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

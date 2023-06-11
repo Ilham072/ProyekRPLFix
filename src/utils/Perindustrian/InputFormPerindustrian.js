@@ -10,39 +10,9 @@ function InputFormPerindustrian({komoditi, editData}) {
 
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
-    console.log("Data telah ditambahkan.");
-    setShowPopupAdd(false);
-  };
-
-  const handleCancel = () => {
-    // Logika ketika tombol "Tidak" ditekan
-    console.log("Batal menambahkan data.");
-    setShowPopupAdd(false);
-  };
-
-  const handleButtonClick = () => {
-    // Logika ketika tombol utama ditekan
-    setShowPopupAdd(true);
-  };
-
-    const [potensi_kandungan, setPotensiKandungan] = useState(0);
-    const [validation, setValidation] = useState([]);
-    const history = useNavigate();
-
-    useEffect(() => {
-        if (editData) {
-            setPotensiKandungan(editData.potensi_kandungan);
-        }
-    }, [editData])
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        console.log(komoditi, potensi_kandungan);
-
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append('komoditi', komoditi);
         formData.append('potensi_kandungan', potensi_kandungan);
@@ -75,6 +45,34 @@ function InputFormPerindustrian({komoditi, editData}) {
         } catch (error) {
             setValidation(error.response.data.errors);
         }
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+
+    const [potensi_kandungan, setPotensiKandungan] = useState(0);
+    const [validation, setValidation] = useState([]);
+    const history = useNavigate();
+
+    useEffect(() => {
+        if (editData) {
+            setPotensiKandungan(editData.potensi_kandungan);
+        }
+    }, [editData])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setShowPopupAdd(true);   
     };
 
     return (
@@ -103,7 +101,7 @@ function InputFormPerindustrian({komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

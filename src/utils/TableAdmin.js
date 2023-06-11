@@ -18,10 +18,9 @@ const TableAdmin = (navigateToEdit) => {
                 window.location.reload(false);
             })
     }
-    const handleEdit = (row) => {
-        const queryParam = encodeURIComponent(row.id);
-        navigateToEdit(`/editAdmin?id=${queryParam}`);
-    }
+    // const handleEdit = (id) => {
+    //     navigateToEdit(`/editAdmin?id=${id}`);
+    // }
 
     const [showPopupDeleted, setShowPopupDeleted] = useState(false);
 
@@ -45,11 +44,9 @@ const TableAdmin = (navigateToEdit) => {
 
     const [showPopupEdit, setShowPopupEdit] = useState(false);
 
-    const handleConfirmEdit = (id) => {
+    const handleConfirmEdit = (row) => {
         // Logika ketika tombol "Ya" ditekan
-        handleEdit(id);
-        console.log("Data telah ditambahkan.");
-        setShowPopupEdit(false);
+        navigateToEdit(`/editAdmin?id=${row.id}`);
     };
 
     const handleCancelEdit = () => {
@@ -67,6 +64,11 @@ const TableAdmin = (navigateToEdit) => {
         {
             name: "No",
             cell: (row, index) => <div>{index + 1}</div>,
+            sortable: true
+        },
+        {
+            name: "Id",
+            selector: row => row.id,
             sortable: true
         },
         {
@@ -93,14 +95,14 @@ const TableAdmin = (navigateToEdit) => {
             name: "",
             selector: row => (
                 <div>
-                    <Button className="btn-edit" onClick={handleButtonClickEdit}><img src="assets/icon/button/button-edit.svg"/></Button>
-                    {showPopupEdit && (
+                    <Button className="btn-edit" onClick={() => handleConfirmEdit(row)}><img src="assets/icon/button/button-edit.svg"/></Button>
+                    {/* {showPopupEdit && (
                         <PopupEdit
                             message="Apakah Anda yakin akan mengedit data?"
-                            onConfirm={() => handleConfirmEdit(row.id)}
+                            onConfirm={() => handleConfirmEdit(row)}
                             onCancel={handleCancelEdit}
                         />
-                    )}
+                    )} */}
                     <Button className="btn-delete" onClick={handleButtonClick}><img src="assets/icon/button/button-delete.svg"/></Button>
                     {showPopupDeleted && (
                         <PopupDeleted

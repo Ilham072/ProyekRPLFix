@@ -13,41 +13,9 @@ function InputFormPerikanan({komoditi, editData}) {
 
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
-    console.log("Data telah ditambahkan.");
-    setShowPopupAdd(false);
-  };
-
-  const handleCancel = () => {
-    // Logika ketika tombol "Tidak" ditekan
-    console.log("Batal menambahkan data.");
-    setShowPopupAdd(false);
-  };
-
-  const handleButtonClick = () => {
-    // Logika ketika tombol utama ditekan
-    setShowPopupAdd(true);
-  };
-
-    const [volume, setVolume] = useState(0);
-    const [nilai_produksi, setNilaiProduksi] = useState(0);
-
-    const history = useNavigate();
-    const [validation, setValidation] = useState([]);
-
-    useEffect(() => {
-        if (editData) {
-            setVolume(Number.isInteger(+editData.volume) ?parseInt(editData.volume) : editData.volume);
-            setNilaiProduksi(editData.nilai_produksi);
-        }
-    }, [editData]);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // console.log(komoditi, volume, nilai_produksi);
-
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
         const formData = new FormData();
         formData.append('komoditi', komoditi);
         formData.append('volume', volume);
@@ -81,6 +49,39 @@ function InputFormPerikanan({komoditi, editData}) {
         } catch (error) {
             setValidation(error.response.data.errors);
         }
+    console.log("Data telah ditambahkan.");
+    setShowPopupAdd(false);
+  };
+
+  const handleCancel = () => {
+    // Logika ketika tombol "Tidak" ditekan
+    console.log("Batal menambahkan data.");
+    setShowPopupAdd(false);
+  };
+
+  const handleButtonClick = () => {
+    // Logika ketika tombol utama ditekan
+    setShowPopupAdd(true);
+  };
+
+    const [volume, setVolume] = useState(0);
+    const [nilai_produksi, setNilaiProduksi] = useState(0);
+
+    const history = useNavigate();
+    const [validation, setValidation] = useState([]);
+
+    useEffect(() => {
+        if (editData) {
+            setVolume(Number.isInteger(+editData.volume) ?parseInt(editData.volume) : editData.volume);
+            setNilaiProduksi(editData.nilai_produksi);
+        }
+    }, [editData]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // console.log(komoditi, volume, nilai_produksi);
+        setShowPopupAdd(true);
+        
     };
 
     return (
@@ -121,7 +122,7 @@ function InputFormPerikanan({komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

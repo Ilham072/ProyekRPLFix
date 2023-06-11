@@ -20,6 +20,10 @@ const PageInputDataPertanian= () => {
     const [selectedKomoditi, setSelectedKomoditi] = useState("");
     const [komoditiOptions, setKomoditiOptions] = useState([]);
     const [dataPertanian, setDataPertanian] = useState([]);
+    const searchParams = new URLSearchParams(window.location.search);
+    const dataId = searchParams.get('id');
+    const bidang = searchParams.get('bidang');
+    const komoditi = searchParams.get('komoditi');
     //const editData = JSON.parse(localStorage.getItem('editData'));    
     const handleBidangChange = (value) => {
         setSelectedBidang(value);
@@ -53,9 +57,10 @@ const PageInputDataPertanian= () => {
 
     async function fetchDataPertanianById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Pertanian/${id}`)
+        await axios.get(`http://localhost:8000/api/Pertanian ${id}`)
             .then((response) => {
                 setDataPertanian(response.data.pertanian)
+                console.log(response);
             })
             .catch((error) => {
                 console.log(error);
@@ -63,15 +68,14 @@ const PageInputDataPertanian= () => {
         }
 
     useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const dataId = searchParams.get('id');
+        
         if (dataId) {
             fetchDataPertanianById(dataId);
         } else {
             setDataPertanian(false); //
         }
         
-    }, []);
+    }, [dataId]);
 
     useEffect(() => {
         if(!token) {

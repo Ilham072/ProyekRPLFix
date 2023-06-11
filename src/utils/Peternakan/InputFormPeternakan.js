@@ -10,8 +10,47 @@ import PopupAdd from '../../components/PopUp/PopupAdd';
 function InputFormPeternakan({komoditi, editData}) {
     const [showPopupAdd, setShowPopupAdd] = useState(false);
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     // Logika ketika tombol "Ya" ditekan
+    const token = localStorage.getItem('token');
+        const formData = new FormData();
+
+        formData.append('komoditi', komoditi);
+        formData.append('total', total);
+        formData.append('kelahiran', kelahiran);
+        formData.append('kematian', kematian);
+        formData.append('pemotongan', pemotongan);
+        formData.append('ternak_keluar', ternak_keluar);
+        formData.append('ternak_masuk', ternak_masuk);
+        formData.append('populasi', populasi);
+
+        const url = editData
+      ? `http://localhost:8000/api/Peternakan/${editData.id}`
+      : 'http://localhost:8000/api/Peternakan';
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        try {
+            if (editData) {
+                await axios.post(url, formData);
+                console.log('Sukses Mengupdate Data Peternakan');
+                localStorage.removeItem('editData');
+            } else {
+                await axios.post(url, formData);
+                console.log('Sukses Menambahkan Data Peternakan');
+            }
+
+            const storedDataBeranda = localStorage.getItem('tablePeternakan');
+            const storedData = localStorage.getItem('dataPeternakan');
+            if (storedDataBeranda) {
+                localStorage.removeItem('tablePeternakan');
+            }
+            if (storedData) {
+                localStorage.removeItem('dataPeternakan')
+            }
+            navigate('/adminpeternakan');
+        } catch (error) {
+            setValidation(error.response.data.errors);
+        }
     console.log("Data telah ditambahkan.");
     setShowPopupAdd(false);
   };
@@ -54,46 +93,7 @@ function InputFormPeternakan({komoditi, editData}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // console.log(komoditi, total, kelahiran, kematian, pemotongan, ternak_keluar, ternak_masuk, populasi);
-
-        const token = localStorage.getItem('token');
-        const formData = new FormData();
-
-        formData.append('komoditi', komoditi);
-        formData.append('total', total);
-        formData.append('kelahiran', kelahiran);
-        formData.append('kematian', kematian);
-        formData.append('pemotongan', pemotongan);
-        formData.append('ternak_keluar', ternak_keluar);
-        formData.append('ternak_masuk', ternak_masuk);
-        formData.append('populasi', populasi);
-
-        const url = editData
-      ? `http://localhost:8000/api/Peternakan/${editData.id}`
-      : 'http://localhost:8000/api/Peternakan';
-
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        try {
-            if (editData) {
-                await axios.post(url, formData);
-                console.log('Sukses Mengupdate Data Peternakan');
-                localStorage.removeItem('editData');
-            } else {
-                await axios.post(url, formData);
-                console.log('Sukses Menambahkan Data Peternakan');
-            }
-
-            const storedDataBeranda = localStorage.getItem('tablePeternakan');
-            const storedData = localStorage.getItem('dataPeternakan');
-            if (storedDataBeranda) {
-                localStorage.removeItem('tablePeternakan');
-            }
-            if (storedData) {
-                localStorage.removeItem('dataPeternakan')
-            }
-            navigate('/adminpeternakan');
-        } catch (error) {
-            setValidation(error.response.data.errors);
-        }
+        setShowPopupAdd(true);
     };      
     return (
         <form onSubmit={handleSubmit} className='form-input'>
@@ -189,7 +189,7 @@ function InputFormPeternakan({komoditi, editData}) {
                 </Button>
                     {showPopupAdd && (
                         <PopupAdd
-                            message="Apakah Anda yakin menambah data?"
+                            message={editData ? "Apakah Anda yakin mengubah data?" : "Apakah Anda yakin manambah data?"}
                             onConfirm={handleConfirm}
                             onCancel={handleCancel}
                         />

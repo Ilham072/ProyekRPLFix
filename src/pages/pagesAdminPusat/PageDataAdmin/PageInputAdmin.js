@@ -34,7 +34,7 @@ const PageInputAdmin= () => {
 
     async function fetchDataAdminById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Admin/${id}`)
+        await axios.get(`http://localhost:8000/api/Admin ${id}`)
             .then((response) => {
                 setDataAdmin(response.data.admin)
             })

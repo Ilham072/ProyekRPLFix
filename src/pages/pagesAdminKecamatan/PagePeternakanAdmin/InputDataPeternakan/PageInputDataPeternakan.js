@@ -49,7 +49,7 @@ const PageInputDataPeternakan= () => {
 
     async function fetchDataPeternakanById(id) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        await axios.get(`http://localhost:8000/api/Peternakan/${id}`)
+        await axios.get(`http://localhost:8000/api/Peternakan ${id}`)
             .then((response) => {
                 setDataPeternakan(response.data.peternakan)
             })

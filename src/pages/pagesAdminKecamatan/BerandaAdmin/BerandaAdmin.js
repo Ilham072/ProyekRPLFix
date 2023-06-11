@@ -27,20 +27,21 @@ const BerandaAdmin = () => {
         })
     }
 
-    const fetchKategoriKomoditi = async () => {
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axios.get('http://localhost:8000/api/CountSektor')
-        setKategoriKomoditi(response.data);
-        for (let i=0; i < kategoriKomoditi.length; i++) {
-            for (let j=0; j < kategoriKomoditi.length; j++) {
-                if (kategori_komoditi[i].name === kategoriKomoditi[j].sektor) {
-                    kategori_komoditi[i].count = kategoriKomoditi[j].count
+    
+
+    useEffect(() => {
+        const fetchKategoriKomoditi = async () => {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            const response = await axios.get('http://localhost:8000/api/CountSektor')
+            setKategoriKomoditi(response.data);
+            for (let i=0; i < kategoriKomoditi.length; i++) {
+                for (let j=0; j < kategoriKomoditi.length; j++) {
+                    if (kategori_komoditi[i].name === kategoriKomoditi[j].sektor) {
+                        kategori_komoditi[i].count = kategoriKomoditi[j].count
+                    }
                 }
             }
         }
-    }
-
-    useEffect(() => {
         async function fetchBanner() {
           try{
             const response = await axios.get('http://localhost:8000/api/Konten Banner');
@@ -50,11 +51,8 @@ const BerandaAdmin = () => {
         }
   
         fetchBanner()
-      }, []);
-
-    useEffect(() => {
         fetchKategoriKomoditi()
-    }, []);
+      }, []);
 
     useEffect(() => {
         if(!token) {

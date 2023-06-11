@@ -4,7 +4,7 @@ import { getTableBerandaPertanian } from "../../../utils/Pertanian/TableBerandaP
 import axios from "axios";
 import dataPertanian from "../../../config/pertanian/dataPertanian.json";
 import "./DataPertanian.css";
-const DataBerandaPertanian = ({kecamatan, bidang}) => {
+const DataBerandaPertanian = ({kecamatan, bidang, tahun}) => {
     const [tablePertanian, setDataPertanian] = useState([]);
     const token = localStorage.getItem('token');
 
@@ -22,8 +22,40 @@ const DataBerandaPertanian = ({kecamatan, bidang}) => {
             }
             setDataPertanian(data);
         }
-        fetchDataPertanian();
-    }, []);
+        if (tahun) {
+            fetchDataKomoditi(tahun)
+        } else {
+            fetchDataPertanian();
+        }
+    }, [tahun]);
+
+    const fetchDataKomoditi = async (tahun = false) => {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        if (tahun) {
+            try {
+                const response = await axios.get(`http://localhost:8000/api/Pertanian/${tahun}`);
+                setDataPertanian(response.data);
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            tahun = new Date().getFullYear();
+            try {
+                const response = await axios.get(`http://localhost:8000/api/Pertanian/${tahun}`);
+                setDataPertanian(response.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
+
+    // useEffect(() => {
+    //     if (sektor && tahun) {
+    //         fetchDataKomoditi(sektor, tahun)
+    //     } else if (sektor) {
+    //         fetchDataKomoditi(sektor)
+    //     }
+    // }, [sektor, tahun])
     
     useEffect(() => {
         async function fetchDataByKecamatan() {

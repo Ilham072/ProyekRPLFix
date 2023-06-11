@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Button } from "../../components";
 import axios from "axios";
+import Komoditi from './../Komoditi';
 
 
 
@@ -30,8 +31,8 @@ export function getTablePertanian(navigateToEdit) {
     // };
 
     const handleEdit = (row) => {
-        const queryParam = encodeURIComponent(row.id);
-        navigateToEdit(`/editDataPertanian?id=${queryParam}`);
+        const id = row.id;
+        navigateToEdit(`/editDataPertanian?id=${id}`);
     };
       
 

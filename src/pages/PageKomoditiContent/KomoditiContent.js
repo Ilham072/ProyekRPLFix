@@ -8,42 +8,6 @@ import LogoApp from "../../components/LogoApp/LogoApp";
 import { saveAs } from 'file-saver';
 
 const KomoditiContent = () => {
-<<<<<<< HEAD
-    const [dataKontenKomoditi, setDataKontenKomoditi] = useState([]);
-
-    
-
-    useEffect(() => {
-      async function fetchDataKontenKomoditiById(id) {
-        let data;
-        await axios.get(`http://localhost:8000/api/Konten Komoditi/${id}`)
-          .then((response) => {
-            data = response.data.konten_komoditi;
-            setDataKontenKomoditi(data);
-          }).catch((error) => {
-            console.log(error.response.message);
-          })
-      }
-      
-      const searchParams = new URLSearchParams(window.location.search);
-      const kontenId = searchParams.get('id');
-
-      console.log(kontenId);
-      fetchDataKontenKomoditiById(kontenId);
-      console.log(dataKontenKomoditi);
-    }, []);
-
-    const downloadExcel = async (sektor, komoditi) => {
-      try {
-          const response = await axios.get(`http://localhost:8000/api/${sektor} ${komoditi}/xslx`, {
-              responseType: 'blob', // Set response type to 'blob'
-          });
-          saveAs(response.data, `Laporan ${komoditi}`);
-          
-      } catch (error) {
-          console.log(error);
-      }
-=======
     const searchParams = new URLSearchParams(window.location.search);
     const sektor = searchParams.get('sektor');
     const komoditi = searchParams.get('komoditi');
@@ -80,7 +44,6 @@ const KomoditiContent = () => {
       } catch (error) {
           console.log(error);
       }
->>>>>>> fd6f78e359b91d8cf1c8e32bb39aafce10dbb7f2
   }
 
     return (
